@@ -107,6 +107,13 @@
     <artifactId>poi-ooxml-schemas</artifactId>
     <version>3.16-beta1</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/com.github.mkolisnyk/cucumber-runner -->
+<dependency>
+    <groupId>com.github.mkolisnyk</groupId>
+    <artifactId>cucumber-runner</artifactId>
+    <version>1.0.8</version>
+</dependency>
+
 
 		
   </dependencies>

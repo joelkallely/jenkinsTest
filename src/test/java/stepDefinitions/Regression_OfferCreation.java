@@ -164,19 +164,21 @@ public class Regression_OfferCreation extends baseClasses.browserInit {
 	{	
 		eh.setExcelFile("Offer_Creation", "details");
 		//int rows = eh.numOFrows();
-		for(int i=1;i<8;i++)
+		for(int i=7;i<8;i++)
 		{
 			
 		driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys(eh.getCell(i, 0));
+		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys((Keys.chord(Keys.CONTROL,"a")), eh.getCell(i, 0));
 		driver.findElement(By.xpath("//*[@id='filterDialog']/div/paper-button[3]")).click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		driver.findElement(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../..")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='contentWrapper']/div/paper-menu/div/paper-item"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deleteOffer']/div/paper-button[2]"))).click();
-		
+		Thread.sleep(2000);
 		}
+		
+		
 	}
 	
 ////////********Creating Offers with VOICEpush Channel*******************
@@ -330,7 +332,7 @@ public class Regression_OfferCreation extends baseClasses.browserInit {
 				
 			driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys(eh.getCell(i, 0));
+			driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys((Keys.chord(Keys.CONTROL,"a")), eh.getCell(i, 0));
 			driver.findElement(By.xpath("//*[@id='filterDialog']/div/paper-button[3]")).click();
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../..")).click();
@@ -491,7 +493,7 @@ public class Regression_OfferCreation extends baseClasses.browserInit {
 			
 			driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys(eh.getCell(i, 0));
+			driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys((Keys.chord(Keys.CONTROL,"a")), eh.getCell(i, 0));
 			driver.findElement(By.xpath("//*[@id='filterDialog']/div/paper-button[3]")).click();
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../..")).click();
@@ -675,8 +677,10 @@ public class Regression_OfferCreation extends baseClasses.browserInit {
 						actions.moveToElement(driver.findElement(By.xpath("//div[@class='layout horizontal flex style-scope data-table-column-filter-dialog']/paper-input[6]"))).click().sendKeys("30").build().perform();
 						actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]"))).click().build().perform();
 						Thread.sleep(1000);
-					} 
-						if(!(filtered_offer_4.isDisplayed()))
+					}
+					//else throw new Exception("check price filteration in product tab"); 
+						
+					if(!(filtered_offer_4.isDisplayed()))
 						{
 							wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../.."))).click();
 							Thread.sleep(1000);
@@ -698,6 +702,7 @@ public class Regression_OfferCreation extends baseClasses.browserInit {
 								actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]"))).click().build().perform();
 								Thread.sleep(1000);
 							}
+							//else throw new Exception("check validity filteration in product tab");
 						
 								if(!(filtered_offer_4.isDisplayed()))
 								{
@@ -709,6 +714,8 @@ public class Regression_OfferCreation extends baseClasses.browserInit {
 									actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]"))).click().build().perform();
 									Thread.sleep(2000);
 								}
+								//else throw new Exception("check service leg filteration in product tab");
+								
 									if(!filtered_offer_2.isDisplayed())
 									{
 										actions.moveToElement(driver.findElement(By.xpath("//*[@id='productDialog']/div[2]/paper-button[1]"))).click().build().perform();
@@ -716,9 +723,12 @@ public class Regression_OfferCreation extends baseClasses.browserInit {
 										Thread.sleep(2000);
 									}
 				}
+				//else throw new Exception("product name filteration in product tab");
 				
 				
 			}
+			
+			
 			
 
 }
