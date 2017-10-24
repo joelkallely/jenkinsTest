@@ -10,8 +10,8 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(ExtendedCucumber.class)
-@ExtendedCucumberOptions(
-        jsonReport = "target/81/cucumber.json",
+@ExtendedCucumberOptions
+	   (jsonReport = "target/81/cucumber.json",
         jsonUsageReport = "target/81/cucumber-usage.json",
         usageReport = true,
         detailedReport = true,
@@ -24,15 +24,17 @@ import cucumber.api.junit.Cucumber;
         retryCount = 1)
 @CucumberOptions(
         features = { "src/test/resources" },
-        tags = { "@tagjoeltestsuite" },
+        tags = { "@tag111111111" },
         plugin = {
         "html:target/81", "json:target/81/cucumber.json",
         "pretty:target/81/cucumber-pretty.txt",
         "usage:target/81/cucumber-usage.json", "junit:target/81/cucumber-results.xml" })
 
-public class RunnerTest {
+public class RunnerTest 
+{
 	public RunnerTest()
 	{
 		System.out.println("sdfd");
 	}
+
 }
