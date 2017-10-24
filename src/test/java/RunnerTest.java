@@ -24,7 +24,11 @@ import cucumber.api.junit.Cucumber;
         retryCount = 1)
 @CucumberOptions(
         features = { "src/test/resources" },
+<<<<<<< HEAD
         tags = { "@tag111111111" },
+=======
+        tags = { "@tag1014" },
+>>>>>>> branch 'October-release' of madhankumars@bitbucket.org:nikhilbabu/neon-dx-qa-automation.git
         plugin = {
         "html:target/81", "json:target/81/cucumber.json",
         "pretty:target/81/cucumber-pretty.txt",

@@ -58,6 +58,7 @@ public class Offer_catalogue extends browserInit
 		String name = (String) eM.getCell(0, 0);
 		name =  name.replaceAll("[0-9]", "")+n;
 		name= n+name;
+		eM.setCell(0, 0, name);
 	   wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='router']/app-route[17]/offer-catalogue-grid/div[1]/div[2]/paper-button")))).click();
 	   driver.findElement(By.xpath("//div[2]/paper-input[1]/paper-input-container/div[2]/div/input")).sendKeys(name);
 	   driver.findElement(By.xpath("//paper-input[2]/paper-input-container/div[2]/div/input")).sendKeys("test");
