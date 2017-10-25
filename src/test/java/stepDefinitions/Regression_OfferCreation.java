@@ -569,12 +569,9 @@ public class Regression_OfferCreation extends baseClasses.browserInit {
 				Thread.sleep(1000);
 				actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'INR')]"))).click().build().perform();
 				actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Discount')]"))).click().sendKeys("20").build().perform();
-				actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(.,'Proceed')]"))).click().build().perform();
+				Thread.sleep(1000);
 				
-				
-				//WebElement error_msg = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-input-error[contains(.,'This field is required.')]")));
-				WebElement error_msg = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='paper-input-add-on-6']")));
-				
+				WebElement error_msg = driver.findElement(By.xpath("//div[@class='content style-scope offer-details']/paper-input[1]/paper-input-container/div[4]/paper-input-error[contains(.,'This field is required')]"));
 				if(error_msg.isDisplayed())
 						actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(.,'Cancel')]"))).click().build().perform();
 					

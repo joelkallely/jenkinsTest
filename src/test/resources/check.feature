@@ -9,4 +9,4 @@ Feature: Just to checkr
   	Then navigate to precision marketing
   	Then navigate to offer management
 		Then navigate to offers
-		Then Check_filter_operation_in_products_tab
+		Then Check_details_tab_without_entering_details
