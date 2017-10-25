@@ -467,6 +467,23 @@ public class Offer_catalogue extends browserInit
 	Thread.sleep(2000);
 	   
    }
+   @Then("^Verify Label in offer selected$")
+   public void verifyLabelinOfferCatalogOffersSelection() throws Throwable
+   {
+	   Thread.sleep(2000);
+		 driver.findElement(By.xpath("//paper-button[contains(text(),'Add Offers')]")).click();
+		 Thread.sleep(2000);
+		 //wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")))).click();
+		 //wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//form/paper-input[1]/paper-input-container/div[2]/div/input")))).sendKeys(eM.getCell(1, 0));
+		 //driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]")).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[1]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[2]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[3]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[4]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[5]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[6]/data-table-row/div[1]/data-table-checkbox")))).click();    
+  
+   }
    
 }
 

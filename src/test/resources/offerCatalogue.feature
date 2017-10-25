@@ -199,3 +199,13 @@ Given login
   Then Delete Created Offer Catalogue
   #Then logout
 
+@tag1142
+Scenario: Verify the label detail for the offer selected
+
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+  Then Create New Offer Catalogue
+  Then Verify Label in offer selected
+  Then Delete Created Offer Catalogue
