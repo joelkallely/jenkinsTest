@@ -9,7 +9,4 @@ Feature: Just to checkr
   	Then navigate to precision marketing
   	Then navigate to offer management
 		Then navigate to offers
-		Then Delete_SMS_channel_offers
-		Then Delete_VOICEpush_channel_offers
-		Then Delete_WAPpush_channel_offers
-	
+		Then Check_filter_operation_in_products_tab
