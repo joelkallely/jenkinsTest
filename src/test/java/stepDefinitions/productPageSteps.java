@@ -8,6 +8,7 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -101,7 +102,7 @@ public class productPageSteps extends browserInit {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(i, 9)+"')]"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys(eh.getCell(i, 10));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-		Thread.sleep(200);
+		Thread.sleep(500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
 
 
@@ -313,8 +314,9 @@ public class productPageSteps extends browserInit {
 	}
 	@Then("^check field validations under the benefits gridk$")
     public void fieldValidationBenefits() throws AWTException, InterruptedException {
-		
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sym1']"))).click();
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]")).sendKeys("multipleBenefit_Check");	
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys("Checking cross site scripting in creation of new product under CLV Max");
@@ -514,6 +516,7 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
 		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).click();
+		Thread.sleep(1500);
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Clipboard clipboard = toolkit.getSystemClipboard();
 		StringSelection stringSelection = new StringSelection("checkText");
@@ -686,6 +689,31 @@ public class productPageSteps extends browserInit {
 			throw e;
 		  
 	}
+	@Then("^veirfy help icon of products$")
+	   public void verifyHelpOfProducts() throws Throwable
+	   {   
+		   
+		  wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//flytxt-context-help/paper-icon-button/iron-icon/img")))).click();
+		   Thread.sleep(1500);
+		   String secondUrl = driver.findElement(By.xpath(".//*[@id='content']/object")).getAttribute("data");
+		   ((JavascriptExecutor)driver).executeScript("window.open()");
+		   ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+		    driver.switchTo().window(tabs2.get(1));
+		    driver.get(secondUrl);
+		    driver.switchTo().frame(1);
+		    try{
+		    driver.findElement(By.xpath("//*[@id='topic_content']/h1[1]/span/span[contains(text(),'Product')]"));
+		    driver.close();
+		    driver.switchTo().window(tabs2.get(0));
+		    }
+		    catch (Exception e) {
+		    	driver.close();
+			    driver.switchTo().window(tabs2.get(0));
+			    throw e;
+			}
+		   
+		   
+	   }
 }
 	
 

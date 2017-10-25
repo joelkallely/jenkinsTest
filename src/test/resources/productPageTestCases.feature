@@ -191,3 +191,10 @@ Then navigate to offer management
 Then navigate to products
 Then check script in product name field "productname'; SELECT * FROM products;"
 
+@tag2299
+Scenario: Offer Management: Verify for the details present in the Help page NX-2299
+Given login
+Then navigate to precision marketing
+Then navigate to offer management
+Then navigate to products
+Then veirfy help icon of products

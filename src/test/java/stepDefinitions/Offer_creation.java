@@ -31,7 +31,7 @@ public class Offer_creation extends browserInit
 	@Then("^create new offer for product$")
 	public void create_new_Offer() throws Throwable 
 	{
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		Actions actions = new Actions(driver);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Offer')]"))).click();
@@ -66,7 +66,7 @@ public class Offer_creation extends browserInit
 		
 		
 //******************Products tab*****************:
-		eh.setExcelFile("inputData.xls","singleProductPage");
+		eh.setExcelFile("inputData","singleProductPage");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='check']/div/iron-pages/offer-products/form/div/div[2]/paper-button"))).click();
 		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../.."))).click();
