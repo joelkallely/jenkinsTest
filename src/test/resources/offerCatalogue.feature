@@ -188,7 +188,7 @@ Given login
   
 
 @tag1159
-Scenario: Verify Colapsing Offer in Offer Catalog
+Scenario: Verify Colapsing Offer in Offer Catalogue
 Given login
 	When navigate to precision marketing
 	Then Navigate to Offer Management 
