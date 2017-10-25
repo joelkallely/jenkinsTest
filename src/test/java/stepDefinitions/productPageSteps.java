@@ -336,7 +336,9 @@ public class productPageSteps extends browserInit {
 	}
 	@Then("^verify adding more than 3 benefits for product$")
     public void moreThan3Benefits() throws Exception {
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sym1']"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]"))).click();

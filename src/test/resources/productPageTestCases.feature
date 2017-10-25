@@ -191,13 +191,3 @@ Then navigate to offer management
 Then navigate to products
 Then check script in product name field "productname'; SELECT * FROM products;"
 
-
-@tag99
-Scenario: create product with valid details
-Given login
-Then navigate to precision marketing
-Then navigate to offer management
-Then create new product from sheet "singleProductPage"
-#Then delete product
-#Then logout
-#And verify created offer
