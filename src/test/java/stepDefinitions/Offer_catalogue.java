@@ -197,7 +197,6 @@ public class Offer_catalogue extends browserInit
 		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div[2]/paper-button[2]")))).click();
 		 
    }
-   
    @Then("^Search Offers Using Service leg$")
    public void searchOffersUsingServiceLeg() throws Throwable
    {
