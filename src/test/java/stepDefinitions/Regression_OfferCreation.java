@@ -358,6 +358,7 @@ public class Regression_OfferCreation extends baseClasses.browserInit {
 //******************Details tab******************:
 		
 			actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Offer Name')]"))).click().sendKeys(eh.getCell(i, 0)).build().perform();
+			Thread.sleep(1000);
 			actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Description')]"))).click().sendKeys(eh.getCell(i, 1)).build().perform();
 			actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Offer Type')]"))).click().build().perform();
 			Thread.sleep(1000);
