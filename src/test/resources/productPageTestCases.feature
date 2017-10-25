@@ -191,13 +191,10 @@ Then navigate to offer management
 Then navigate to products
 Then check script in product name field "productname'; SELECT * FROM products;"
 
-
-@tag99
-Scenario: create product with valid details
+@tag2299
+Scenario: Offer Management: Verify for the details present in the Help page NX-2299
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
-Then create new product from sheet "singleProductPage"
-#Then delete product
-#Then logout
-#And verify created offer
+Then navigate to products
+Then veirfy help icon of products
