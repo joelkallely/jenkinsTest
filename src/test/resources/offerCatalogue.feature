@@ -209,3 +209,14 @@ Scenario: Verify the label detail for the offer selected
   Then Create New Offer Catalogue
   Then Verify Label in offer selected
   Then Delete Created Offer Catalogue
+  
+ @tag1147
+Scenario: Verify searching the offers using invalid information
+
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+  Then Create New Offer Catalogue
+  Then Verify searching the offers using invalid information
+  Then Delete Created Offer Catalogue
