@@ -31,7 +31,8 @@ public class Offer_creation extends browserInit
 	@Then("^create new offer for product$")
 	public void create_new_Offer() throws Throwable 
 	{
-		WebDriverWait wait = new WebDriverWait(driver, 20);
+		Thread.sleep(1000);
+		WebDriverWait wait = new WebDriverWait(driver, 10);
 		Actions actions = new Actions(driver);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Offer')]"))).click();
 		Thread.sleep(2000);
