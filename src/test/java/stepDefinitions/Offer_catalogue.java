@@ -276,6 +276,7 @@ public class Offer_catalogue extends browserInit
 	   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")))).click();
 	   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//form/paper-input/paper-input-container/div[2]/div/input")))).sendKeys(eM.getCell(0, 0));
 	   	driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]")).click();
+	   	Thread.sleep(1000);
 	   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[1]/data-table-row/div[1]/data-table-cell[contains(.,'"+eM.getCell(0, 0)+"')]"))));
    }
    @Then("^Validate Catalogue Name$")
@@ -330,6 +331,7 @@ public class Offer_catalogue extends browserInit
 		   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")))).click();
 		   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//form/paper-input/paper-input-container/div[2]/div/input")))).sendKeys(eM.getCell(0, 0));
 		   	driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]")).click();
+		   	Thread.sleep(1000);
 		   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[1]/data-table-row/div[1]/data-table-cell[contains(.,'54')]"))));
    }
    @Then("^Delete Offer from Catalogue$")
@@ -343,6 +345,7 @@ public class Offer_catalogue extends browserInit
    	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")))).click();
    	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//form/paper-input/paper-input-container/div[2]/div/input")))).sendKeys(eM.getCell(0, 0));
    	driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]")).click();
+   	Thread.sleep(1000);
    	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[1]/data-table-row/div[1]/data-table-cell[contains(.,'0')]"))));
    }
    @Then("^Verify Help Of Offer Catalogue$")
