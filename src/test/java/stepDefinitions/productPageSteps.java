@@ -338,9 +338,9 @@ public class productPageSteps extends browserInit {
     public void moreThan3Benefits() throws Exception {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sym1']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
-		driver.findElement(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]")).click();
-		driver.findElement(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]")).click();
-		driver.findElement(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]"))).click();
 		boolean disp = driver.findElement(By.xpath("//*[@id='toast']")).isDisplayed();
 		Exception noErrorMessage = new Exception("no error message on adding fourth benefit");
 		if(disp){
