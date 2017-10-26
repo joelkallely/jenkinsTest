@@ -2,7 +2,7 @@
 #Keywords Summary : Product page test cases
 #Feature: Product Page Features
 
-@tagjoeltestsuite
+@tagProductTestSuite
 Feature: Title of your feature
 	Product page test cases
 @tag1046
@@ -198,3 +198,22 @@ Then navigate to precision marketing
 Then navigate to offer management
 Then navigate to products
 Then veirfy help icon of products
+
+@tag790
+Scenario: Create offer:Offers Display: Verify the offers listed in the offer Management --> Offers tab. NX-790
+Given login
+Then navigate to precision marketing
+Then navigate to offer management
+Then Navigate_to_Offers
+Then verify scroll bar for list of offers
+
+@tag800
+Scenario: Create offer:Offers Display: Verify by expanding the offer row to know a quick summary details of the offer. NX-800
+Given login
+Then navigate to precision marketing
+Then navigate to offer management
+Then create single product from sheet "singleProductPage"
+Then navigate to offer management
+Then Navigate_to_Offers
+Then create new offer for product
+Then verify quick summary in offer grid

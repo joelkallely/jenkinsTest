@@ -714,6 +714,33 @@ public class productPageSteps extends browserInit {
 		   
 		   
 	   }
+	@Then("^verify scroll bar for list of offers$")
+    public void scrollingInOffersGrid() throws Exception {
+		Thread.sleep(2000);
+		Actions clickAction = new Actions(driver);
+        WebElement scrollablePane = driver.findElement(By.xpath("//*[@id='offerGrid']/div[1]/iron-list"));
+        clickAction.moveToElement(scrollablePane).click().build().perform();
+        Actions scrollAction = new Actions(driver);
+        for(int i=0;i<10;i++){
+        scrollAction.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(1500);
+        }
+	}
+	@Then("^verify quick summary in offer grid$")
+    public void verifyQuickSummaryOfferGrid() throws Exception {
+		eh.setExcelFile("inputData","singleProductPage");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
+		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys(eh.getCell(1, 12));
+		driver.findElement(By.xpath("//*[@id='filterDialog']/div/paper-button[3]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@id='items']/div[1]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath(".//div[2]/data-table-row-detail/offer-row-expander/div/div[1]/div[1]/label[2][contains(text(),'"+eh.getCell(1, 0)+"')]/../../div[2]/label[2][contains(text(),'"+eh.getCell(1, 7)+"')]/../../div[3]/label[2][contains(text(),'"+eh.getCell(1, 4)+"')]/../../div[5]/label[2][contains(text(),'"+eh.getCell(1, 8)+"')]")).isDisplayed();
+		driver.findElement(By.xpath(".//div[2]/data-table-row-detail/offer-row-expander/div/div[2]/div[1]/label[2][contains(text(),'SMS/USSD')]/../../div[2]/label[2][contains(text(),'English (UK)')]/../../div[3]/label[2][contains(text(),'true')]/../../div[4]/label[2][contains(text(),'GSM Characters')]/../../div[6]/label[2][contains(text(),'Bonus_Offer')]"));
+		driver.findElement(By.xpath(".//div[2]/data-table-row-detail/offer-row-expander/div/div[3]/div[3]/label[2][contains(text(),'Combo Vouchers')]/../../div[4]/label[2][contains(text(),'IndianRupee')]/../../div[5]/label[2][contains(text(),'20')]"));
+		
+	}
 }
 	
 
