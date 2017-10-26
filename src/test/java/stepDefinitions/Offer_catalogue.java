@@ -467,6 +467,29 @@ public class Offer_catalogue extends browserInit
 	Thread.sleep(2000);
 	   
    }
+   @Then("^Verify Label in offer selected$")
+   public void verifyLabelinOfferCatalogOffersSelection() throws Throwable
+   {
+	   Thread.sleep(2000);
+		 driver.findElement(By.xpath("//paper-button[contains(text(),'Add Offers')]")).click();
+		 Thread.sleep(2000);
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[1]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[2]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[3]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[4]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[5]/data-table-row/div[1]/data-table-checkbox")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[6]/data-table-row/div[1]/data-table-checkbox")))).click(); 
+		 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div/app-router/app-route[18]/catalogue-offer-listing/add-offer-detail/paper-dialog/div[2]/label[contains(.,'(6 out of')]")));
+		 Thread.sleep(2000);
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div[2]/paper-button[2]")))).click();
+         		 
+  
+   }
+   @Then("^Verify searching the offers using invalid information$")
+   public void verifySearchingOffersUsingInvalidInformationInCatalog() throws Throwable
+   {
+	   
+   }
    
 }
 
