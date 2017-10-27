@@ -24,7 +24,7 @@ import cucumber.api.junit.Cucumber;
         retryCount = 1)
 @CucumberOptions(
         features = { "src/test/resources" },
-        tags = { "@tag111111111" },
+        tags = { "@tag810" },
         plugin = {
         "html:target/81", "json:target/81/cucumber.json",
         "pretty:target/81/cucumber-pretty.txt",
