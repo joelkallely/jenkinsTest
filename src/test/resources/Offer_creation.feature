@@ -28,43 +28,59 @@ Feature: Test suite on Offer creation
     Then Navigate_to_Offers
     Then Create_offers_with_WAPpush_channel
     #Then logout
- @tag1376	
-  Scenario: Offer Management-->Create new offer-->Cancel button NX-1376
+ @tag1349	
+  Scenario: Create offer:Track: Verify creating Balance-Deduction offers NX-1346
     Given login
     When navigate to precision marketing
     Then navigate to offer management
     Then Navigate_to_Offers
-    Then Check_Offer_cancel_button
+    Then Create_offers_of_BalanceDeduction_type
     #Then logout
- @tag2173
-  Scenario: Offer Management : Verify for the Offers Help icon NX-2173
+ @tag6175
+  Scenario: Create offer:Track: Verify creating Combo-Offer offers NX-6175
     Given login
     When navigate to precision marketing
     Then navigate to offer management
     Then Navigate_to_Offers
-    Then Check_Offer_help_icon
+    Then Create_offers_of_ComboOffer_type
     #Then logout
- @tag885
-  Scenario: Create offer: Creative: Verify the proceed button not entering details NX-885
+ @tag6177
+  Scenario: Create offer:Track: Verify creating Informational offers NX-6177
     Given login
     When navigate to precision marketing
     Then navigate to offer management
     Then Navigate_to_Offers
-    Then Check_details_tab_without_entering_details
+    Then Create_offers_of_informational_type
     #Then logout
- @tag3035	
-  Scenario: Verify the 'Add' button displayed in Products tab NX-3035
+ @tag1348	
+  Scenario: Create offer:Track: Verify creating Recharge offers NX-1348
     Given login
     When navigate to precision marketing
     Then navigate to offer management
     Then Navigate_to_Offers
-    Then Check_add_button_in_product_tab
+    Then Create_offers_of_Recharge_type
     #Then logout
- @tag6214
-  Scenario: Offer-Creation: Verify filtering based on product name inside product tab NX-6214
+ @tag1345
+  Scenario: Create offer:Track: Verify creating Seeding offers NX-1345
     Given login
     When navigate to precision marketing
     Then navigate to offer management
     Then Navigate_to_Offers
-    Then Check_filter_operation_in_products_tab
+    Then Create_offers_of_Seeding_type
+    #Then logout
+ @tag6176
+  Scenario: Create offer:Track: Verify creating STV offers NX-6176
+    Given login
+    When navigate to precision marketing
+    Then navigate to offer management
+    Then Navigate_to_Offers
+    Then Create_offers_of_STV_type
+    #Then logout
+ @tag1347
+  Scenario: Create offer:Track: Verify creating Usage Based offers NX-1347
+    Given login
+    When navigate to precision marketing
+    Then navigate to offer management
+    Then Navigate_to_Offers
+    Then Create_offers_of_UsageBased_type
     #Then logout

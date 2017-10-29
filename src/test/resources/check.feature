@@ -9,4 +9,4 @@ Feature: Just to checkr
   	Then navigate to precision marketing
   	Then navigate to offer management
 		Then navigate to offers
-		Then Delete_WAPpush_channel_offers
+		Then creation_chk
