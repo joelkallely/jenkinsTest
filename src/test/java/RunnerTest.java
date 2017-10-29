@@ -25,6 +25,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
         features = { "src/test/resources" },
         tags = { "@madhan_test_suite_on_OfferCreation" },
+
         plugin = {
         "html:target/81", "json:target/81/cucumber.json",
         "pretty:target/81/cucumber-pretty.txt",

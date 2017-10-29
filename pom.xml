@@ -15,6 +15,7 @@
   </properties>
 
   <dependencies>
+
   <!-- advanced features plugin -->
   <dependency>
     <groupId>com.github.mkolisnyk</groupId>

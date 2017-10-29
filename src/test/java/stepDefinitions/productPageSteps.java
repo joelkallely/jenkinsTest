@@ -49,24 +49,39 @@ public class productPageSteps extends browserInit {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sym1']"))).click();
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Product Name')]/following::input[1]"))).sendKeys(eh.getCell(1, 0));
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys(eh.getCell(1, 1));
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 2)+"')]"))).click();
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys(eh.getCell(1, 3));
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys(eh.getCell(1, 4));
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys(eh.getCell(1, 5));
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys(eh.getCell(1, 6));
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys(eh.getCell(1, 7));
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 8)+"')]"))).click();
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 9)+"')]"))).click();
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys(eh.getCell(1, 10));
+		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
 		Thread.sleep(500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
-
+		Thread.sleep(400);
 	
 	}
 	
@@ -714,6 +729,120 @@ public class productPageSteps extends browserInit {
 		   
 		   
 	   }
+	@Then("^verify scroll bar for list of offers$")
+    public void scrollingInOffersGrid() throws Exception {
+		Thread.sleep(2000);
+		Actions clickAction = new Actions(driver);
+        WebElement scrollablePane = driver.findElement(By.xpath("//*[@id='offerGrid']/div[1]/iron-list"));
+        clickAction.moveToElement(scrollablePane).click().build().perform();
+        Actions scrollAction = new Actions(driver);
+        for(int i=0;i<10;i++){
+        scrollAction.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(1500);
+        }
+	}
+	@Then("^verify quick summary in offer grid$")
+    public void verifyQuickSummaryOfferGrid() throws Exception {
+		eh.setExcelFile("inputData","singleProductPage");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
+		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys(eh.getCell(1, 12));
+		driver.findElement(By.xpath("//*[@id='filterDialog']/div/paper-button[3]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@id='items']/div[1]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath(".//div[2]/data-table-row-detail/offer-row-expander/div/div[1]/div[1]/label[2][contains(text(),'"+eh.getCell(1, 0)+"')]/../../div[2]/label[2][contains(text(),'"+eh.getCell(1, 7)+"')]/../../div[3]/label[2][contains(text(),'"+eh.getCell(1, 4)+"')]/../../div[5]/label[2][contains(text(),'"+eh.getCell(1, 8)+"')]")).isDisplayed();
+		driver.findElement(By.xpath(".//div[2]/data-table-row-detail/offer-row-expander/div/div[2]/div[1]/label[2][contains(text(),'SMS/USSD')]/../../div[2]/label[2][contains(text(),'English (UK)')]/../../div[3]/label[2][contains(text(),'true')]/../../div[4]/label[2][contains(text(),'GSM Characters')]/../../div[6]/label[2][contains(text(),'Bonus_Offer')]"));
+		driver.findElement(By.xpath(".//div[2]/data-table-row-detail/offer-row-expander/div/div[3]/div[3]/label[2][contains(text(),'Combo Vouchers')]/../../div[4]/label[2][contains(text(),'IndianRupee')]/../../div[5]/label[2][contains(text(),'20')]"));
+		
+	}
+	@Then("^verify offer details in grid$")
+    public void verifyDetailsInGrid() throws Exception {
+		eh.setExcelFile("inputData","singleProductPage");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
+		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys(eh.getCell(1, 12));
+		driver.findElement(By.xpath("//*[@id='filterDialog']/div/paper-button[3]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//div[1]/data-table-cell[2][contains(.,'"+eh.getCell(1, 12)+"')]/../data-table-cell[3][contains(.,'RECHARGE')]/../data-table-cell[4][contains(.,'"+eh.getCell(1, 4)+"')]/../data-table-cell[5][contains(.,'"+eh.getCell(1, 7)+"')]")).isDisplayed();
+	}
+	@Then("^verify collapsing and expanding offer summary$")
+    public void verifyCollapsingAndExpandingOffer() throws Exception {
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@id='item1']/div[1]/data-table-cell[2]")).click();
+		Thread.sleep(2000);		
+		driver.findElement(By.xpath(".//*[@id='item1']/div[2]/data-table-row-detail/offer-row-expander/div/div[1]/h4[contains(.,'Product Details')]"));
+		driver.findElement(By.xpath(".//*[@id='item1']/div[1]/data-table-cell[2]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@id='item1']/div[1]/data-table-cell[2]")).click();
+	
+	}
+	
+	@Then("^verify clicking on options icon in offer grid$")
+    public void verify_clicking_options_icon_in_offer_grid() throws Exception {
+		Exception e = new Exception("options not found in options menu");
+		Thread.sleep(1000);
+		List<WebElement> ele = driver.findElements(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../.."));
+		List<WebElement> button1 = driver.findElements(By.xpath(".//*[@id='contentWrapper']/div/paper-menu/div/a[1]"));
+		List<WebElement> button2 = driver.findElements(By.xpath(".//*[@id='contentWrapper']/div/paper-menu/div/paper-item"));
+		List<WebElement> button3 = driver.findElements(By.xpath(".//*[@id='contentWrapper']/div/paper-menu/div/a[2]"));
+		List<WebElement> button4 = driver.findElements(By.xpath(".//*[@id='contentWrapper']/div/paper-menu/div/a[3]"));
+		
+		Iterator<WebElement> iter = ele.iterator();
+		Iterator<WebElement> iter1 = button1.iterator();
+		Iterator<WebElement> iter2 = button2.iterator();
+		Iterator<WebElement> iter3 = button3.iterator();
+		Iterator<WebElement> iter4 = button4.iterator();
+		while(iter.hasNext()) {
+			Thread.sleep(500);
+		    WebElement we = iter.next();
+		    WebElement we1 = iter1.next();
+		    WebElement we2 = iter2.next();
+		    WebElement we3 = iter3.next();
+		    WebElement we4 = iter4.next();
+		    Thread.sleep(500);
+		    we.click();
+		    Thread.sleep(500);
+		    if( we1.isDisplayed()  && we2.isDisplayed() && we3.isDisplayed() && we4.isDisplayed()){
+		    	
+		    }
+		    else
+		    	 throw e;
+		    
+		    driver.findElement(By.xpath(".//*[@id='router']/app-route[19]/offer-grid/div/div[1]/div")).click();
+		  
+		}
+	}
+	@Then("^check edit offer functionality$")
+    public void verifyEditOffer() throws Exception {
+		eh.setExcelFile("inputData","singleProductPage");
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
+		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys(eh.getCell(1, 12));
+		driver.findElement(By.xpath("//*[@id='filterDialog']/div/paper-button[3]")).click();
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../.."))).click();
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='contentWrapper']/div/paper-menu/div/a[1]/paper-item"))).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//label[contains(text(),'Offer Name')]/../input")).sendKeys("edit");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Offer Type')]/../input"))).click();
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'STV')]"))).click();	
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Proceed')]"))).click();
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Proceed')]"))).click();
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Proceed')]"))).click();
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Proceed')]"))).click();
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Save Offer')]"))).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//div[1]/data-table-cell[2][contains(.,'edit')]/../data-table-cell[3][contains(.,'STV')]")).isDisplayed();
+		
+	}
+	
 }
 	
 
