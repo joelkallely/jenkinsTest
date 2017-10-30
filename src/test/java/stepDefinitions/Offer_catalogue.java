@@ -465,7 +465,17 @@ public class Offer_catalogue extends browserInit
 	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//data-table-row-detail/offer-row-expander/div/div[1]/h4[contains(text(),'Product Details')]"))));
 	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//data-table-row-detail/offer-row-expander/div/div[2]/h4[1][contains(text(),'Creative')]"))));
 	Thread.sleep(2000);
-	   
+	action.moveToElement(driver.findElement(By.xpath("//div/iron-list/div/div/data-table-row/div[1]/data-table-cell[2]"))).click();
+	Thread.sleep(3000);
+	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div/iron-list/div/div/data-table-row/div[1]/data-table-cell[2]")))).click();
+	Thread.sleep(3000);
+	
+	try{
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//data-table-row-detail/offer-row-expander/div/div[1]/h4[contains(text(),'Product Details')]"))));
+	   }
+	   catch (org.openqa.selenium.NoSuchElementException e) {
+		   
+		}  
    }
    @Then("^Verify Label in offer selected$")
    public void verifyLabelinOfferCatalogOffersSelection() throws Throwable
@@ -488,7 +498,51 @@ public class Offer_catalogue extends browserInit
    @Then("^Verify searching the offers using invalid information$")
    public void verifySearchingOffersUsingInvalidInformationInCatalog() throws Throwable
    {
-	   
+	   Thread.sleep(2000);
+		 driver.findElement(By.xpath("//paper-button[contains(text(),'Add Offers')]")).click();
+		 Thread.sleep(2000);
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")))).click();
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//form/paper-input[1]/paper-input-container/div[2]/div/input")))).sendKeys("Invalid Information");
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//form/paper-input[2]/paper-input-container/div[2]/div/input")))).sendKeys("Invalid Information");
+		 driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]")).click();
+		 Thread.sleep(4000);
+		 //wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//paper-dialog/iron-data-table/div/iron-list/div/div[1]/data-table-row/div[1]/data-table-cell[contains(.,'Invalid Information')]"))));
+		  
+		int passinvalid=0;
+		   org.openqa.selenium.NoSuchElementException exx = new org.openqa.selenium.NoSuchElementException("no element");
+		   try{
+			   wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div[1]/data-table-row/div[1]/data-table-cell[2]/span[contains(.,'Invalid Information')]"))));
+		   }
+		   catch (org.openqa.selenium.NoSuchElementException e) {
+			   passinvalid=1;
+			
+		   }
+		   if(passinvalid==0){
+			   throw exx;
+		   }
+		  
+			 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div[2]/paper-button[2]")))).click();
+   }
+   @Then("^Verify Expanding Offer$")
+   public void verifyExpandingOffer() throws Throwable
+   {
+	   Thread.sleep(3000);
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='mainContainer']/paper-menu/div/hexagon-icon[4]/label"))).click();
+	  	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sym1' and @icon='app-primary:offer-catalogue']"))).click();
+	  	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")))).click();
+	  	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//form/paper-input/paper-input-container/div[2]/div/input")))).sendKeys(eM.getCell(0, 0));
+	  	driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]")).click();
+	  	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../..")))).click();
+	   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='contentWrapper']/div/paper-menu/div/paper-item[3]")))).click();
+	    action.moveToElement(driver.findElement(By.xpath("//div/iron-list/div/div/data-table-row/div[1]/data-table-cell[2]"))).click();
+	    Thread.sleep(3000);
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div/iron-list/div/div/data-table-row/div[1]/data-table-cell[2]")))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//data-table-row-detail/offer-row-expander/div/div[1]/h4[contains(text(),'Product Details')]"))));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//data-table-row-detail/offer-row-expander/div/div[2]/h4[1][contains(text(),'Creative')]"))));
+		Thread.sleep(2000);
+		action.moveToElement(driver.findElement(By.xpath("//div/iron-list/div/div/data-table-row/div[1]/data-table-cell[2]"))).click();
+		Thread.sleep(3000);
+		
    }
    
 }
