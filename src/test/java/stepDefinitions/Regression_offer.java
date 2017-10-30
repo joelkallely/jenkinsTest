@@ -395,4 +395,12 @@ public class Regression_offer extends browserInit
 		
 	}
 	
+
+//	@Then("^Check_Offer_cancel_button$")
+//	public void Check_cancel_button() throws Throwable
+//	{
+//		
+//	}
+	
+	
 }
