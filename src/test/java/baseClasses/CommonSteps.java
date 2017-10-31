@@ -22,7 +22,7 @@ public class CommonSteps extends browserInit
 	{
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//*[@id='sym2']")).click();
-		
+		Thread.sleep(3000);
 	}
 	
 	@When("^click filter button$")

@@ -421,6 +421,7 @@ public class Regression_offer extends browserInit
 	public void Check_Offer_help_icon() throws Throwable
 	{
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//flytxt-context-help[@id='Offers']"))).click();
+		Thread.sleep(3000);
 		WebElement help_dialogueBox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//object[contains(@data,'./../context-help/Offers.html')]")));
 		Thread.sleep(2000);
 		try 
@@ -441,7 +442,7 @@ public class Regression_offer extends browserInit
 	{
 		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Offer')]"))).click();
-		
+		Thread.sleep(2000);
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Offer Name')]"))).click().build().perform();
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Description')]"))).click().build().perform();
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Offer Type')]"))).click().build().perform();
@@ -474,7 +475,7 @@ public class Regression_offer extends browserInit
 	{
 		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Offer')]"))).click();
-		
+		Thread.sleep(2000);
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Offer Name')]"))).click().sendKeys("name").build().perform();
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Description')]"))).click().sendKeys("desc").build().perform();
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Offer Type')]"))).click().build().perform();
