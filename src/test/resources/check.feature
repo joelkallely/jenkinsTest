@@ -9,4 +9,4 @@ Feature: Just to checkr
   	Then navigate to precision marketing
   	Then navigate to offer management
 		Then navigate to offers
-		Then creation_chk
+		Then Check_Offer_cancel_button
