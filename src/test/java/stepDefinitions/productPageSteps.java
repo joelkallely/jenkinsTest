@@ -90,45 +90,45 @@ public class productPageSteps extends browserInit {
 		eh.setExcelFile("inputData",sheet);
 		//String value = "";
 		int rows = eh.numRows();
-		System.out.println("number of rows:"+rows);
+		//System.out.println("number of rows:"+rows);
 		WebDriverWait wait = new WebDriverWait(driver, 2);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sym1']"))).click();
-		for(int i=1;i<rows;i++){
+		//for(int i=1;i<rows;i++){
 			Thread.sleep(3000);
 			Random rn = new Random();
 		int  n = rn.nextInt(5000) + 1;
-		String name = (String) eh.getCell(i, 0);
+		String name = (String) eh.getCell(1, 0);
 		name =  name.replaceAll("[0-9]", "")+n;
 		name= n+name;
-		eh.setCell(i, 0, name);
+		eh.setCell(1, 0, name);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Product Name')]/following::input[1]"))).sendKeys(name);
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys(eh.getCell(i, 1));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys(eh.getCell(1, 1));
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(i, 2)+"')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 2)+"')]"))).click();
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys(eh.getCell(i, 3));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys(eh.getCell(1, 3));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys(eh.getCell(i, 4));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys(eh.getCell(i, 5));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys(eh.getCell(i, 6));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys(eh.getCell(i, 7));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys(eh.getCell(1, 4));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys(eh.getCell(1, 5));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys(eh.getCell(1, 6));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys(eh.getCell(1, 7));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(i, 8)+"')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 8)+"')]"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(i, 9)+"')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys(eh.getCell(i, 10));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 9)+"')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys(eh.getCell(1, 10));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
 //		Thread.sleep(500);
 //		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
 
 
 		Thread.sleep(2000);
-		}
+		//}
 	}
 	@Then("^delete product$")
     public void deleteProduct() throws Exception {
@@ -565,10 +565,13 @@ public class productPageSteps extends browserInit {
 		
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
+		Thread.sleep(300);
 		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys("product_check");
+		Thread.sleep(300);
 		driver.findElement(By.xpath("//*[@id='filterDialog']/div/paper-button[1]")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..")).click();
+		Thread.sleep(300);
 		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).click();
 		Thread.sleep(1500);
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -576,6 +579,7 @@ public class productPageSteps extends browserInit {
 		StringSelection stringSelection = new StringSelection("checkText");
 		clipboard.setContents(stringSelection, null);
 		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys(Keys.CONTROL,"a");
+		Thread.sleep(1000);
 		driver.findElement(By.xpath("//*[@id='filterForm']/paper-input[1]/paper-input-container/div[1]/../div[2]/div[1]/input[1]")).sendKeys(Keys.CONTROL,"c");
 		Exception e = new Exception("value stored after cancel  button is pressed");
 		
@@ -583,9 +587,9 @@ public class productPageSteps extends browserInit {
 		String result = (String) clipboard.getData(DataFlavor.stringFlavor);
 		System.out.println("String from Clipboard:" + result);
 		if(result.matches("checkText"))
-			System.out.println("pass");
-		else
 			throw e;
+		else
+			System.out.println("pass");
 	}
 	@Then("^create new segmented product from sheet \"([^\"]*)\"$")
     public void newSegmentedProduct(String sheet) throws AWTException, InterruptedException, IOException {

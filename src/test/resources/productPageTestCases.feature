@@ -3,7 +3,7 @@
 #Feature: Product Page Features
 
 @NX-ProductTestSuite
-Feature: Title of your feature
+Feature: Product Page Feature File
 	Product page test cases
 @NX-1046
 Scenario: Create Product: Verify the field validations for the benefit details NX-1046
