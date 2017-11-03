@@ -331,6 +331,26 @@ Scenario: Verify the selected offers for the catalog.
   Then Create New Offer Catalogue
   Then Edit Catalog from Catalog screen
   Then Delete Created Offer Catalogue
+  
+@tag1112
+  Scenario:   Verify scrolling and viewing the last offer catalog in the screen
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+	Then Create New Offer Catalogue
+	Then Verify Scrolling Offer Catalog
+	
+@tag1098
+  Scenario:   Verify the catalogues listed in the offer Management --> Offer Catalogue screen
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+	Then Create New Offer Catalogue
+	Then Verify Catalog listing
+	
+
 
   
 
