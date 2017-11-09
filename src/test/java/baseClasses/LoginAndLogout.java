@@ -27,6 +27,7 @@ public class LoginAndLogout extends browserInit
 		System.out.println("logged in");
         
     }
+	
 	@When("^logout$")
     public void logout() {
 		

@@ -233,7 +233,7 @@ Scenario: Verify the selected offers for the catalog.
   Then Delete Created Offer Catalogue
   
   @tag1149
-Scenario: Verify searching the offers using invalid information
+  Scenario: Verify searching the offers using invalid information
 
   Given login
 	When navigate to precision marketing
@@ -244,13 +244,114 @@ Scenario: Verify searching the offers using invalid information
   Then Delete Created Offer Catalogue
  
   @tag1158
-Scenario: Verify the details of the expanded offers
+  Scenario: Verify the details of the expanded offers
 
   Given login
 	When navigate to precision marketing
 	Then Navigate to Offer Management 
 	Then Navigate to Offer Catalogue
   Then Create New Offer Catalogue
+  Then Add offer to Offer Catalogue
   Then Verify Offer Details
+  Then Delete Created Offer Catalogue
+  
+ @tag1130
+  Scenario: Verify adding offers for the newly created offer catalog
+
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+  Then Create New Offer Catalogue
+  Then Add offer to Offer Catalogue
+  Then Delete Created Offer Catalogue
+ 
+@tag1123
+  Scenario: Verify deleting the offer catalog when the offer is available.
+
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+  Then Create New Offer Catalogue
+  Then Add offer to Offer Catalogue
+  Then Delete Created Offer Catalogue
+  
+@tag1121
+  Scenario: Verify the Delete option from the Options icon.
+
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+  Then Create New Offer Catalogue
+  Then Add offer to Offer Catalogue
+  Then Delete Created Offer Catalogue 
+
+@tag1117
+  Scenario:  Verify the Add offers from the Options icon
+
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+  Then Create New Offer Catalogue
+  Then Add offer to Offer Catalogue
+  Then Delete Created Offer Catalogue 
+  
+@tag1103
+  Scenario:  Verify adding the filters in the offer catalog screen using filter button.
+
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+  Then Create New Offer Catalogue
+  Then Add offer to Offer Catalogue
+  Then Delete Created Offer Catalogue
+
+@tag1105
+  Scenario:   Verify the actions available by clicking on the Options icon.
+
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+  Then Create New Offer Catalogue
+  Then Add offer to Offer Catalogue
+  Then Verify Expanding Offer
+  Then Verify Edit Offer Catalog
+  
+@tag1132
+  Scenario:   Verify editing the offer catalogue from the Add offers screen
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+  Then Create New Offer Catalogue
+  Then Edit Catalog from Catalog screen
+  Then Delete Created Offer Catalogue
+  
+@tag1112
+  Scenario:   Verify scrolling and viewing the last offer catalog in the screen
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+	Then Create New Offer Catalogue
+	Then Verify Scrolling Offer Catalog
+	
+@tag1098
+  Scenario:   Verify the catalogues listed in the offer Management --> Offer Catalogue screen
+  Given login
+	When navigate to precision marketing
+	Then Navigate to Offer Management 
+	Then Navigate to Offer Catalogue
+	Then Create New Offer Catalogue
+	Then Verify Catalog listing
+	
+
+
+  
 
   

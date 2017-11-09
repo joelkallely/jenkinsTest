@@ -32,14 +32,15 @@ public class CommonSteps extends browserInit
 	@Then("^navigate to precision marketing$")
     public void precisionMarketing() throws InterruptedException 
 	{
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='outLogo']"))).click();
+		Thread.sleep(2000);
 	}
 	
 	@Then("^navigate to offer management$")
     public void offerManagement() throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='mainContainer']/paper-menu/div/hexagon-icon[4]/label"))).click();
 	}
