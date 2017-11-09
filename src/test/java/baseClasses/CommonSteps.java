@@ -1,10 +1,8 @@
 package baseClasses;
 
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -44,6 +42,20 @@ public class CommonSteps extends browserInit
 		Thread.sleep(1000);
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='mainContainer']/paper-menu/div/hexagon-icon[4]/label"))).click();
+	}
+	
+	@Then("^navigate to intent management$")
+    public void IntentManagement() throws InterruptedException {
+		Thread.sleep(1000);
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Intent Management')]"))).click();
+	}
+	
+	@Then("^navigate to touchpoints$")
+	public void naviagte_to_touchpoints() throws Exception
+	{
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(text(),'Touchpoints')]"))).click();
 	}
 	
 	@Then("^go to landing page$")
