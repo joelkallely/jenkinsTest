@@ -17,9 +17,7 @@ public class LoginAndLogout extends browserInit
     public void loginuser() throws InterruptedException {
 		init();
 		 eh.setExcelFile("login","Sheet1");
-		 int rows = eh.numRows();
-		 System.out.println(rows);
-		 driver.get("http://192.168.150.45/#/login");
+		 driver.get("http://"+eh.getCell(1, 2)+"/#/login");
     	 driver.findElement(By.xpath("//*[@id='input'and @class='style-scope gold-email-input']")).sendKeys(eh.getCell(1, 0));
 		 driver.findElement(By.xpath("//*[@id='input'and @class='style-scope paper-input']")).sendKeys(eh.getCell(1, 1));
 		 driver.findElement(By.id("loginButton")).click();				
@@ -27,11 +25,14 @@ public class LoginAndLogout extends browserInit
 		System.out.println("logged in");
         
     }
+	@Given("^initialize$")
+    public void initialize() throws InterruptedException {
+		initGecko();
+	}
 	
 	@When("^logout$")
     public void logout() {
 		
-		System.out.println("inside logout and exit");
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		 driver.findElement(By.xpath("//*[@id='topBar']/a/img")).click();
 			driver.findElement(By.xpath("//div[5]/paper-menu-button/div/paper-icon-button/iron-icon")).click();

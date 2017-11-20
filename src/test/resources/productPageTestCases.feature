@@ -114,7 +114,9 @@ Scenario: Create Product: Verify adding products with same price under segmented
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
-Then create new product from sheet "productsSamePrice"
+Then create new segmented product from sheet "productsSamePrice"
+Then create new segmented product from sheet "productsSamePrice"
+Then check if products with same price under segmented market
 
 @NX-1057
 Scenario: Create Product: Verify adding products with same price under open market NX-1057
@@ -123,12 +125,14 @@ Given login
 Then navigate to precision marketing
 Then navigate to offer management
 Then create new product from sheet "productsSamePrice"
+Then create new product from sheet "productsSamePrice"
+Then check if products with same price under open market
 @NX-1055
 Scenario: Create Product: Verify the product with Segmented scope NX-1055, NX-1015
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
-Then create new product from sheet "singleProductPage"
+Then create new segmented product from sheet "singleProductPage"
 
 @NX-1053
 Scenario: Create Product: Verify the product with Open Market scope NX-1053
@@ -145,7 +149,7 @@ Then navigate to offer management
 Then create single product from sheet "singleProductPage"
 Then navigate to offer management
 Then navigate to offers
-Then create new offer for product
+Then create new "Recharge" offer for product
 Then navigate to offer management
 Then navigate to products
 Then check if offer is shown in view offers
@@ -215,7 +219,7 @@ Then navigate to offer management
 Then create single product from sheet "singleProductPage"
 Then navigate to offer management
 Then Navigate_to_Offers
-Then create new offer for product
+Then create new "Recharge" offer for product
 Then verify quick summary in offer grid
 
 @NX-805
@@ -226,7 +230,7 @@ Then navigate to offer management
 Then create single product from sheet "singleProductPage"
 Then navigate to offer management
 Then Navigate_to_Offers
-Then create new offer for product
+Then create new "Recharge" offer for product
 Then verify offer details in grid
 
 @NX-808
@@ -251,5 +255,5 @@ Given login
 Then navigate to precision marketing
 Then navigate to offer management
 Then Navigate_to_Offers
-Then create new offer for product
+Then create new "Recharge" offer for product
 Then check edit offer functionality

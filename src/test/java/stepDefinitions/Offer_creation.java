@@ -28,8 +28,8 @@ public class Offer_creation extends browserInit
 		Thread.sleep(3000);
 	}
 	
-	@Then("^create new offer for product$")
-	public void create_new_Offer() throws Throwable 
+	@Then("^create new \"([^\"]*)\" offer for product$")
+	public void create_new_Offer(String offerType) throws Throwable 
 	{
 		Thread.sleep(2000);
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -49,7 +49,8 @@ public class Offer_creation extends browserInit
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Description')]"))).click().sendKeys("testing").build().perform();
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Offer Type')]"))).click().build().perform();
 		Thread.sleep(1000);
-		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'Recharge')]"))).click().build().perform();
+
+		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'"+offerType+"')]"))).click().build().perform();		
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Channel')]"))).click().build().perform();
 		Thread.sleep(1000);
 		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'SMS')]"))).click().build().perform();

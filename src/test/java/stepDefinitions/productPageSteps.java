@@ -50,48 +50,45 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(2000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Product Name')]/following::input[1]"))).sendKeys(eh.getCell(1, 0));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input"))).sendKeys(eh.getCell(1, 0));
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys(eh.getCell(1, 1));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 2)+"')]"))).click();
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys(eh.getCell(1, 3));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys(eh.getCell(1, 3));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys(eh.getCell(1, 4));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys(eh.getCell(1, 4));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys(eh.getCell(1, 5));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys(eh.getCell(1, 5));
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys(eh.getCell(1, 6));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys(eh.getCell(1, 7));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys(eh.getCell(1, 7));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 8)+"')]"))).click();
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 9)+"')]"))).click();
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys(eh.getCell(1, 10));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys(eh.getCell(1, 10));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-		Thread.sleep(2000);
-//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
-//		Thread.sleep(400);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
+		Thread.sleep(100);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
+		Thread.sleep(400);
 	
 	}
 	
 	@Then("^create new product from sheet \"([^\"]*)\"$")
     public void newProduct(String sheet) throws AWTException, InterruptedException, IOException {
 		eh.setExcelFile("inputData",sheet);
-		//String value = "";
 		int rows = eh.numRows();
-		//System.out.println("number of rows:"+rows);
-		WebDriverWait wait = new WebDriverWait(driver, 2);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sym1']"))).click();
 		//for(int i=1;i<rows;i++){
 			Thread.sleep(3000);
@@ -103,31 +100,29 @@ public class productPageSteps extends browserInit {
 		eh.setCell(1, 0, name);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(2000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Product Name')]/following::input[1]"))).sendKeys(name);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input"))).sendKeys(name);
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys(eh.getCell(1, 1));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 2)+"')]"))).click();
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys(eh.getCell(1, 3));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys(eh.getCell(1, 3));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys(eh.getCell(1, 4));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys(eh.getCell(1, 5));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys(eh.getCell(1, 4));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys(eh.getCell(1, 5));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys(eh.getCell(1, 6));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys(eh.getCell(1, 7));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys(eh.getCell(1, 7));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 8)+"')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 9)+"')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys(eh.getCell(1, 10));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-//		Thread.sleep(500);
-//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
-
-
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys(eh.getCell(1, 10));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
+		Thread.sleep(100);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
+		Thread.sleep(400);
 		//}
 	}
 	@Then("^delete product$")
@@ -161,25 +156,25 @@ public class productPageSteps extends browserInit {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys("Checking cross site scripting in creation of new product under CLV Max");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys("31");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys("199");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys("3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys("31");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys("199");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys("3");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys("3");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys("Checking cross site scripting");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys("Checking cross site scripting");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data 2G')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data MB')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys("223");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("223");
 		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='style-scope add-product x-scope paper-button-0']"))).click();
 	    //Thread.sleep(3000);
 		for(int i=0;i<=4;i++){
 		try{
 		Thread.sleep(1500);
-		driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]")).sendKeys(Keys.chord(Keys.CONTROL, "a"), "SpecialCharTest"+specialChars[i]);	
-		driver.findElement(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]']")).click();
+		driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input")).sendKeys(Keys.chord(Keys.CONTROL, "a"), "SpecialCharTest"+specialChars[i]);	
+		driver.findElement(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]']")).click();
 		if(driver.findElement(By.xpath("//*[@id='modal']/div[2]/div[1]/paper-input[1]/paper-input-container/div[4]/paper-input-error[@invalid='']")).isDisplayed())
 		pass=1;
 		
@@ -189,7 +184,7 @@ public class productPageSteps extends browserInit {
 			//System.out.println(e.toString());
 			pass=0;
 		}
-		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Product Name')]/following::input[1]"))).sendKeys("");
+	//	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
 		}
 		if(pass==1)
 			System.out.println("pass");
@@ -204,20 +199,20 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]")).sendKeys("enterDetails-Cancel");	
+		driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input")).sendKeys("enterDetails-Cancel");	
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys("Checking cross site scripting in creation of new product under CLV Max");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys("31");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys("199");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys("3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys("31");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys("199");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys("3");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys("3");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys("Checking cross site scripting");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys("Checking cross site scripting");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data 2G')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data MB')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys("223");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("223");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Cancel')]"))).click();
 		
 	}
@@ -247,20 +242,20 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]")).sendKeys("enterDetails-Cancel");	
+		driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input")).sendKeys("enterDetails-Cancel");	
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys("Checking cross site scripting in creation of new product under CLV Max");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys("31");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys("199");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys("3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys("31");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys("199");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys("3");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys("3");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys("Checking cross site scripting");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys("Checking cross site scripting");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data 2G')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data MB')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys("223");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("223");
 		 
 		driver.findElement(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]")).click();
 		Thread.sleep(400);
@@ -276,16 +271,13 @@ public class productPageSteps extends browserInit {
 			if(driver.findElement(By.xpath("//paper-input-error[contains(.,'This field is required') and @invalid='']")).isDisplayed()){
 			pass=1;
 			}
-			System.out.println("inside try"+pass);
-			}
+		}
 			catch(NoSuchElementException e)
 			{
 				System.out.println(e.toString());
 				pass=0;
-				System.out.println("inside catch"+pass);
 			}
-			//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Product Name')]/following::input[1]"))).sendKeys("");
-		System.out.println("outside catch try"+pass);
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
 			if(pass==1)
 				System.out.println("pass");
 			else{
@@ -301,25 +293,25 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(700);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(700);
-		driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]")).sendKeys("enterDetails-Cancel");
+		driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input")).sendKeys("enterDetails-Cancel");
 		Thread.sleep(700);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys("Checking cross site scripting in creation of new product under CLV Max");
 		Thread.sleep(700);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		Thread.sleep(700);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click();
 		Thread.sleep(700);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys("31");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys("31");
 		Thread.sleep(700);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys("199");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys("199");
 		Thread.sleep(700);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys("3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys("3");
 		Thread.sleep(700);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys("3");
 		Thread.sleep(700);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys("Checking cross site scripting");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys("Checking cross site scripting");
 		Thread.sleep(700);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
 			Thread.sleep(1500);
 			driver.findElement(By.xpath("//paper-input-error[contains(.,'This field is required') and @invalid='']")).isDisplayed();
 
@@ -333,20 +325,20 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]")).sendKeys("multipleBenefit_Check"+n);	
+		driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input")).sendKeys("multipleBenefit_Check"+n);	
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys("Checking cross site scripting in creation of new product under CLV Max");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys("31");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys("199");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys("3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys("31");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys("199");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys("3");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys("3");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys("Checking cross site scripting");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys("Checking cross site scripting");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data 2G')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data MB')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys("223");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("223");
 		 
 		driver.findElement(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]")).click();
 		Thread.sleep(400);
@@ -355,7 +347,7 @@ public class productPageSteps extends browserInit {
 		driver.findElement(By.xpath("//*[@id='modal']/div[2]/div[2]/benefit-form[2]/form/paper-material/paper-dropdown-menu[2]/paper-menu-button/div[1]/div[1]/paper-input/paper-input-container/div[2]/div[1]/input")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[2]/div[2]/benefit-form[2]/form/paper-material/paper-dropdown-menu[2]/paper-menu-button/iron-dropdown/div[1]/div[1]/paper-listbox/paper-item[2]"))).click();
 		driver.findElement(By.xpath("//*[@id='modal']/div[2]/div[2]/benefit-form[2]/form/paper-material/paper-input")).sendKeys("223");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
 	}
 	@Then("^check field validations under the benefits gridk$")
     public void fieldValidationBenefits() throws AWTException, InterruptedException {
@@ -364,21 +356,21 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]")).sendKeys("multipleBenefit_Check");	
+		driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input")).sendKeys("multipleBenefit_Check");	
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys("Checking cross site scripting in creation of new product under CLV Max");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys("31");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys("199");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys("3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys("31");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys("199");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys("3");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys("3");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys("aaaaa11111111111111111111aaaaa11111");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys("aaaaa11111111111111111111aaaaa11111");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data 2G')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data MB')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys("qw223");
-		String s = driver.findElement(By.xpath("//label[contains(.,'Value')]/following::input[1]")).getAttribute("value");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("qw223");
+		String s = driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input")).getAttribute("value");
 		System.out.println(s);
 		
 	}
@@ -394,7 +386,8 @@ public class productPageSteps extends browserInit {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]"))).click();
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[2]/div[2]/paper-button[contains(.,'Add')]"))).click();
-		boolean disp = driver.findElement(By.xpath("//*[@id='toast']")).isDisplayed();
+		Thread.sleep(100);
+        boolean disp = driver.findElement(By.xpath("//*[@id='toast']")).isDisplayed();
 		Exception noErrorMessage = new Exception("no error message on adding fourth benefit");
 		if(disp){
 			System.out.println("pass");
@@ -428,35 +421,35 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();	
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]")).sendKeys("multipleBenefit_Check"+n);	
+		driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input")).sendKeys("multipleBenefit_Check"+n);	
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys("31");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys("199");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys("aaaaa11111111111111111111aaaaa11111");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys("31");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys("199");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys("aaaaa11111111111111111111aaaaa11111");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data 2G')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data MB')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys("223");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("223");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
 		Thread.sleep(200);
-//		try{
-//			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
-//		}
-//		catch(Exception e)
-//		{
-//			System.out.println("fail");
-//			throw e;
-//		}	
+		try{
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
+		}
+		catch(Exception e)
+		{
+			System.out.println("fail");
+			throw e;
+		}	
 	}
 	@Then("^field validations for the Basic Information$")
     public void basicFieldValidation() throws Exception {
@@ -473,20 +466,20 @@ public class productPageSteps extends browserInit {
 		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sym1']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
-		driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]")).sendKeys(str30);	
+		driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input")).sendKeys(str30);	
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys(str300);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys("31bbb");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys("bbb199");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys("bbb3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys("31bbb");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys("bbb199");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys("bbb3");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys("bbb3");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys("aaaaa11111111111111111111aaaaa11111");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys("aaaaa11111111111111111111aaaaa11111");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data 2G')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Data MB')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys("2bbb3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("2bbb3");
 		int pass=0;
 		try{
 		String nn = driver.findElement(By.xpath("//*[@id='textarea']/../../div[1][contains(.,'b')]")).getText();
@@ -497,7 +490,7 @@ public class productPageSteps extends browserInit {
 			pass=1;
 		}
 		try{
-			String nn = driver.findElement(By.xpath("//label[contains(.,'Product Name')]/following::input[1]/../../div[1][contains(.,'b')]")).getText();
+			String nn = driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input/../../div[1][contains(.,'b')]")).getText();
 			pass=0;
 			}
 			catch(NoSuchElementException e)
@@ -547,6 +540,30 @@ public class productPageSteps extends browserInit {
         }
         driver.findElement(By.xpath("//span[contains(.,'"+eh.getCell(1, 0)+"')]"));
 	}
+	@Then("^check if products with same price under open market$")
+    public void verifyOpenProductPrice() throws Exception {
+	Exception e = new Exception("Product with same price sasved in open market");	
+	  try{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
+	    throw e;
+	  }
+	  catch(Exception e1){
+		  
+	  }
+	}
+	@Then("^check if products with same price under segmented market$")
+    public void verifySegmentedProductPrice() throws Exception {
+	Exception e = new Exception("Product with same price cannot be saved in segmented market");	
+	  try{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
+	    
+	  }
+	  catch(Exception e1){
+		  throw e;
+	  }
+	}
+	
+	
 	@Then("^verify product details displayed in the products screen$")
     public void verifyProductsGrid() throws Exception {
 		
@@ -606,23 +623,23 @@ public class productPageSteps extends browserInit {
 		name= n+name;
 		eh.setCell(i, 0, name);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Product Name')]/following::input[1]"))).sendKeys(eh.getCell(i, 0));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input"))).sendKeys(eh.getCell(i, 0));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys(eh.getCell(i, 1));
 		driver.findElement(By.xpath("//*[@id='modal']/div[2]/div[1]/paper-radio-group/paper-radio-button[2]/div[2]")).click();
 		
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Category')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(i, 2)+"')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Validity')]/following::input[1]"))).sendKeys(eh.getCell(i, 3));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Price')]/following::input[1]"))).sendKeys(eh.getCell(i, 4));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Processing Fee')]/following::input[1]"))).sendKeys(eh.getCell(i, 5));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Validity')]/..//input"))).sendKeys(eh.getCell(i, 3));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Price')]/..//input"))).sendKeys(eh.getCell(i, 4));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Processing Fee')]/..//input"))).sendKeys(eh.getCell(i, 5));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Tax')]/following::input[1]"))).sendKeys(eh.getCell(i, 6));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys(eh.getCell(i, 7));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Usage Leg')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys(eh.getCell(i, 7));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(i, 8)+"')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(i, 9)+"')]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys(eh.getCell(i, 10));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys(eh.getCell(i, 10));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
 	    Thread.sleep(3000);
 		}
 	}
@@ -657,11 +674,11 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='contentWrapper']/div/paper-menu/div/paper-item[3]"))).click();
 		Thread.sleep(2000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Product Name')]/following::input[1]"))).sendKeys("Dupe"+n);
-	    //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input"))).sendKeys("Dupe"+n);
+	    //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Minutes')]"))).click();
-		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys("2bbb3");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("2bbb3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//span[contains(.,'"+eh.getCell(1, 0)+"Dupe"+n+"')]/../../data-table-cell[3][contains(.,'"+eh.getCell(1, 8)+"')]/../data-table-cell[2][contains(.,'"+eh.getCell(1, 2)+"')]/../data-table-cell[4][contains(.,'"+eh.getCell(1, 11)+"')]/../data-table-cell[5][contains(.,'"+eh.getCell(1, 4)+"')]/../data-table-cell[6][contains(.,'"+eh.getCell(1, 3)+"')]/../data-table-cell[7][contains(.,'"+eh.getCell(1, 7)+"')]"));
 
@@ -690,13 +707,13 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='contentWrapper']/div/paper-menu/div/paper-item[1]"))).click();
 		Thread.sleep(2000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Product Name')]/following::input[1]"))).sendKeys("Edit"+n);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input"))).sendKeys("Edit"+n);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys("Edit");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Short Description')]/following::input[1]"))).sendKeys("Edit");
-		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Type')]/following::input[1]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys("Edit");
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Type')]/..//input"))).click();
 		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Minutes')]"))).click();
-		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Value')]/following::input[1]"))).sendKeys("2bbb3");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='modal']/div[3]/paper-button[contains(.,'Save')]"))).click();
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("2bbb3");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//span[contains(.,'"+eh.getCell(1, 0)+"Edit"+n+"')]"));
 
