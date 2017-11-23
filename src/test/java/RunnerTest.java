@@ -19,9 +19,7 @@ import cucumber.api.CucumberOptions;
         retryCount = 1)
 @CucumberOptions(
         features = { "src/test/resources" },
-        //tags = { "@NX-ProductTestSuite,@tagOfferCatalog,@madhan_test_suite_on_OfferCreation" },
-        tags = { "@NX-ProductTestSuite"},
-        //tags = { "@NX-1055"},
+        tags = { "@NX-ProductTestSuite,@tagOfferCatalog,@madhan_test_suite_on_OfferCreation" },
         plugin = {
         "html:target/81", "json:target/81/cucumber.json",
         "pretty:target/81/cucumber-pretty.txt",
