@@ -21,6 +21,18 @@ public class CommonSteps extends browserInit
 		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='sym1']"))).click();
 	}
+	@Then("^navigate to analytics$")
+	public void naviagte_to_analytics() throws Exception
+	{
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()='Analytics']/.."))).click();
+	}
+	@Then("^navigate to explore segments$")
+	public void naviagte_to_explore_segments() throws Exception
+	{
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Explore Segments')]/.."))).click();
+	}
 	
 	@Then("^navigate to offers$")
 	public void naviagte_to_offers() throws Exception
