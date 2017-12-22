@@ -454,12 +454,12 @@ public class Regression_offer extends browserInit
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Category')]"))).click().build().perform();
 		Thread.sleep(1000);
 		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'Balance Top ups')]"))).click().build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Currency')]"))).click().build().perform();
-		Thread.sleep(1000);
-		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'INR')]"))).click().build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Discount')]"))).click().sendKeys("20").build().perform();
-		Thread.sleep(1000);
-		
+//		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Currency')]"))).click().build().perform();
+//		Thread.sleep(1000);
+//		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'INR')]"))).click().build().perform();
+//		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Discount')]"))).click().sendKeys("20").build().perform();
+//		Thread.sleep(1000);
+//		
 		WebElement error_msg = driver.findElement(By.xpath("//div[@class='content style-scope offer-details']/paper-input[1]/paper-input-container/div[4]/paper-input-error[contains(.,'This field is required')]"));
 		
 		if(error_msg.isDisplayed())

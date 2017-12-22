@@ -18,8 +18,8 @@ import cucumber.api.CucumberOptions;
         outputFolder = "target/81",
         retryCount = 1)
 @CucumberOptions(
-        features = { "src/test/resources" },
-        tags = { "@NX-ProductTestSuite,@tagOfferCatalog,@madhan_test_suite_on_OfferCreation" },
+        //features = { "src/test/resources" },
+        tags = { "@NX-ProductTestSuite,@tagOfferCatalog,@madhan_test_suite_on_OfferCreation" },//@NX-ProductTestSuite,@tagOfferCatalog,@madhan_test_suite_on_OfferCreation,@tagOfferCatalog,@NX-bcCreationSuite
         plugin = {
         "html:target/81", "json:target/81/cucumber.json",
         "pretty:target/81/cucumber-pretty.txt",
@@ -29,7 +29,11 @@ public class RunnerTest
 {
 	public RunnerTest()
 	{
-		System.out.println("sdfd");
+//		CucumberResultsOverview results = new CucumberResultsOverview();
+//		results.setOutputDirectory("target");
+//		results.setOutputName("cucumber-results");
+//		results.setSourceFile("./src/test/resources/cucumber.json");
+//		results.executeFeaturesOverviewReport();
 	}
 
 }

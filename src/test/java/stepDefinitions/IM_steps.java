@@ -56,7 +56,19 @@ public class IM_steps extends browserInit {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Programs')]/.."))).click();
 		
 	}
-	@Then("^create program$")
+	@Then("^click create program button$")
+	public void proceedButtonPrograms() throws Throwable{
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create Program')]"))).click();
+		Thread.sleep(1500);
+	}
+	@Then("^click confirm button$")
+	public void SaveButtonPrograms() throws Throwable{
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Confirm')]"))).click();
+		Thread.sleep(4000);
+	}
+	@Then("^enter program details$")
 	public void createPrograms() throws Throwable{
 		eM.setExcelFile("inputData","singleProductPage");
 		Thread.sleep(1500);
@@ -64,10 +76,7 @@ public class IM_steps extends browserInit {
 		int  n = rn.nextInt(5000) + 1;
 		String name =(String) eM.getCell(1, 17);
 		name =  name.replaceAll("[0-9]", "")+n;
-		name= n+name;
 		eM.setCell(1, 17, name);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create Program')]"))).click();
-		Thread.sleep(1500);
 		//Details - Basic Information
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h5[contains(.,'Basic Information')]/..//label[contains(.,'Name')]/..//*[@id='input']"))).sendKeys(name);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h5[contains(.,'Basic Information')]/..//label[contains(.,'Description')]/..//textarea"))).sendKeys("Description of Program");
@@ -118,7 +127,7 @@ public class IM_steps extends browserInit {
 		Thread.sleep(1500);
 		
 		//Schedule
-		Calendar rightNow =Calendar.getInstance();
+		Calendar rightNow = Calendar.getInstance();
 		String date = Integer.toString(rightNow.get(Calendar.YEAR))+"-"+Integer.toString(rightNow.get(Calendar.MONTH)+1)+"-"+String.format("%02d",(rightNow.get(Calendar.DAY_OF_MONTH)+2));
     	int hours = rightNow.get(Calendar.HOUR);
       	 int min = rightNow.get(Calendar.MINUTE);
@@ -164,8 +173,7 @@ public class IM_steps extends browserInit {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='refreshTpWrap style-scope program-schedule']//paper-dialog[@id='timeDialog']//paper-button[text()='OK']"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[text()='Serve on']/../input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[text()='All Days']"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='topBar']/paper-button[3]"))).click();
-        Thread.sleep(4000);
+        Thread.sleep(1000);
 	}
 	
 	@Then("^create sms touchpoint$")
@@ -175,12 +183,12 @@ public class IM_steps extends browserInit {
 		Random rn = new Random();
 		int  n = rn.nextInt(5000) + 1;
 		String name =(String) eM.getCell(1, 16);
-		name = name+"sms";
 		name =  name.replaceAll("[0-9]", "")+n;
-		name= n+name;
+		
 		eM.setCell(1, 16, name);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='smsForm']//label[contains(.,'Short Code')]/../input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']/div/paper-item"))).click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='smsForm']//label[contains(.,'Keyword')]/../input"))).sendKeys(name);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='smsForm']//label[contains(.,'Ordering Logic')]/../input"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='smsForm']//paper-item[contains(.,'Rule-based')]"))).click();

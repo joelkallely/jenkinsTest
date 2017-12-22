@@ -17,13 +17,12 @@ public class LoginAndLogout extends browserInit
     public void loginuser() throws InterruptedException {
 		init();
 		 eh.setExcelFile("login","Sheet1");
-		 driver.get("http://"+eh.getCell(1, 2)+"/#/login");
-    	 driver.findElement(By.xpath("//*[@id='input'and @class='style-scope gold-email-input']")).sendKeys(eh.getCell(1, 0));
-		 driver.findElement(By.xpath("//*[@id='input'and @class='style-scope paper-input']")).sendKeys(eh.getCell(1, 1));
-		 driver.findElement(By.id("loginButton")).click();				
-     		
-		System.out.println("logged in");
-        
+		 //driver.get("http://"+eh.getCell(1, 2)+"/#/login");
+		 driver.get("http://192.168.150.45");
+		 Thread.sleep(2000);
+    	 driver.findElement(By.xpath("//input[@type='email']")).sendKeys(eh.getCell(1, 0));
+		 driver.findElement(By.xpath("//input[@type='password']")).sendKeys(eh.getCell(1, 1));
+		 driver.findElement(By.id("loginButton")).click();				        
     }
 	@Given("^initialize$")
     public void initialize() throws InterruptedException {
@@ -39,10 +38,7 @@ public class LoginAndLogout extends browserInit
 			driver.findElement(By.xpath("//div/paper-item")).click();
 			System.out.println("logged out");
 			driver.close();
-		 
-		
-        
-    }
+	}
 
 public void LoginWithValidUser(){
     

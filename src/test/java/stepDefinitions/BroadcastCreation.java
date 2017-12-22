@@ -33,35 +33,35 @@ public class BroadcastCreation extends browserInit{
     public WebDriverWait wait = new WebDriverWait(driver, 8);
     public Actions actions = new Actions(driver);
     
-    @Then("^Create New Offer Catalogue for product$")
+    @Then("^Create New Offer Catalogue from sheet \"([^\"]*)\"$")
     
-    public void createNewOfferCatalogueForProduct() throws Throwable{
- 	   
- 	    eM.setExcelFile("inputData","singleProductPage");
+    public void createNewOfferCatalogueFromSheet(String sheet) throws Throwable{
+    	Thread.sleep(2000);
+ 	    eM.setExcelFile("offerCatalogInputData",sheet);
  	    Random rn = new Random();
  		int  n = rn.nextInt(5000) + 1;
- 		String name = (String) eM.getCell(1, 13);
+ 		String name = (String) eM.getCell(1, 0);
  		name =  name.replaceAll("[0-9]", "")+n;
- 		name= n+name;
- 		eM.setCell(1, 13, name);
+ 		eM.setCell(1, 0, name);
  	   wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[text()='Create New Catalog']"))).click();
  	   driver.findElement(By.xpath("//div[2]/paper-input[1]/paper-input-container/div[2]/div/input")).sendKeys(name);
  	   driver.findElement(By.xpath("//paper-input[2]/paper-input-container/div[2]/div/input")).sendKeys("test");
  	   driver.findElement(By.xpath("//div[3]/paper-button[2]")).click();
  	   Thread.sleep(3000);
  	   }
-    @Then("^Add offer to Offer Catalogue for product$")
-    public void addOffertoCatalogueForProduct() throws Throwable
+    @Then("^Add \"([^\"]*)\" offer to Offer Catalogue$")
+    public void addOffertoCatalogueForProduct(String sheet) throws Throwable
     {
-    	eM.setExcelFile("inputData","singleProductPage");
+     Thread.sleep(3000);
+     eM.setExcelFile("offerInputData",sheet);
  	 Thread.sleep(2000);
  	 driver.findElement(By.xpath("//paper-button[contains(text(),'Add Offers')]")).click();
- 	 Thread.sleep(2000);
+ 	 Thread.sleep(4000);
  	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../.."))).click();
- 	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form/paper-input[1]/paper-input-container/div[2]/div/input"))).sendKeys(eM.getCell(1, 12));
+ 	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form/paper-input[1]/paper-input-container/div[2]/div/input"))).sendKeys(eM.getCell(1, 0));
  	 driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]")).click();
- 	Thread.sleep(2000);
- 	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[1]/data-table-cell[1][contains(.,'"+eM.getCell(1, 12)+"')]"))).click();
+ 	Thread.sleep(3000);
+ 	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[1]/data-table-cell[1][contains(.,'"+eM.getCell(1, 0)+"')]"))).click();
  	Thread.sleep(2000);
  	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[text()='Add to Catalog']"))).click();
  	 Thread.sleep(5000);
@@ -70,35 +70,39 @@ public class BroadcastCreation extends browserInit{
     public void navigate_to_category(String category) throws Throwable
     {
     	Thread.sleep(2000);
-    	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='scrollThreshold']/paper-card[1]/div[2]/div/a/div[contains(.,'"+category+"')]"))).click();
+    	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[text()='"+category+"']"))).click();
+    	 Thread.sleep(4000);
     }
-    @Then("^create new campaign$")
-    public void create_new_campaign() throws Throwable
+    @Then("^create new campaign from sheet \"([^\"]*)\"$")
+    public void create_new_campaign(String sheet) throws Throwable
     {
-    	eM.setExcelFile("inputData","singleProductPage");
+    	Thread.sleep(4000);
+    	ExcelHelper catalogExcel = new ExcelHelper();
+    	catalogExcel.setExcelFile("offerCatalogInputData", "defaultCatalog");
+    	Thread.sleep(4000);
+    	eM.setExcelFile("campaignInputData",sheet);
  	    Random rn = new Random();
  		int  n = rn.nextInt(5000) + 1;
- 		String name = (String) eM.getCell(1, 14);
+ 		String name = (String) eM.getCell(1, 0);
  		name =  name.replaceAll("[0-9]", "")+n;
- 		name= n+name;
- 		eM.setCell(1, 14, name);
+ 		eM.setCell(1, 0, name);
     	Thread.sleep(2000);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='router']/app-route[8]/campaign-list/div/div/a/paper-button"))).click();
-    	 Thread.sleep(1000);
+    	 Thread.sleep(3000);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Type')]/../input"))).click();
-    	 Thread.sleep(1000);
+    	 Thread.sleep(2000);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']/div/paper-item[3]"))).click();
-    	 Thread.sleep(1000);
+    	 Thread.sleep(2000);
     	 driver.findElement(By.xpath(".//campaign-details//label[contains(.,'Name')]/../input")).sendKeys(name);
-    	 Thread.sleep(500);
+    	 Thread.sleep(1000);
     	 driver.findElement(By.xpath(".//*[@id='textarea']")).sendKeys("Campaign to check bc craetion in selenium");
-    	 Thread.sleep(500);
-    	 driver.findElement(By.xpath(".//campaign-details//label[contains(.,'Offer Catalog')]/../input")).sendKeys(eM.getCell(1, 13));
-    	 Thread.sleep(1000);
-    	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']/div/paper-item[contains(.,'"+eM.getCell(1, 13)+"')]"))).click();
-    	 Thread.sleep(500);
+    	 Thread.sleep(1500);
+    	 driver.findElement(By.xpath(".//campaign-details//label[contains(.,'Offer Catalog')]/../input")).sendKeys(catalogExcel.getCell(1, 0));
+    	 Thread.sleep(2000);
+    	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']/div/paper-item[contains(.,'"+catalogExcel.getCell(1, 0)+"')]"))).click();
+    	 Thread.sleep(1500);
     	 driver.findElement(By.xpath(".//*[@id='topBar']/paper-button[2]")).click();
-    	 Thread.sleep(1000);
+    	 Thread.sleep(2000);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='router']/app-route[9]/campaign-form/wizard-tab/div/iron-pages/target-conditions/div/paper-icon-button"))).click();
     	 Thread.sleep(1000);
     	 driver.findElement(By.xpath(".//*[@id='conditionForm']/paper-dropdown-menu//paper-input-container/div[2]")).click();
@@ -106,21 +110,21 @@ public class BroadcastCreation extends browserInit{
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='contentWrapper']/div/paper-listbox/paper-item[contains(.,'Customer Insight')]"))).click();
     	 Thread.sleep(2000);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='conditionForm']/div//paper-input//label[contains(.,'Field')]/../.."))).click();
-    	 Thread.sleep(700);
+    	 Thread.sleep(1700);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']/div/paper-item[contains(.,'Age')][1]"))).click();
-    	 Thread.sleep(700);
+    	 Thread.sleep(1700);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='conditionForm']//field-simple//iron-dropdown/.."))).click();
-    	 Thread.sleep(700);
+    	 Thread.sleep(1700);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='contentWrapper']/div/paper-listbox/paper-item[contains(.,'is greater than')][1]"))).click();
     	 Thread.sleep(2000);
     	 driver.findElement(By.xpath(".//*[@id='conditionForm']//field-simple/div//paper-input//input")).sendKeys("18");
-    	 Thread.sleep(700);
+    	 Thread.sleep(1700);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='conditionCard']/paper-button[2]"))).click();
-    	 Thread.sleep(700);
+    	 Thread.sleep(1700);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='topBar']/paper-button[2]"))).click();
-    	 Thread.sleep(700);
+    	 Thread.sleep(1700);
     	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='router']/app-route[9]/campaign-form/wizard-tab/div/iron-pages/campaign-schedule/form/paper-card/paper-date-time-input/div/paper-input[2]/paper-input-container/div[2]"))).click();
-    	 Thread.sleep(700);
+    	 Thread.sleep(1000);
     	 Calendar rightNow =Calendar.getInstance();
     	 int hours = rightNow.get(Calendar.HOUR);
     	 int min = rightNow.get(Calendar.MINUTE);
@@ -151,16 +155,78 @@ public class BroadcastCreation extends browserInit{
     	 Thread.sleep(2000);
     	
     }
-    @Then("^create new \"([^\"]*)\" broadcast$")
-    public void create_new_broadcast(String bc_type) throws Throwable
+    @Then("^navigate to \"([^\"]*)\" broadcasts$")
+    public void navigateTobcType(String bc_type) throws Throwable
     {
-    	eM.setExcelFile("inputData","singleProductPage");
+    	Thread.sleep(7000);
+    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(.,'"+bc_type+" Broadcasts') and contains(@class,'tab-content')]"))).click();
+    	Thread.sleep(2000);
+    }
+    @Then("^naigate to \"([^\"]*)\" campaign view broadcasts$")
+    public void navigateToCampaign(String sheet) throws Throwable
+    {
+    	Thread.sleep(3000);
+    	eM.setExcelFile("campaignInputData",sheet);
+    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../.."))).click();
+    	Thread.sleep(1000);
+    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@val='campaigns']//*[@id='filterForm']//label[contains(.,'Name')]/../input"))).sendKeys(eM.getCell(1, 0));
+    	Thread.sleep(1000);
+    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@val='campaigns']//*[@id='filterDialog']/div/paper-button[3]"))).click();
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../.."))).click();
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='contentWrapper']/div/paper-menu/div/paper-item[2]"))).click();
+		Thread.sleep(2000);
+    }
+    @Then("^click create new broadcast button$")
+    public void create_new_broadcast_button() throws Throwable
+    {
+    	Thread.sleep(2000);
+    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Broadcast')]"))).click();
+    }
+    @Then("^save bc$")
+    public void saveBC() throws Throwable
+    {
+    	Thread.sleep(2000);
+    	driver.findElement(By.xpath("//paper-button[contains(.,'Create')]")).click();	
+	    Thread.sleep(3000);
+    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='broadcastSummary']//paper-button[contains(.,'Save')]"))).click();
+
+    }
+    @Then("^activate saved \"([^\"]*)\" bc from sheet \"([^\"]*)\"$")
+    public void activateSavedBC(String bc_type,String sheet) throws Throwable
+    {
+    	Thread.sleep(2000);
+    	eM.setExcelFile("bcInputData",sheet);
+    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@val,'"+bc_type+"')]//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../.."))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(@val,'"+bc_type+"')]//*[@id='filterForm']//label[contains(.,'Name')]/../input"))).sendKeys(eM.getCell(1, 0));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(@val,'"+bc_type+"')]//*[@id='filterDialog']/div/paper-button[3]"))).click();
+    	Thread.sleep(2000);
+    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../.."))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Edit')]"))).click();
+		Thread.sleep(3000);
+    	for(int i=0;i<3;i++){
+    	driver.findElement(By.xpath("//paper-button[contains(.,'Proceed')]")).click();	
+	    Thread.sleep(2000);
+    	}
+    	driver.findElement(By.xpath("//paper-button[contains(.,'Create')]")).click();
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='broadcastSummary']//paper-button[contains(.,'Activate')]"))).click();
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='confirmBox']/div/paper-button[2]"))).click();
+	    Thread.sleep(15000);
+    }
+    @Then("^enter details for new broadcast from sheet \"([^\"]*)\" with \"([^\"]*)\"$")
+    public void create_new_broadcast(String sheet, String offer) throws Throwable
+    {  
+    	Thread.sleep(3000);
+    	eM.setExcelFile("bcInputData",sheet);
+    	ExcelHelper offerExcel = new ExcelHelper(); 
+    	offerExcel.setExcelFile("offerInputData", offer);
     	Random rn = new Random();
  		int  n = rn.nextInt(5000) + 1;
- 		String name = (String) eM.getCell(1, 14);
+ 		String name = (String) eM.getCell(1, 0);
  		name =  name.replaceAll("[0-9]", "")+n;
- 		name= n+name;
- 		eM.setCell(1, 15, name);
+ 		eM.setCell(1, 0, name);
+ 	  	String bc_type =(String) eM.getCell(1, 7);
     	Calendar rightNow =Calendar.getInstance();
 		String date = Integer.toString(rightNow.get(Calendar.YEAR))+"-"+Integer.toString(rightNow.get(Calendar.MONTH)+1)+"-"+String.format("%02d",rightNow.get(Calendar.DAY_OF_MONTH));
     	int hours = rightNow.get(Calendar.HOUR);
@@ -177,59 +243,81 @@ public class BroadcastCreation extends browserInit{
       		 min-=60;
       		 hours++;
       	 }
+      	 if((String)eM.getCell(1, 6)=="later"){
+      		 day++;
+      	 }
       	 Actions builder = new Actions(driver);
     	//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z/../../..']"))).click();
-    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../.."))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@val='campaigns']//*[@id='filterForm']//label[contains(.,'Name')]/../input"))).sendKeys(eM.getCell(1, 14));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@val='campaigns']//*[@id='filterDialog']/div/paper-button[3]"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../.."))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='contentWrapper']/div/paper-menu/div/paper-item[2]"))).click();
-		Thread.sleep(2000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='router']/app-route[25]/neon-broadcasts/div/div/paper-button"))).click();
-		Thread.sleep(2000);
+    	
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Broadcast Name')]/../input"))).sendKeys(name);
-		Thread.sleep(500);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Purpose')]/../input"))).sendKeys("purp");
-		Thread.sleep(500);
+		Thread.sleep(1500);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Purpose')]/../input"))).sendKeys(eM.getCell(1, 2));
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Label')]/../input"))).click();
-		Thread.sleep(500);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='select']/div/paper-item[1][contains(.,'Crossell')]"))).click();
-		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Triggers')]/../input"))).click();
-		Thread.sleep(500);
+		Thread.sleep(1500);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='select']/div/paper-item[1][contains(.,'"+eM.getCell(1, 3)+"')]"))).click();
+		if(bc_type.contentEquals("triggerable")||bc_type.contentEquals("seedingTriggerable")){
+			System.out.println("inside triggerable");
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Triggers')]/../../iron-icon"))).click();
+			Thread.sleep(1000);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Triggers')]/../../iron-icon"))).click();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'trigger')]"))).click();
+			Thread.sleep(1500);
+		}
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Inventory')]/../input"))).click();
-		Thread.sleep(500);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']/div/paper-item[contains(.,'Inv-CG')]"))).click();
-		Thread.sleep(500);
+		Thread.sleep(1500);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']/div/paper-item[contains(.,'"+eM.getCell(1, 4)+"')]"))).click();
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='topBar']/paper-button[2]"))).click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Base Lists')]/../input"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']/div/paper-item[contains(.,'adipoli_list')]"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']/div/paper-item[contains(.,'"+eM.getCell(1, 5)+"')]"))).click();
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Target Conditions')]/../paper-radio-group/paper-radio-button[1]/div[1]"))).click();
-		Thread.sleep(500);
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='topBar']/paper-button[2]"))).click();
 		Thread.sleep(2000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//data-table-cell[contains(.,'"+eM.getCell(1, 12)+"')]/..//*[@id='checkboxContainer']"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//data-table-cell[contains(.,'"+offerExcel.getCell(1, 0)+"')]/..//*[@id='checkboxContainer']"))).click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Track session')]/../input"))).click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='contentWrapper']/div/paper-listbox/paper-item[contains(.,'After')]"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='offerDetailForm']/section[1]/paper-card/div[2]/broadcast-tracking/div/paper-input/paper-input-container/div[2]//input"))).sendKeys("2");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Tracking Source')]/../input"))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']//paper-item[contains(.,'recharge_track')]"))).click();
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']//paper-item[contains(.,'track')]"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Sender ID: Broadcast')]/../input"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']//paper-item[contains(.,'Address-SMPP')]"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Route over which this broadcast')]/../input"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='select']//paper-item[contains(.,'SMPP Robi outbond')]"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Sender ID: Fulfillment')]/../input"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@class='card-content style-scope broadcast-offers-config']//paper-autocomplete[3]//paper-item[contains(.,'Address-SMPP')]"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Route over which Fulfillment')]/../input"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@class='card-content style-scope broadcast-offers-config']//paper-autocomplete[4]//paper-item[contains(.,'SMPP Robi outbond')]"))).click();
-		Thread.sleep(500);
+		Thread.sleep(1500);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='topBar']/paper-button[2]"))).click();
 		Thread.sleep(2000);
 if(bc_type.contentEquals("one-off")){
+	Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@id='radioLabel' and contains(.,'One Off')]/../div[1]"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Send Time')]/../input"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='one-off-form']/div/paper-date-time-input[1]//div[@date='"+date+"']"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='one-off-form']/div/paper-date-time-input[1]//*[@id='dateDialog']/div/paper-button[2]"))).click();
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='one-off-form']//paper-date-time-input[1]//paper-input[2]//input"))).click();
 		
      Thread.sleep(2000);
@@ -254,8 +342,11 @@ if(bc_type.contentEquals("one-off")){
 	    Thread.sleep(2000);
 				
 	wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//label[contains(.,'Target Render Time')]/../input"))).click();
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='one-off-form']/div/paper-date-time-input[2]//div[@date='"+date+"']"))).click();
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='one-off-form']/div/paper-date-time-input[2]//*[@id='dateDialog']/div/paper-button[2]"))).click();
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='one-off-form']//paper-date-time-input[2]//paper-input[2]//input"))).click();
   Thread.sleep(2000);
   num = driver.findElement(By.xpath(".//*[@id='one-off-form']/div/paper-date-time-input[2]//*[@id='hourClock']//*[@class='number style-scope paper-clock-selector']["+(hours+1)+"]"));
@@ -283,39 +374,42 @@ if(bc_type.contentEquals("one-off")){
   
   num1 = driver.findElement(By.xpath(".//*[@id='one-off-form']/div/paper-date-time-input[2]//*[@id='timeDialog']/div/paper-button[2]"));
   builder.moveToElement(num1).click().build().perform();
-  Thread.sleep(2000);	
-  
-  driver.findElement(By.xpath(".//*[@id='topBar']/paper-button[3]")).click();	
-  Thread.sleep(2000);
-  
-  wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='broadcastSummary']/div[2]/paper-button[3]"))).click();
-  wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='confirmBox']/div/paper-button[2]"))).click();
-  Thread.sleep(15000);
-  
+  Thread.sleep(1000);	
     }
-		else if(bc_type.contentEquals("recurring")){
+else if(bc_type.contentEquals("recurring")||bc_type.contentEquals("seedingRecurring")||bc_type.contentEquals("seedingTriggerable")){
+	Thread.sleep(2000);
+	if(bc_type.contentEquals("recurring")){
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@id='radioLabel' and contains(.,'Reccurring')]/../div[1]"))).click();
 //			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//paper-date-time-input//paper-input[1]//input"))).click();
 //			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='one-off-form']/div/paper-date-time-input[1]//div[@date='"+date+"']"))).click();
 //			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='one-off-form']/div/paper-date-time-input[1]//*[@id='dateDialog']/div/paper-button[2]"))).click();
 //			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='one-off-form']//paper-date-time-input[1]//paper-input[2]//input"))).click();
-			
+	}	
 	     Thread.sleep(2000);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//paper-date-time-input//paper-input[2]//input"))).click();
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']/../paper-card[1]//*[@id='heading']/iron-selector[1]/div[1]"))).click();
 			 WebElement num = driver.findElement(By.xpath(".//*[@id='deliverDetailForm']//*[@class='start-time-wrap style-scope broadcast-deliver-details']//*[@id='hourClock']//*[@class='number style-scope paper-clock-selector']["+(hours+1)+"]"));
 		     builder.moveToElement(num).click().build().perform();
 		     Thread.sleep(2000);
-		     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']/../paper-card[2]//*[@id='heading']/iron-selector[1]/div[3]"))).click();
+		     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='heading']/iron-selector[1]/div[3]"))).click();
 			 WebElement num1 = driver.findElement(By.xpath(".//*[@id='deliverDetailForm']//*[@class='start-time-wrap style-scope broadcast-deliver-details']//*[@id='minuteClock']//*[@class='number style-scope paper-clock-selector']["+(min+1)+"]"));
 			 Thread.sleep(1000);
 			 builder.moveToElement(num1).click().build().perform();
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='deliverDetailForm']//paper-input-container//label[contains(.,'Time Zone')]/..//input"))).click();
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//paper-item[contains(.,'GMT+05:30')]"))).click();
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='deliver-card']//label[contains(.,'Recurrence Pattern')]/..//input"))).click();
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']//paper-item[contains(.,'Days')]"))).click();
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']//label[contains(.,'Recur Every')]/..//input"))).click();
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']//label[contains(.,'Start broadcasts at')]/..//input"))).click();
+			 Thread.sleep(1000);
+			 num1 = driver.findElement(By.xpath(".//*[@id='deliverDetailForm']//*[@class='start-time-wrap style-scope broadcast-deliver-details']//*[@id='timeDialog']/div/paper-button[2]"));
+			 builder.moveToElement(num1).click().build().perform();
+			 Thread.sleep(1000);
+			 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='deliverDetailForm']//paper-input-container//label[contains(.,'Time Zone')]/..//input"))).click();
+			 Thread.sleep(1000);
+			 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//paper-item[contains(.,'GMT+05:30')]"))).click();
+			 Thread.sleep(1000);
+			 wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='deliver-card']//label[contains(.,'Recurrence Pattern')]/..//input"))).click();
+			 Thread.sleep(1000);
+			 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']//paper-item[contains(.,'Days')]"))).click();
+			 Thread.sleep(1000);
+			 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(@class,'recurrence')]//input"))).sendKeys("1");
+			 Thread.sleep(1000);
+			 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']//label[contains(.,'Start broadcasts at')]/..//input"))).click();
 			 Thread.sleep(2000);
 		   	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']/../paper-card[2]//*[@id='heading']/iron-selector[1]/div[1]"))).click();
 			 num = driver.findElement(By.xpath("//*[@id='deliver-card']/../paper-card[2]//*[@id='timePicker']//*[@id='hourClock']//*[@class='number style-scope paper-clock-selector']["+(hours+1)+"]"));
@@ -331,34 +425,61 @@ if(bc_type.contentEquals("one-off")){
 		    	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']/../paper-card[2]//*[@id='heading']/iron-selector[2]/div[1]"))).click();
 		     else
 		    	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']/../paper-card[2]//*[@id='heading']/iron-selector[2]/div[2]"))).click();
-		        
+		     Thread.sleep(2000);
 		     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='deliver-card']/../paper-card[2]//*[@id='timeDialog']/div/paper-button[2]"))).click();
 			    Thread.sleep(2000);
 			    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@id='radioLabel' and contains(.,'Real Time')]/../div[1]"))).click();
 		
 			    
-			    driver.findElement(By.xpath(".//*[@id='topBar']/paper-button[3]")).click();	
-			    Thread.sleep(2000);
 			    
-			    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='broadcastSummary']/div[2]/paper-button[3]"))).click();
-			    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='confirmBox']/div/paper-button[2]"))).click();
-			    Thread.sleep(15000);
-		
 		}
  }
+    @Then("^activate and save bc$")
+    public void activateAndSaveBC() throws Throwable
+    {
+    	 Thread.sleep(2000);
+    	driver.findElement(By.xpath(".//*[@id='topBar']/paper-button[3]")).click();	
+	    Thread.sleep(2000);
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='broadcastSummary']/div[2]/paper-button[3]"))).click();
+	    Thread.sleep(1000);
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='confirmBox']/div/paper-button[2]"))).click();
+	    Thread.sleep(15000);
+
+    }
+    public String getBCstatus(String bc_name, String type) throws Throwable{
+    	Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[contains(@val,'"+type+"')]//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../.."))).click();
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[contains(@val,'"+type+"')]//*[@id='filterForm']//label[contains(.,'Name')]/../input"))).sendKeys(bc_name);
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[contains(@val,'"+type+"')]//*[@id='filterDialog']/div/paper-button[3]"))).click();
+		String status = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@val,'"+type+"')]//iron-list[@id='list']//data-table-row//data-table-cell[2]"))).getText();
+		return status;
+    	
+    }
+    @Then("^check if \"([^\"]*)\" bc status is \"([^\"]*)\" from sheet \"([^\"]*)\"$")
+    public void checkBCsatusisRenderScheduled(String type,String st,String sheet) throws Throwable
+    { 
+    	Thread.sleep(2000);
+    	eM.setExcelFile("bcInputData",sheet);
+    	String status = getBCstatus((String)eM.getCell(1, 0),type);
+    		Exception statusNotChanged = new Exception("status not changed to render scheduled");
+    		if(!status.contains(st)){
+            	throw statusNotChanged;    	
+            }	
+    }
+    	
     
-    @Then("^check bc status$")
-    public void checkBCsatus() throws Throwable
-    {  	eM.setExcelFile("inputData","singleProductPage");
+    @Then("^wait for \"([^\"]*)\" to complete and check count$")
+    public void checkBCsatus(String sheet) throws Throwable
+    {  	eM.setExcelFile("bcInputData",sheet);
     	//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z/../../..']"))).click();
-    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../.."))).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@val='broadcastViews']//*[@id='filterForm']//label[contains(.,'Name')]/../input"))).sendKeys(eM.getCell(1, 15));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@val='broadcastViews']//*[@id='filterDialog']/div/paper-button[3]"))).click();
+        String status = getBCstatus((String)eM.getCell(1, 0),"");
 //		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../.."))).click();
 //		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='contentWrapper']/div/paper-menu/div/paper-item[2]"))).click();
 		Thread.sleep(2000);
 		
-		String status = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//iron-data-table[@id='broadcastGrid']//iron-list[@id='list']//data-table-row//data-table-cell[2]"))).getText();
+		
         System.out.println(status); 
         while(!status.contains("Completed")){
         	Thread.sleep(3000);
@@ -381,7 +502,7 @@ if(bc_type.contentEquals("one-off")){
 		 eM.setExcelFile("login","Sheet1");
 		 driver.get("http://192.168.150.45:5050/#/");		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//table[@table-content='active_tasks']//a[contains(.,'neon_apps_platform_legacy-fe')]/../../td[6]/a"))).click();
-		Thread.sleep(500);
+		Thread.sleep(1500);
 		String reqURL = driver.findElement(By.xpath("//tbody/tr[3]//button[contains(.,'Download')]/..")).getAttribute("href");
 		reqURL = reqURL.replaceAll("(download)", "read");
 		System.out.println(reqURL);

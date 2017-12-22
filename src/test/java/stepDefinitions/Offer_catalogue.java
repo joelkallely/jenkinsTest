@@ -333,7 +333,7 @@ public class Offer_catalogue extends browserInit
 		   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//form/paper-input/paper-input-container/div[2]/div/input")))).sendKeys(eM.getCell(0, 0));
 		   	driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]")).click();
 		   	Thread.sleep(1000);
-		   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[1]/data-table-row/div[1]/data-table-cell[contains(.,'54')]"))));
+		   	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//iron-list/div/div[1]/data-table-row/div[1]/data-table-cell[contains(.,'5')]"))));
    }
    @Then("^Delete Offer from Catalogue$")
    public void deleteOffer() throws Throwable

@@ -10,12 +10,17 @@ Scenario: Create Product: Verify the field validations for the benefit details N
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
-Then check field validations under the benefits gridk
+Then navigate to products
+Then click create new product button
+Then enter product details from sheet "benefitFieldValidation-NX-1046"
+Then check field validations under the benefits grid
 @NX-1012
 Scenario: Products Grid: Verify scrolling functionality to view the product at the end of the screen NX-1012
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
+Then click create new product button
 Then create single product from sheet "singleProductPage"
 Then scrolling to view the entire product list
 @NX-1036
@@ -23,6 +28,7 @@ Scenario: Create Product: Verify the field validations for the Basic information
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then field validations for the Basic Information
 
 @NX-1038
@@ -37,6 +43,9 @@ Scenario: Create Product: Verify adding more than 3 benefits NX-1045
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
+Then click create new product button
+Then enter product details from sheet "benefitFieldValidation-NX-1046"
 Then verify adding more than 3 benefits for product
 
 @NX-1042
@@ -44,6 +53,7 @@ Scenario: Create Product: Verify clicking on the Add button to add benefits NX-1
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then clicking on the Add button to add benefits for the product
 
 @NX-1047
@@ -51,6 +61,7 @@ Scenario: Create Product: Verify adding multiple benefits for the single product
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then saving product with multiple benefits
 
 
@@ -59,6 +70,7 @@ Scenario: Create Product: Verify saving the product without adding the benefit N
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then verify saving the product without adding benefits
 
 @NX-1011
@@ -66,6 +78,7 @@ Scenario: Products Grid: Verify the product details displayed in the Products sc
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create single product from sheet "singleProductPage"
 Then verify product details displayed in the products screen
 
@@ -74,6 +87,7 @@ Scenario: Create Product: Verify adding multiple benefit with same usage leg and
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create product having multiple benefits with same usage leg and type combinations
 
 @NX-1061
@@ -81,6 +95,7 @@ Scenario: Create Product: Verify clicking on the cancel option after adding all 
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then enter valid details and click cancel
 And check if offer is saved
 
@@ -90,6 +105,7 @@ Scenario: Checking cross site scripting in creation of new product under CLV Max
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then enter special characters for name and validate
 
 @NX-1023
@@ -97,6 +113,7 @@ Scenario: Verify Clicking on the Remove Icon in the products tab NX-1023
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create single product from sheet "singleProductPage"
 Then delete product
 
@@ -114,6 +131,7 @@ Scenario: Create Product: Verify adding products with same price under segmented
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create new segmented product from sheet "productsSamePrice"
 Then create new segmented product from sheet "productsSamePrice"
 Then check if products with same price under segmented market
@@ -124,6 +142,7 @@ Scenario: Create Product: Verify adding products with same price under open mark
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create new product from sheet "productsSamePrice"
 Then create new product from sheet "productsSamePrice"
 Then check if products with same price under open market
@@ -132,6 +151,7 @@ Scenario: Create Product: Verify the product with Segmented scope NX-1055, NX-10
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create new segmented product from sheet "singleProductPage"
 
 @NX-1053
@@ -139,6 +159,7 @@ Scenario: Create Product: Verify the product with Open Market scope NX-1053
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create new product from sheet "singleProductPage"
 
 @NX-1026
@@ -146,6 +167,7 @@ Scenario: Products Grid: Verify View offers options for the products added NX-10
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create single product from sheet "singleProductPage"
 Then navigate to offer management
 Then navigate to offers
@@ -159,6 +181,7 @@ Scenario: Products Grid: Verify the duplicate option of the product added NX-102
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create single product from sheet "singleProductPage"
 Then check duplicate product functionality
 
@@ -167,7 +190,7 @@ Scenario: Products Grid: Verify the Edit option of the product added NX-1021
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
-#Then navigate to products
+Then navigate to products
 Then create single product from sheet "singleProductPage"
 Then check edit product functionality
 
@@ -216,6 +239,7 @@ Scenario: Create offer:Offers Display: Verify by expanding the offer row to know
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create single product from sheet "singleProductPage"
 Then navigate to offer management
 Then Navigate_to_Offers
@@ -227,6 +251,7 @@ Scenario: Create offer:Offers Display: Verify the offer details in the grid by e
 Given login
 Then navigate to precision marketing
 Then navigate to offer management
+Then navigate to products
 Then create single product from sheet "singleProductPage"
 Then navigate to offer management
 Then Navigate_to_Offers

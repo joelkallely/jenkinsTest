@@ -24,10 +24,10 @@ public class Offer_creation_steps extends browserInit
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Category')]"))).click().build().perform();
 		Thread.sleep(1000);
 		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'"+Category+"')]"))).click().build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Currency')]"))).click().build().perform();
-		Thread.sleep(1000);
-		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'"+Currency+"')]"))).click().build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Discount')]"))).click().sendKeys(Discount).build().perform();
+		//actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Currency')]"))).click().build().perform();
+		//Thread.sleep(1000);
+		//actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'"+Currency+"')]"))).click().build().perform();
+		//actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Discount')]"))).click().sendKeys(Discount).build().perform();
 		actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(.,'Proceed')]"))).click().build().perform();
 		Thread.sleep(2000);
 		
