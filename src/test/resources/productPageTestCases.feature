@@ -3,40 +3,44 @@
 #Feature: Product Page Features
 
 @NX-ProductTestSuite
-Feature: Product Page Feature File
+Feature: Product Page Feature Files
 	Product page test cases
-@NX-1046
-Scenario: Create Product: Verify the field validations for the benefit details NX-1046
-Given login
-Then navigate to precision marketing
-Then navigate to offer management
-Then navigate to products
-Then click create new product button
-Then enter product details from sheet "benefitFieldValidation-NX-1046"
-Then check field validations under the benefits grid
-@NX-1012
-Scenario: Products Grid: Verify scrolling functionality to view the product at the end of the screen NX-1012
-Given login
-Then navigate to precision marketing
-Then navigate to offer management
-Then navigate to products
-Then click create new product button
-Then create single product from sheet "singleProductPage"
-Then scrolling to view the entire product list
-@NX-1036
-Scenario: Create Product: Verify the field validations for the Basic informations NX-1036
-Given login
-Then navigate to precision marketing
-Then navigate to offer management
-Then navigate to products
-Then field validations for the Basic Information
+#@NX-1046
+#Scenario: Create Product: Verify the field validations for the benefit details NX-1046
+#Given login
+#Then navigate to precision marketing
+#Then navigate to offer management
+#Then navigate to products
+#Then click create new product button
+#Then enter product details from sheet "benefitFieldValidation-NX-1046"
+#Then check field validations under the benefits grid
+#@NX-1012
+#Scenario: Products Grid: Verify scrolling functionality to view the product at the end of the screen NX-1012
+#Given login
+#Then navigate to precision marketing
+#Then navigate to offer management
+#Then navigate to products
+#Then click create new product button
+#Then enter product details from sheet "fullDetails"
+#Then save product
+#Then scrolling to view "fullDetails" in the entire product list
+#@NX-1036
+#Scenario: Create Product: Verify the field validations for the Basic informations NX-1036
+#Given login
+#Then navigate to precision marketing
+#Then navigate to offer management
+#Then navigate to products
+#Then click create new product button
+#Then field validations for the Basic Information
 
-@NX-1038
-Scenario: Create Product: Verify saving the products by not adding the mandatory fields NX-1038
-Given login
-Then navigate to precision marketing
-Then navigate to offer management
-Then saving the products by not adding the mandatory fields
+#@NX-1038
+#Scenario: Create Product: Verify saving the products by not adding the mandatory fields NX-1038
+#Given login
+#Then navigate to precision marketing
+#Then navigate to offer management
+#Then navigate to products
+#Then click create new product button
+#Then saving the products by not adding the mandatory fields
 
 @NX-1045
 Scenario: Create Product: Verify adding more than 3 benefits NX-1045

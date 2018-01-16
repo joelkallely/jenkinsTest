@@ -12,17 +12,32 @@ public class LoginAndLogout extends browserInit
 	
 	ExcelHelper eh = new ExcelHelper();
 	
-	
+	@Given("^init browser$")
+    public void initBrowser() throws InterruptedException {
+		init();
+		driver.get("http://192.168.150.27");
+	}
 	@Given("^login$")
     public void loginuser() throws InterruptedException {
 		init();
 		 eh.setExcelFile("login","Sheet1");
 		 //driver.get("http://"+eh.getCell(1, 2)+"/#/login");
-		 driver.get("http://192.168.150.45");
+		 driver.get("http://192.168.150.27");
 		 Thread.sleep(2000);
     	 driver.findElement(By.xpath("//input[@type='email']")).sendKeys(eh.getCell(1, 0));
 		 driver.findElement(By.xpath("//input[@type='password']")).sendKeys(eh.getCell(1, 1));
 		 driver.findElement(By.id("loginButton")).click();				        
+    }
+	@Given("^login to legacy$")
+    public void loginLegacy() throws InterruptedException {
+		init();
+		 eh.setExcelFile("login","Sheet1");
+		 //driver.get("http://"+eh.getCell(1, 2)+"/#/login");
+		 driver.get("http://192.168.150.27:8098");
+		 Thread.sleep(2000);
+		 driver.findElement(By.xpath(".//*[@name='email']")).sendKeys("flyops@flytxt.com");
+			driver.findElement(By.xpath(".//*[@name='password']")).sendKeys("flytxt");
+			driver.findElement(By.xpath("//input[@value='Log In']")).click();			        
     }
 	@Given("^initialize$")
     public void initialize() throws InterruptedException {

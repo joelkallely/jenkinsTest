@@ -39,7 +39,8 @@ public class productPageSteps extends browserInit {
 	@Then("^click create new product button$")
     public void clickCreateNewProduct() throws AWTException, InterruptedException, IOException {
 		Thread.sleep(2000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
+		driver.findElement(By.xpath("//a[contains(.,'Create New')]")).click();
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Product')]"))).click();
 		Thread.sleep(2000);
 	}
 	@Then("^enter product details from sheet \"([^\"]*)\"$")
@@ -51,10 +52,14 @@ public class productPageSteps extends browserInit {
 		name =  name.replaceAll("[0-9]", "")+n;
 		name= n+name;
 		eh.setCell(1, 0, name);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input"))).sendKeys(eh.getCell(1, 0));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Name')]/..//input"))).sendKeys(eh.getCell(1, 0));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='textarea']"))).sendKeys(eh.getCell(1, 1));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[text()='Description']/..//input"))).sendKeys(eh.getCell(1, 1));
 		Thread.sleep(400);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[text()='Scope']/..//input"))).click();
+		Thread.sleep(400);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'Open')]"))).click();
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Category')]/..//input"))).click();
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 2)+"')]"))).click();
@@ -69,7 +74,7 @@ public class productPageSteps extends browserInit {
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Service Code')]/following::input[1]"))).sendKeys(eh.getCell(1, 6));
 		Thread.sleep(400);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Short Description')]/..//input"))).sendKeys(eh.getCell(1, 7));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Benefit Description')]/..//input"))).sendKeys(eh.getCell(1, 7));
 		Thread.sleep(400);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Usage Leg')]/..//input"))).click();
 		Thread.sleep(400);
@@ -353,10 +358,8 @@ public class productPageSteps extends browserInit {
 	}
 	@Then("^verify saving the product without adding benefits$")
     public void productWithoutBenefits() throws AWTException, InterruptedException {
-
 		
 		Thread.sleep(700);
-		
 		Thread.sleep(700);
 		driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Product Name')]/..//input")).sendKeys("enterDetails-Cancel");
 		Thread.sleep(700);
@@ -497,15 +500,6 @@ public class productPageSteps extends browserInit {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='form']//label[contains(.,'Value')]/..//input"))).sendKeys("223");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='form']/..//paper-button[contains(.,'Save')]"))).click();
-		Thread.sleep(200);
-		try{
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='toast']/span[contains(.,'Product saved successfully.')]"))).click();
-		}
-		catch(Exception e)
-		{
-			System.out.println("fail");
-			throw e;
-		}	
 	}
 	@Then("^field validations for the Basic Information$")
     public void basicFieldValidation() throws Exception {
@@ -574,9 +568,9 @@ public class productPageSteps extends browserInit {
 		}
 	}
 	//jgu
-	@Then("^scrolling to view the entire product list$")
-    public void scrollingInProductGrid() throws Exception {
-		eh.setExcelFile("inputData","singleProductPage");
+	@Then("^scrolling to view \"([^\"]*)\" in the entire product list$")
+    public void scrollingInProductGrid(String sheet) throws Exception {
+		eh.setExcelFile("productInputData",sheet);
 		//
 		Thread.sleep(2000);
 		Actions clickAction = new Actions(driver);
