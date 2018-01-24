@@ -3,8 +3,10 @@ import org.junit.runner.RunWith;
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
 
 @RunWith(ExtendedCucumber.class)
+//@RunWith(Cucumber.class)
 @ExtendedCucumberOptions
 	   (jsonReport = "target/81/cucumber.json",
         jsonUsageReport = "target/81/cucumber-usage.json",
@@ -19,7 +21,7 @@ import cucumber.api.CucumberOptions;
         retryCount = 1)
 @CucumberOptions(
         //features = { "src/test/resources" },
-        tags = { "@NX-1012" },//@NX-ProductTestSuite,@tagOfferCatalog,@madhan_test_suite_on_OfferCreation,@tagOfferCatalog,@NX-bcCreationSuite
+        tags = { "@IM-Feature" },//@NX-ProductTestSuite,@tagOfferCatalog,@madhan_test_suite_on_OfferCreation,@tagOfferCatalog,@NX-bcCreationSuite
         plugin = {
         "html:target/81", "json:target/81/cucumber.json",
         "pretty:target/81/cucumber-pretty.txt",

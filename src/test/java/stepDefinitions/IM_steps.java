@@ -2,6 +2,9 @@ package stepDefinitions;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import pageObjects.TouchpointPageObjects;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -19,12 +22,12 @@ import baseClasses.ExcelHelper;
 import baseClasses.browserInit;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.openqa.selenium.support.PageFactory;
 
 public class IM_steps extends browserInit {
 	public ExcelHelper eM = new ExcelHelper(); 
-
 	public WebDriverWait wait = new WebDriverWait(driver, 8);
-
+	TouchpointPageObjects tpObjects = new TouchpointPageObjects();
 	@Then("^navigate to intercative marketing$")
 	public void navigateInteractiveMarketing() throws Throwable{
 		loadClick("//span[text()='Interactive Marketing']");	
@@ -355,7 +358,7 @@ Thread.sleep(2000);
 	@Then("^click create program button$")
 	public void proceedButtonPrograms() throws Throwable{
 		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create Program')]"))).click();
+		tpObjects.clickCreateProgramButton();
 		Thread.sleep(1500);
 	}
 	@Then("^click confirm button$")
@@ -479,13 +482,13 @@ Thread.sleep(2000);
 		String name =(String) eM.getCell(1, 0);
 		name =  name.replaceAll("[0-9]", "")+n;
 		eM.setCell(1, 0, name);
-		TouchpointPageObjects.shortCode_select(driver, "2255");
+		tpObjects.selectShortCode("2255");
 		Thread.sleep(1000);
-		TouchpointPageObjects.keyword_input(driver, name);
+		tpObjects.enter_keyword_input(name);
 		Thread.sleep(1000);
-		TouchpointPageObjects.orderingLogic_select(driver,"Rule-based");
+		tpObjects.select_sms_ordering_logic("Rule-based");
 		Thread.sleep(1000);
-		TouchpointPageObjects.orderingRule_select(driver, "FIFO");
+		tpObjects.select_sms_ordering_rule("FIFO");
 		Thread.sleep(1000);
 		TouchpointPageObjects.refreshEvery_input(driver, "1");
 		Thread.sleep(1000);
@@ -673,84 +676,5 @@ Thread.sleep(2000);
 		Thread.sleep(1500);
 	}
 	
-	@Then("^get page source$")
-	public void getPageSource() throws Throwable{ 
-		
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='topBar']/paper-button[contains(.,'Proceed')]"))).click();
-		Thread.sleep(3000);
-		String code= driver.getPageSource();
-		int bodyIndex = 0;
-		int end = 0;
-		bodyIndex = code.indexOf("<body");
-		end = code.length();
-//		end = code.indexOf("</body");
-		System.out.println("value of bodyIndex : "+ bodyIndex);
-		System.out.println("value of end : "+ end);
-		code = code.substring(bodyIndex, end);
-		end  = code.length();
-		int i =1;
-		int j =0;
-		String label = "";
-		///////////////////////////////////////////////////////////////////////////////////////////////////
-		for(;i!=0;) {
-			//find i
-			String patternStr = ">[a-zA-Z]+";
-//			System.out.println(patternStr);
-		    Pattern pattern = Pattern.compile(patternStr);
-		    Matcher matcher = pattern.matcher(code);
-		    if(matcher.find()){
-		    
-		    i = matcher.start();//this will give index of error
-		    
-		    }
-		    else
-		    	break;
-		    code = code.substring(i, end);
-		    end = code.length();
-		    //find j
-		    String patternStr1 = "<";
-//		    String patternStr1 = "</div";
-//			System.out.println(i);
-		    Pattern pattern1 = Pattern.compile(patternStr1);
-		    Matcher matcher1 = pattern1.matcher(code);
-		    if(matcher1.find()){
 
-		    j = matcher1.start();//this will give index of error
-		    }
-//		    System.out.println(j);
-		    label += ",  "+code.substring(0, j);
-//		    System.out.println(label);
-		    code = code.substring(j, end);
-		    end = code.length();
-		    
-		}
-		System.out.println(label);
-		
-////		System.out.println(code);
-//		
-//		
-//	    String slav1e = code.substring(i, i+500);
-//	    System.out.println(slav1e);
-//	    
-//	    slav1e = code.substring(0, 10);
-//	    System.out.println(slav1e);
-//	    
-//	    slav1e = code.substring(end-10, end-1);
-//	    System.out.println(slav1e);
-//	    
-//	    System.out.println("value of i : "+ i);
-//	    
-//	    
-//
-//	    
-//	    slav1e = code.substring(0, j);
-//	    System.out.println(slav1e);
-	    
-//		System.out.println(i);
-//		j = code.indexOf("");
-//		System.out.println(j);
-//		String slave = code.substring(i, j);
-//		System.out.println(slave);
-	}
 }
