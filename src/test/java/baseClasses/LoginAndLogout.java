@@ -15,14 +15,14 @@ public class LoginAndLogout extends browserInit
 	@Given("^init browser$")
     public void initBrowser() throws InterruptedException {
 		init();
-		driver.get("http://192.168.150.27");
+		driver.get("http://192.168.150.208");
 	}
 	@Given("^login$")
     public void loginuser() throws InterruptedException {
 		init();
 		 eh.setExcelFile("login","Sheet1");
 		 //driver.get("http://"+eh.getCell(1, 2)+"/#/login");
-		 driver.get("http://192.168.150.27");
+		 driver.get("http://192.168.150.208");
 		 Thread.sleep(2000);
     	 driver.findElement(By.xpath("//input[@type='email']")).sendKeys(eh.getCell(1, 0));
 		 driver.findElement(By.xpath("//input[@type='password']")).sendKeys(eh.getCell(1, 1));

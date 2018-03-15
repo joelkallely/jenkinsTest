@@ -37,7 +37,7 @@ public class Offer_creation extends browserInit
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Offer')]"))).click();
 		Thread.sleep(2000);
 		ExcelHelper prodcutFile = new ExcelHelper();
-		prodcutFile.setExcelFile("productInputData","fullDetails");
+		prodcutFile.setExcelFile("productInputData","singleProductPage");
 		eh.setExcelFile("offerInputData",sheet);
 		Random rn = new Random();
 		int  n = rn.nextInt(5000) + 1;
@@ -58,6 +58,8 @@ public class Offer_creation extends browserInit
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Category')]"))).click().build().perform();
 		Thread.sleep(1000);
 		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click().build().perform();
+		Thread.sleep(2000);
+		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'sub-category')]"))).click().sendKeys("category").build().perform();
 //		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Currency')]"))).click().build().perform();
 //		Thread.sleep(1000);
 //		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'INR')]"))).click().build().perform();

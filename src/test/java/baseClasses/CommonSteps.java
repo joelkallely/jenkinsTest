@@ -13,7 +13,7 @@ public class CommonSteps extends browserInit
 	WebDriverWait wait = new WebDriverWait(driver, 5);
 	@Then("^go to legacy ui$")
 	public void gotoLegacy() throws Throwable{
-		driver.get("http://192.168.150.51:8098");	
+		driver.get("http://192.168.150.208:8098");	
 	}
 	@Then("^navigate to landing page$")
 	public void naviagte_to_landing_page() throws Exception
