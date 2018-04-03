@@ -21,15 +21,17 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import baseClasses.ExcelHelper;
-import baseClasses.browserInit;
+import baseClasses.Init;
+import baseClasses.JSWaiter;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
-public class RegistrationList extends browserInit{
+public class RegistrationList extends Init{
 	public int profileListUploaded = 0;
 	public WebDriverWait wait = new WebDriverWait(driver, 8);
 	ExcelHelper eh = new ExcelHelper();
 	ExcelHelper list = new ExcelHelper();
+	JSWaiter jswait = new JSWaiter();
 	String msisdn = "";
 	BufferedWriter bw = null;
 	FileWriter fw = null;
@@ -128,116 +130,116 @@ public class RegistrationList extends browserInit{
     }
 	public void add_profile_field() throws InterruptedException
 	{		
-	loadClick("//paper-button[contains(.,'Create New Profile Field')]");
-	loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Country_q11");
+	jswait.loadClick("//paper-button[contains(.,'Create New Profile Field')]");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Country_q11");
 	
-	loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
-	loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
-	loadClick("//paper-item[contains(.,'Normal')]");
-	loadClick("//create-profile//label[text()='Type']/../input");
-	loadClick("//create-profile//paper-item[text()='Single Select']");
-	loadSendKeys("//h4[text()='Options']/../div[1]//input",country[0]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[2]//input",country[1]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[3]//input",country[2]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[4]//input",country[3]);
-	loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
+	jswait.loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
+	jswait.loadClick("//paper-item[contains(.,'Normal')]");
+	jswait.loadClick("//create-profile//label[text()='Type']/../input");
+	jswait.loadClick("//create-profile//paper-item[text()='Single Select']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[1]//input",country[0]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[2]//input",country[1]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[3]//input",country[2]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[4]//input",country[3]);
+	jswait.loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
 	
-	loadClick("//paper-button[contains(.,'Create New Profile Field')]");
-	loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Languages_q11");
-	loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
-	loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
-	loadClick("//paper-item[contains(.,'Normal')]");
-	loadClick("//create-profile//label[text()='Type']/../input");
-	loadClick("//create-profile//paper-item[text()='Multi Select']");
-	loadSendKeys("//h4[text()='Options']/../div[1]//input",languages[0]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[2]//input",languages[1]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[3]//input",languages[2]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[4]//input",languages[3]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[5]//input",Secondlanguages[0]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[6]//input",Secondlanguages[1]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[7]//input",Secondlanguages[2]);
-	loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
-	loadSendKeys("//h4[text()='Options']/../div[8]//input",Secondlanguages[3]);
-	loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
+	jswait.loadClick("//paper-button[contains(.,'Create New Profile Field')]");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Languages_q11");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
+	jswait.loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
+	jswait.loadClick("//paper-item[contains(.,'Normal')]");
+	jswait.loadClick("//create-profile//label[text()='Type']/../input");
+	jswait.loadClick("//create-profile//paper-item[text()='Multi Select']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[1]//input",languages[0]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[2]//input",languages[1]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[3]//input",languages[2]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[4]//input",languages[3]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[5]//input",Secondlanguages[0]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[6]//input",Secondlanguages[1]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[7]//input",Secondlanguages[2]);
+	jswait.loadClick("//h4[text()='Options']/../..//paper-icon-button[@icon='icons:add']");
+	jswait.loadSendKeys("//h4[text()='Options']/../div[8]//input",Secondlanguages[3]);
+	jswait.loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
 	
-	loadClick("//paper-button[contains(.,'Create New Profile Field')]");
-	loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","First Name_q11");
-	loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
-	loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
-	loadClick("//paper-item[contains(.,'Normal')]");
-	loadClick("//create-profile//label[text()='Type']/../input");
-	loadClick("//create-profile//paper-item[text()='Text']");
-	loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
+	jswait.loadClick("//paper-button[contains(.,'Create New Profile Field')]");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","First Name_q11");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
+	jswait.loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
+	jswait.loadClick("//paper-item[contains(.,'Normal')]");
+	jswait.loadClick("//create-profile//label[text()='Type']/../input");
+	jswait.loadClick("//create-profile//paper-item[text()='Text']");
+	jswait.loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
 	
-	loadClick("//paper-button[contains(.,'Create New Profile Field')]");
-	loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Last Name_q11");
-	loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
-	loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
-	loadClick("//paper-item[contains(.,'Normal')]");
-	loadClick("//create-profile//label[text()='Type']/../input");
-	loadClick("//create-profile//paper-item[text()='Text']");
-	loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
+	jswait.loadClick("//paper-button[contains(.,'Create New Profile Field')]");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Last Name_q11");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
+	jswait.loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
+	jswait.loadClick("//paper-item[contains(.,'Normal')]");
+	jswait.loadClick("//create-profile//label[text()='Type']/../input");
+	jswait.loadClick("//create-profile//paper-item[text()='Text']");
+	jswait.loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
 	
-	loadClick("//paper-button[contains(.,'Create New Profile Field')]");
-	loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Email_q11");
-	loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
-	loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
-	loadClick("//paper-item[contains(.,'Normal')]");
-	loadClick("//create-profile//label[text()='Type']/../input");
-	loadClick("//create-profile//paper-item[text()='Text']");
-	loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
+	jswait.loadClick("//paper-button[contains(.,'Create New Profile Field')]");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Email_q11");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
+	jswait.loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
+	jswait.loadClick("//paper-item[contains(.,'Normal')]");
+	jswait.loadClick("//create-profile//label[text()='Type']/../input");
+	jswait.loadClick("//create-profile//paper-item[text()='Text']");
+	jswait.loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
 	
-	loadClick("//paper-button[contains(.,'Create New Profile Field')]");
-	loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Balance_q11");
-	loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
-	loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
-	loadClick("//paper-item[contains(.,'Normal')]");
-	loadClick("//create-profile//label[text()='Type']/../input");
-	loadClick("//create-profile//paper-item[text()='Number']");
-	loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
+	jswait.loadClick("//paper-button[contains(.,'Create New Profile Field')]");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Balance_q11");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
+	jswait.loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
+	jswait.loadClick("//paper-item[contains(.,'Normal')]");
+	jswait.loadClick("//create-profile//label[text()='Type']/../input");
+	jswait.loadClick("//create-profile//paper-item[text()='Number']");
+	jswait.loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
 	
-	loadClick("//paper-button[contains(.,'Create New Profile Field')]");
-	loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Boolean_q11");
-	loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
-	loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
-	loadClick("//paper-item[contains(.,'Normal')]");
-	loadClick("//create-profile//label[text()='Type']/../input");
-	loadClick("//create-profile//paper-item[text()='Yes or No']");
-	loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
+	jswait.loadClick("//paper-button[contains(.,'Create New Profile Field')]");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Boolean_q11");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
+	jswait.loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
+	jswait.loadClick("//paper-item[contains(.,'Normal')]");
+	jswait.loadClick("//create-profile//label[text()='Type']/../input");
+	jswait.loadClick("//create-profile//paper-item[text()='Yes or No']");
+	jswait.loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");
 	
-	loadClick("//paper-button[contains(.,'Create New Profile Field')]");
-	loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Age_q11");
-	loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
-	loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
-	loadClick("//paper-item[contains(.,'Normal')]");
-	loadClick("//create-profile//label[text()='Type']/../input");
-	loadClick("//create-profile//paper-item[text()='Number']");
-	loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");	
+	jswait.loadClick("//paper-button[contains(.,'Create New Profile Field')]");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Name')]/../input","Age_q11");
+	jswait.loadSendKeys("//create-profile//label[contains(.,'Description')]/..//textarea","q11");
+	jswait.loadClick("//create-profile//label[contains(.,'Context Type')]/../input");
+	jswait.loadClick("//paper-item[contains(.,'Normal')]");
+	jswait.loadClick("//create-profile//label[text()='Type']/../input");
+	jswait.loadClick("//create-profile//paper-item[text()='Number']");
+	jswait.loadClick(".//*[@id='createNew']//paper-button[contains(.,'Save')]");	
 	}
 	public void delete_profile_field() throws InterruptedException
 	{
-		loadClick("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../..");
-		loadClick("//paper-item[contains(.,'Delete')]");
-		loadClick("//paper-button[contains(.,'Yes')]");
+		jswait.loadClick("//*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../..");
+		jswait.loadClick("//paper-item[contains(.,'Delete')]");
+		jswait.loadClick("//paper-button[contains(.,'Yes')]");
 	
 	}
 	
 	@Then("^check and add profile fields$")
     public void addProfileFields() throws IOException, InterruptedException{
-		loadClick("//div[text()='Data Foundation']/../../a");
-		loadClick("//a/div//div[contains(.,'Profile Fields')]/../..");
-		loadClick("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..");
-		loadSendKeys("//form/paper-input[1]/paper-input-container/div[2]/div/input","_q11");
-		loadClick("//paper-button[contains(text(),'Apply')]");
+		jswait.loadClick("//div[text()='Data Foundation']/../../a");
+		jswait.loadClick("//a/div//div[contains(.,'Profile Fields')]/../..");
+		jswait.loadClick("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..");
+		jswait.loadSendKeys("//form/paper-input[1]/paper-input-container/div[2]/div/input","_q11");
+		jswait.loadClick("//paper-button[contains(text(),'Apply')]");
 		Thread.sleep(3000);
 		try{
 		 if(driver. findElement(By.xpath("//*[@id='item1']//span[contains(.,'_q11')]")).isDisplayed()){
@@ -261,48 +263,48 @@ public class RegistrationList extends browserInit{
 //		String[] temp = filename.split(".");
 		String listname = (String) list.getCell(1, 2);
 		System.out.println(listname);
-		driver.get("http://node2.qaenv06.flytxt.com:31867");
+		driver.get("http://192.168.150.27:8098");
 		driver.findElement(By.xpath(".//*[@name='email']")).sendKeys("flyops@flytxt.com");
 		driver.findElement(By.xpath(".//*[@name='password']")).sendKeys("flytxt");
 		driver.findElement(By.xpath("//input[@value='Log In']")).click();
 		if(profileListUploaded==1){
 		  Thread.sleep(3000);
-		  loadClick("//span[text()='Support Tools']");
+		  jswait.loadClick("//span[text()='Support Tools']");
 		  Thread.sleep(4000);
-		  loadClick("//span[text()='Cache Manager']");
+		  jswait.loadClick("//span[text()='Cache Manager']");
 		  Thread.sleep(3000);
-		  loadClick("//*[@id='bpOffRadio']");
+		  jswait.loadClick("//*[@id='bpOffRadio']");
 		  Thread.sleep(5000);
-		  loadClick("//button[text()='Flush']");
+		  jswait.loadClick("//button[text()='Flush']");
 		  Thread.sleep(10000);
 //		  Actions action1= new Actions(driver);
 //		  action1.moveToElement(driver.findElement(By.xpath("//button[text()='OK']"))).click().build().perform();
-		  loadClick(".//*[@id='ext-gen21']");
+		  jswait.loadClick(".//*[@id='ext-gen21']");
 		  Thread.sleep(10000);
 		}
-		loadClick("//span[text()='Mobile Marketing DB']");
+		jswait.loadClick("//span[text()='Mobile Marketing DB']");
 		Thread.sleep(3000);
-		loadClick("//span[text()='Registration Lists']");
+		jswait.loadClick("//span[text()='Registration Lists']");
 		Thread.sleep(3000);
-		loadClick("//button[contains(.,'New List')]");
+		jswait.loadClick("//button[contains(.,'New List')]");
 		Thread.sleep(3000);
-		loadClick("//span[contains(.,'Create Registration List')]");
+		jswait.loadClick("//span[contains(.,'Create Registration List')]");
 		Thread.sleep(3000);
-		loadSendKeys(".//*[@id='registrationListName']",listname);
-		loadSendKeys(".//*[@id='description']","flytxt");
-		loadClick(".//*[@id='registrationListTypeId']");
-		loadClick("//div[contains(@class,'x-combo-list-item') and text()='Standard']");
-		loadClick(".//*[@id='moveAllLeft']");
+		jswait.loadSendKeys(".//*[@id='registrationListName']",listname);
+		jswait.loadSendKeys(".//*[@id='description']","flytxt");
+		jswait.loadClick(".//*[@id='registrationListTypeId']");
+		jswait.loadClick("//div[contains(@class,'x-combo-list-item') and text()='Standard']");
+		jswait.loadClick(".//*[@id='moveAllLeft']");
 		Thread.sleep(3000);
-		loadClick("//button[text()='Save and Import Data']");
+		jswait.loadClick("//button[text()='Save and Import Data']");
 		
 		//waitUntil("//label[text()='File Structure:']");
 		Thread.sleep(15000);
 		
 		driver.findElement(By.xpath(".//*[@id='theFile-file']")).sendKeys((String) list.getCell(1, 1));
-		loadClick("//button[text()='Get File']");
+		jswait.loadClick("//button[text()='Get File']");
 		Thread.sleep(3000);
-		loadClick("//span[text()='2. Map and Transform']");
+		jswait.loadClick("//span[text()='2. Map and Transform']");
 		
 		//waitUntil(".//*[@id='recurJobMapAndTransformPage']");
 		Thread.sleep(10000);
@@ -427,7 +429,7 @@ public class RegistrationList extends browserInit{
 		
 		action.moveToElement(driver.findElement(By.xpath("//span[text()='Filters']/.."))).build().perform();
 		Thread.sleep(3000);
-		loadSendKeys(".//*[@name='data_job_name_filter']",listname);
+		jswait.loadSendKeys(".//*[@name='data_job_name_filter']",listname);
 		Thread.sleep(7000);
 		driver.findElement(By.xpath(".//button[contains(.,'Refresh Now')]")).click();
 		String status = driver.findElement(By.xpath("//label[contains(.,'"+listname+"')]/../../../td[1]//label")).getText();
@@ -474,10 +476,10 @@ public class RegistrationList extends browserInit{
 	        String[] rowData = line.split(cvsSplitBy);
             
 
-		loadClick("//label[contains(.,'Reports')]/..");
-		loadClick("//div[contains(text(),'Customer Profile')]/..");
-		loadSendKeys("//label[contains(text(),'Customer Number')]/../input",rowData[0]);
-		loadClick("//paper-button[contains(text(),'Search')]");
+		jswait.loadClick("//label[contains(.,'Reports')]/..");
+		jswait.loadClick("//div[contains(text(),'Customer Profile')]/..");
+		jswait.loadSendKeys("//label[contains(text(),'Customer Number')]/../input",rowData[0]);
+		jswait.loadClick("//paper-button[contains(text(),'Search')]");
 		try{
 			driver.findElement(By.xpath("//h3[contains(@class,'consumer-profile') and contains(text(),'"+rowData[0]+"')]"));
 			driver.findElement(By.xpath("//span[contains(.,'Age_q11')]/../../data-table-cell[2]//span[contains(.,'Number')]/../../data-table-cell[3]//span[contains(.,'"+rowData[9]+"')]"));

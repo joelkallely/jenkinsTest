@@ -23,8 +23,6 @@ String file = "";
 	
     public void setExcelFile(String filename, String sheet)
     {
-    
-
 		try {
 			workbook = new HSSFWorkbook(new FileInputStream(new File("ExcelFiles\\"+filename+".xls")));
 			file = "ExcelFiles\\"+filename+".xls";
