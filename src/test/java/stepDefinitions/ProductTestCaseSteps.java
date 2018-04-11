@@ -29,12 +29,14 @@ import baseClasses.Init;
 import baseClasses.JSWaiter;
 import cucumber.api.java.en.Then;
 import pageObjetcs.CommonObjects;
+import pageObjetcs.OfferPageObjects;
 import pageObjetcs.ProductPage;
 
 public class ProductTestCaseSteps extends Init{
 	JSWaiter jswait = new JSWaiter();
 	CommonObjects commonObjects = new CommonObjects();
 	ProductPage productPage = new ProductPage();
+	OfferPageObjects offerPageObjects = new OfferPageObjects();
 	WebDriverWait wait = new WebDriverWait(driver, 5);
 	public ExcelHelper eh = new ExcelHelper();	
 	@Then("^click create new product button$")
@@ -547,8 +549,13 @@ public class ProductTestCaseSteps extends Init{
 		commonObjects.filterName(script);
 		Exception e = new Exception("data displayed after script");
 		Thread.sleep(3000);
-		if(driver.findElement(By.xpath(".//*[@id='item1']/div[1]/data-table-cell[1]/span")).isDisplayed())
+		try{
+			driver.findElement(By.xpath(".//*[@id='item1']/div[1]/data-table-cell[1]/span")).isDisplayed();
 			throw e;
+		}catch(Exception e1) {
+			
+		}
+			
 	}
 	@Then("^veirfy help icon of products$")
 	   public void verifyHelpOfProducts() throws Throwable
@@ -812,5 +819,47 @@ public class ProductTestCaseSteps extends Init{
 		commonObjects.clickOptionsIcon();
 		productPage.clickDeactivateButton();
 	}
-	
+	@Then("^activate product from sheet \"([^\"]*)\"$")
+	public void activateProduct(String sheet) throws Throwable {
+		eh.setExcelFile("productInputData",sheet);
+		String name = (String) eh.getCell(1, 0);
+		commonObjects.filterName(name);
+		commonObjects.clickOptionsIcon();
+		productPage.clickActivateButton();
+	}
+	@Then("^verify deactivated product from sheet \"([^\"]*)\" in offer creation$")
+	public void verifyDeactivatedProductInOffers(String sheet) throws Throwable {
+		eh.setExcelFile("productInputData",sheet);
+		String name = (String) eh.getCell(1, 0);
+		offerPageObjects.clickCreateNewOfferButton();
+		offerPageObjects.enterDetailsTabFields("rechargeWAP");
+		offerPageObjects.clickProceedButton();
+		try {
+			offerPageObjects.enterProductTabFields(sheet);
+			Assert.assertTrue(false,"Product Avaliable even after deactivation");
+		}catch(Exception e) {
+			
+		}
+	}
+	@Then("^verify activated product from sheet \"([^\"]*)\" in offer creation$")
+	public void verifyActivatedProductInOffers(String sheet) throws Throwable {
+		eh.setExcelFile("productInputData",sheet);
+		String name = (String) eh.getCell(1, 0);
+		offerPageObjects.clickCreateNewOfferButton();
+		offerPageObjects.enterDetailsTabFields("rechargeWAP");
+		offerPageObjects.clickProceedButton();
+		offerPageObjects.enterProductTabFields(sheet);
+	}
+	@Then("^check product details in offer grid$")
+	public void checkNoAttributesProductInOfferGrid() throws Throwable {
+		eh.setExcelFile("offerInputData","rechargeWAP");
+		String name = (String) eh.getCell(1, 0);
+		commonObjects.filterName(name);
+		jswait.loadClick("//data-table-cell[contains(.,'"+name+"')]");
+		eh.setExcelFile("productInputData","fullDetails");
+		String productName = (String) eh.getCell(1, 0);
+		jswait.waitUntil("//label[contains(.,'"+productName+"')]");
+		jswait.waitUntil("//label[contains(.,'NO ATTRIBUTES HERE')]");
+		jswait.waitUntil("//label[contains(.,'SelClass')]");
+	}
 }

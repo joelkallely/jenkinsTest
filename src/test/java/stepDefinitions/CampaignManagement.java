@@ -11,11 +11,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import baseClasses.ExcelHelper;
 import baseClasses.Init;
 import baseClasses.JSWaiter;
 import baseClasses.TimePicker;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import pageObjetcs.CampaignObjects;
 import pageObjetcs.CommonObjects;
@@ -31,6 +33,7 @@ public class CampaignManagement extends Init{
 	public CampaignManagement() {
 		PageFactory.initElements(driver, this);
 	}
+
 	 @Then("^create new campaign from sheet \"([^\"]*)\"$")
 	    public void create_new_campaign(String sheet) throws Throwable
 	    {
@@ -92,9 +95,7 @@ public class CampaignManagement extends Init{
 	    @Then("^navigate to \"([^\"]*)\" category$")
 	    public void navigate_to_category(String category) throws Throwable
 	    {
-	    	Thread.sleep(2000);
-	    	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[text()='"+category+"']"))).click();
-	    	 Thread.sleep(4000);
+	    	jswait.scrollAndClick("//iron-scroll-threshold", "//div[text()='"+category+"']");
 	    }
 	    @Then("^naigate to \"([^\"]*)\" campaign view broadcasts$")
 	    public void navigateToCampaign(String sheet) throws Throwable
@@ -103,7 +104,7 @@ public class CampaignManagement extends Init{
 	    	String name = eM.getCell(1, 0).toString();
 	    	commonObjects.filterName(name);
 	    	
-//	    	Thread.sleep(30000);//NX-8537 bug wait
+	    	Thread.sleep(30000);//NX-8537 bug wait
 	    	
 	    	jswait.loadClick(".//vaadin-grid-cell-content[contains(.,'"+name+"')]//following::*[@d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z']/../../..");
 			campaignObjects.clickOptionsViewBroadcasts();
@@ -112,5 +113,107 @@ public class CampaignManagement extends Init{
 	    public void create_new_broadcast_button() throws Throwable
 	    {
 	    	campaignObjects.clickCreateNewBroadcastButton();
+	    }
+	    @Then("^navigate to campaign categories$")
+	    public void navigateToCampaignCategory() throws Throwable
+	    {
+	    	campaignObjects.navigateToCampaignCategories();
+	    }
+	    @Then("^create new campaign category from sheet \"([^\"]*)\"$")
+	    public void create_new_campaign_category_from_sheet(String sheet) throws Throwable {
+	    	eM.setExcelFile("campaignCategoryInputData",sheet);
+	    	Random rn = new Random();
+	 		int  n = rn.nextInt(5000) + 1;
+	 		String name = (String) eM.getCell(1, 0);
+	 		name =  name.replaceAll("[0-9]", "")+n;
+	 		eM.setCell(1, 0, name);
+	 		campaignObjects.createNewCampaignCategory(name);
+	    }
+	    @Then("^navigate to campaign category from sheet \"([^\"]*)\"$")
+	    public void navigate_to_campaign_category_from_sheet(String sheet) throws Throwable {
+	    	eM.setExcelFile("campaignCategoryInputData",sheet);
+	    	String name = (String) eM.getCell(1, 0);
+	    	jswait.scrollAndClick("//iron-scroll-threshold", "//div[text()='"+name+"']");
+	    }
+	    @Then("^create new campaign category without adding name$")
+	    public void createCampaignCategoryWithoutName() throws Throwable {
+	    	campaignObjects.createNewCampaignCategory("");
+	    	campaignObjects.enterCategoryName("new");
+	    }
+	    @Then("^verify campaign count from sheet \"([^\"]*)\"$")
+	    public void verifyCampaignCount(String sheet) throws Throwable {
+	    	eM.setExcelFile("campaignCategoryInputData",sheet);
+	    	String name = (String) eM.getCell(1, 0);
+	    	jswait.scrollIntoView("//iron-scroll-threshold", "//div[text()='"+name+"']");
+	    	String campCount = driver.findElement(By.xpath("//div[text()='"+name+"']/../../../..//span[contains(.,'Campaigns')]/../../span")).getText();
+	    	Assert.assertTrue(campCount.contentEquals("0"), "Invalid count displayed(0)");
+	    	jswait.scrollAndClick("//iron-scroll-threshold", "//div[text()='"+name+"']");
+	    	create_new_campaign("campaignBC");
+	    	campaignObjects.navigateToLIfeCycleMarketing();
+	    	jswait.scrollIntoView("//iron-scroll-threshold", "//div[text()='"+name+"']");
+	    	campCount = driver.findElement(By.xpath("//div[text()='"+name+"']/../../../..//span[contains(.,'Campaigns')]/../../span")).getText();
+	    	Assert.assertTrue(campCount.contentEquals("1"), "Invalid count displayed(1)");
+	    }
+	    @Then("^verify campaign template count from sheet \"([^\"]*)\"$")
+	    public void verifyCampaignTemplateCount(String sheet) throws Throwable {
+	    	eM.setExcelFile("campaignCategoryInputData",sheet);
+	    	String name = (String) eM.getCell(1, 0);
+	    	jswait.scrollIntoView("//iron-scroll-threshold", "//div[text()='"+name+"']");
+	    	String campCount = driver.findElement(By.xpath("//div[text()='"+name+"']/../../../..//span[contains(.,'Templates')]/../../span")).getText();
+	    	Assert.assertTrue(campCount.contentEquals("0"), "Invalid count displayed(0)");
+	    	jswait.scrollAndClick("//iron-scroll-threshold", "//div[text()='"+name+"']");
+	    	campaignObjects.createCampaignTemplate(name+"template");
+	    	campaignObjects.navigateToLIfeCycleMarketing();
+	    	jswait.scrollIntoView("//iron-scroll-threshold", "//div[text()='"+name+"']");
+	    	campCount = driver.findElement(By.xpath("//div[text()='"+name+"']/../../../..//span[contains(.,'Templates')]/../../span")).getText();
+	    	Assert.assertTrue(campCount.contentEquals("1"), "Invalid count displayed(1)");
+	    }
+	    @Then("^verify options of category$")
+	    public void verifyOptionsOfCategory() throws Throwable {
+	    	commonObjects.clickOptionsIcon();
+	    }
+	    @Then("^edit campaign category from sheet \"([^\"]*)\"$")
+	    public void editCampaign_category_from_sheet(String sheet) throws Throwable {
+	    	eM.setExcelFile("campaignCategoryInputData",sheet);
+	 		String name = (String) eM.getCell(1, 0);
+	 		commonObjects.filterName(name);
+	 		commonObjects.clickOptionsIcon();
+	 		commonObjects.clickEditOption();
+	 		campaignObjects.enterCategoryName(name+"edit");
+	 		campaignObjects.clickCreateCategorySaveButton();
+	 		commonObjects.filterName(name+"edit");
+	 		commonObjects.clickOptionsIcon();
+	    }
+	    @Then("^delete campaign category from sheet \"([^\"]*)\"$")
+	    public void deleteCampaign_category_from_sheet(String sheet) throws Throwable {
+	    	eM.setExcelFile("campaignCategoryInputData",sheet);
+	 		String name = (String) eM.getCell(1, 0);
+	 		commonObjects.filterName(name);
+	 		commonObjects.clickOptionsIcon();
+	 		commonObjects.clickDeleteOption();
+	 		commonObjects.filterName(name);
+	 		try {
+	 			commonObjects.clickOptionsIcon();
+	 			Assert.assertTrue(false, "Campaign Category not deleted");
+	 		}catch(Exception e)
+	 		{
+	 			
+	 		}
+	    }
+	    @Then("^check delete campaign category with linked campaigns from sheet \"([^\"]*)\"$")
+	    public void deleteCampaign_categoryWithCampaigns_from_sheet(String sheet) throws Throwable {
+	    	eM.setExcelFile("campaignCategoryInputData",sheet);
+	 		String name = (String) eM.getCell(1, 0);
+	 		commonObjects.filterName(name);
+	 		commonObjects.clickOptionsIcon();
+	 		commonObjects.clickDeleteOption();
+	 		commonObjects.filterName(name);
+	 		try {
+	 			commonObjects.clickOptionsIcon();
+	 			
+	 		}catch(Exception e)
+	 		{
+	 			Assert.assertTrue(false, "Campaign Category with linked campaigns deleted");
+	 		}
 	    }
 }

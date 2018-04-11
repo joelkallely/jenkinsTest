@@ -1,3 +1,4 @@
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,6 +23,7 @@ import pageObjetcs.CommonObjects;
 import pageObjetcs.CustomerProfilePage;
 import pageObjetcs.LandingPageObjects;
 import pageObjetcs.LoginPageObjects;
+import pageObjetcs.RegistrationListPage;
 
 public class CommonSteps extends Init {
 	JSWaiter jswait = new JSWaiter();
@@ -29,6 +31,7 @@ public class CommonSteps extends Init {
 	LandingPageObjects landingPage = new LandingPageObjects();
 	CustomerProfilePage customerProfilePage = new CustomerProfilePage();
 	CommonObjects commonObjetcs = new CommonObjects();
+	RegistrationListPage registrationListPage = new RegistrationListPage();
 	
 	public CommonSteps() {
 		PageFactory.initElements(driver, this);
@@ -76,6 +79,14 @@ public class CommonSteps extends Init {
 	@Then("^navigate to intent management")
 	public void navigateToIntentManagement() throws InterruptedException {
 		landingPage.navigateToIntentManagement();
+	}
+	@Then("^navigate to data foundation")
+	public void navigateToDataFoundation() throws InterruptedException {
+		landingPage.navigateToDataFoundation();
+	}
+	@Then("^navigate to registration list")
+	public void navigateToRegistrationList() throws InterruptedException {
+		registrationListPage.navigateToRegistrationList();
 	}
 	@Then("^navigate to configuration management")
 	public void navigateToConfiurationManagement() throws InterruptedException {

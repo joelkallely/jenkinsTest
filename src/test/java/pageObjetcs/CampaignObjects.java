@@ -61,6 +61,34 @@ public class CampaignObjects extends Init{
 	private WebElement targetConditionSave;
 	@FindBy(xpath=".//*[@id='topBar']/paper-button[contains(.,'Save Campaign')]")
 	private WebElement saveCampaignButton;
+	@FindBy(xpath=".//*[@id='topBar']/paper-button[contains(.,'Save')]")
+	private WebElement saveCampaignTemplateButton;
+	@FindBy(xpath="//div[contains(text(),'Campaign Categories')]/../..")
+	private WebElement campaignCategoriesButton;
+	@FindBy(xpath="//paper-button[contains(text(),'Create New Campaign Category')]")
+	private WebElement createNewCampaignCategoryButton;
+	@FindBy(xpath=".//*[@id='createNew']//label[contains(.,'Name')]/../input")
+	private WebElement categoryNameInput;
+	@FindBy(xpath=".//*[@id='createNew']//paper-button[contains(.,'Save')]")
+	private WebElement campaignCategorySave;
+	@FindBy(xpath="//paper-tab/div[contains(.,'Campaign Templates')]/..")
+	private WebElement campaignTemplatesTab;
+	@FindBy(xpath="//paper-button[contains(.,'Create Campaign template')]")
+	private WebElement createCampaignTemplateButton;
+//	@FindBy(xpath="")
+//	private WebElement ;
+//	@FindBy(xpath="")
+//	private WebElement ;
+//	@FindBy(xpath="")
+//	private WebElement ;
+//	@FindBy(xpath="")
+//	private WebElement ;
+//	@FindBy(xpath="")
+//	private WebElement ;
+//	@FindBy(xpath="")
+//	private WebElement ;
+//	@FindBy(xpath="")
+//	private WebElement ;
 //	@FindBy(xpath="")
 //	private WebElement ;
 //	@FindBy(xpath="")
@@ -81,6 +109,32 @@ public class CampaignObjects extends Init{
 
 	public void clickOptionsViewBroadcasts() throws InterruptedException {
 		jswait.loadClick(optionsViewBroadcasts);
+	}
+	public void clickSaveCampaignTemplate() throws InterruptedException {
+		jswait.loadClick(saveCampaignTemplateButton);
+	}
+	public void clickCampaignTemplateTab() throws InterruptedException {
+		jswait.loadClick(campaignTemplatesTab);
+	}
+	public void clickCreateCampaignTemplateButton() throws InterruptedException {
+		jswait.loadClick(createCampaignTemplateButton);
+	}
+	public void clickCreateCategorySaveButton() throws InterruptedException {
+		jswait.loadClick(campaignCategorySave);
+	}
+	public void enterCategoryName(String name) throws InterruptedException {
+		jswait.loadSendKeys(categoryNameInput, name);
+	}
+	public void createNewCampaignCategory(String name) throws InterruptedException {
+		clickCreateNewCampaignCategoryButton();
+		enterCategoryName(name);
+		clickCreateCategorySaveButton();
+	}
+	public void clickCreateNewCampaignCategoryButton() throws InterruptedException {
+		jswait.loadClick(createNewCampaignCategoryButton);
+	}
+	public void navigateToCampaignCategories() throws InterruptedException {
+		jswait.loadClick(campaignCategoriesButton);
 	}
 	public void clickSaveCampaignButton() throws InterruptedException {
 		jswait.loadClick(saveCampaignButton);
@@ -135,6 +189,16 @@ public class CampaignObjects extends Init{
 		jswait.loadClick(conditionIsGreaterThan);
 		jswait.loadSendKeys(isGreaterThanValue,"18");
 		jswait.loadClick(targetConditionSave);
+	}
+	public void createCampaignTemplate(String name) throws InterruptedException {
+		clickCampaignTemplateTab();
+		clickCreateCampaignTemplateButton();
+		enterCampaignName(name);
+		enterCampaignDescription("Desc for Template");
+		clickProceedButton();
+		clickTargetConditionViewToggle();
+		createTargetCondition();
+		clickSaveCampaignTemplate();
 	}
 	public void createCampaign(String name,String catalog) throws InterruptedException {
 		enterCampaignDeails(name,catalog);

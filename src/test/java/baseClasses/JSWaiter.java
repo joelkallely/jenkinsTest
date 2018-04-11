@@ -3,8 +3,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -305,6 +307,103 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 				return false;
 			}
 		}
+		public void scrollAndClick(String scrollPane, String toClick) throws Exception{
+			Actions clickAction = new Actions(driver);
+			WebDriverWait wait = new WebDriverWait(driver, 8);
+			 String loadMaskStatus = "";
+			 Thread.sleep(400);
+			 try {
+				 loadMaskStatus = driver.findElement(By.xpath(".//*[@id='loadMask']")).getAttribute("style");
+			 }catch(Exception e) {
+				 
+			 }
+			 while(loadMaskStatus.contains("block")) {
+				 Thread.sleep(1000);
+			 try {
+				 loadMaskStatus = driver.findElement(By.xpath(".//*[@id='loadMask']")).getAttribute("style");
+			 }catch(Exception e) {
+				 
+			 }
+			 }
+			 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(scrollPane)));	
+			 Thread.sleep(400);
+			 try {
+				 loadMaskStatus = driver.findElement(By.xpath(".//*[@id='loadMask']")).getAttribute("style");
+			 }catch(Exception e) {
+				 
+			 }
+			 while(loadMaskStatus.contains("block")) {
+				 Thread.sleep(1000);
+			 try {
+				 loadMaskStatus = driver.findElement(By.xpath(".//*[@id='loadMask']")).getAttribute("style");
+			 }catch(Exception e) {
+				 
+			 }
+			 }
+			 WebElement scrollablePane = driver.findElement(By.xpath(scrollPane));
+		        clickAction.moveToElement(scrollablePane).click().build().perform();
+		        Actions scrollAction = new Actions(driver);
+		        for(int i=0;i<50;i++){
+		        scrollAction.sendKeys(Keys.PAGE_DOWN).perform();
+		        try{
+		        	driver.findElement(By.xpath(toClick));
+		        	break;
+		        }
+		        catch(Exception e){
+		        }
+		        Thread.sleep(1000);
+		        }
+		        Thread.sleep(2000);
+		    	loadClick(toClick);
 		}
+		public void scrollIntoView(String scrollPane, String toClick) throws Exception{
+			Actions clickAction = new Actions(driver);
+			WebDriverWait wait = new WebDriverWait(driver, 8);
+			 String loadMaskStatus = "";
+			 Thread.sleep(400);
+			 try {
+				 loadMaskStatus = driver.findElement(By.xpath(".//*[@id='loadMask']")).getAttribute("style");
+			 }catch(Exception e) {
+				 
+			 }
+			 while(loadMaskStatus.contains("block")) {
+				 Thread.sleep(1000);
+			 try {
+				 loadMaskStatus = driver.findElement(By.xpath(".//*[@id='loadMask']")).getAttribute("style");
+			 }catch(Exception e) {
+				 
+			 }
+			 }
+			 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(scrollPane)));	
+			 Thread.sleep(400);
+			 try {
+				 loadMaskStatus = driver.findElement(By.xpath(".//*[@id='loadMask']")).getAttribute("style");
+			 }catch(Exception e) {
+				 
+			 }
+			 while(loadMaskStatus.contains("block")) {
+				 Thread.sleep(1000);
+			 try {
+				 loadMaskStatus = driver.findElement(By.xpath(".//*[@id='loadMask']")).getAttribute("style");
+			 }catch(Exception e) {
+				 
+			 }
+			 }
+			 WebElement scrollablePane = driver.findElement(By.xpath(scrollPane));
+		        clickAction.moveToElement(scrollablePane).click().build().perform();
+		        Actions scrollAction = new Actions(driver);
+		        for(int i=0;i<50;i++){
+		        scrollAction.sendKeys(Keys.PAGE_DOWN).perform();
+		        try{
+		        	driver.findElement(By.xpath(toClick));
+		        	break;
+		        }
+		        catch(Exception e){
+		        }
+		        Thread.sleep(1000);
+		        }
+		        Thread.sleep(2000);	
+		}
+}
 		
 	

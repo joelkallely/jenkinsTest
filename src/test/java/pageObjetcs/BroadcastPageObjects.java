@@ -2,16 +2,19 @@ package pageObjetcs;
 
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import baseClasses.ExcelHelper;
 import baseClasses.Init;
 import baseClasses.JSWaiter;
 
@@ -87,10 +90,12 @@ public class BroadcastPageObjects extends Init{
 	private WebElement activateButtonBc;
 	@FindBy(xpath=".//*[@id='confirmBox']//paper-button[2]")
 	private WebElement activateConfirmYes;
-//	@FindBy(xpath="")
-//	private WebElement ;
-//	@FindBy(xpath="")
-//	private WebElement ;
+	@FindBy(xpath=".//*[@id='checkboxContainer']")
+	private WebElement firstOfferCheckBox;
+	@FindBy(xpath=".//div[@id='radioLabel' and contains(.,'Never')]/../div[1]")
+	private WebElement recurringBcEndNeverRadio;
+	@FindBy(xpath=".//div[@id='radioLabel' and contains(.,'At')]/../div[1]")
+	private WebElement recurringBcEndAtRadio;
 //	@FindBy(xpath="")
 //	private WebElement ;
 //	@FindBy(xpath="")
@@ -107,6 +112,12 @@ public class BroadcastPageObjects extends Init{
 	}
 	public void clickCreateButton() throws InterruptedException {
 		jswait.loadClick(createButtonBc);
+	}
+	public void clickBcEndNeverRadioButton() throws InterruptedException {
+		jswait.loadClick(recurringBcEndNeverRadio);
+	}
+	public void clickBcEndAtRadioButton() throws InterruptedException {
+		jswait.loadClick(recurringBcEndAtRadio);
 	}
 	public void clickActivateConfirmYes() throws InterruptedException {
 		jswait.loadClick(activateConfirmYes);
@@ -179,19 +190,71 @@ public class BroadcastPageObjects extends Init{
 		selectLabelCrossell();
 		selectInventoryUnlimited();
 	}
+
 	public void selectOffer(String offerName) throws InterruptedException {
-		Thread.sleep(3000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//data-table-cell[contains(.,'"+offerName+"')]/..//*[@id='checkboxContainer']"))).click();
+		jswait.loadClick(".//data-table-cell[contains(.,'"+offerName+"')]/..//*[@id='checkboxContainer']");
+	}
+	public void selectFirstOffer() throws InterruptedException {
+		jswait.loadClick(firstOfferCheckBox);
+	}
+	public void selectRecurrancePattern() throws InterruptedException {
+		Calendar rightNow =Calendar.getInstance();
+    	String mn = "";
+    	if(rightNow.get(Calendar.MONTH)+1<9) {
+    		mn = "0"+Integer.toString(rightNow.get(Calendar.MONTH)+1);
+    	}
+    	else 
+    		mn = Integer.toString(rightNow.get(Calendar.MONTH)+1);
+		String date = Integer.toString(rightNow.get(Calendar.YEAR))+"-"+mn+"-"+String.format("%02d",rightNow.get(Calendar.DAY_OF_MONTH));
+    	int hours = rightNow.get(Calendar.HOUR);
+      	 int min = rightNow.get(Calendar.MINUTE);
+      	 int am_pm = rightNow.get(Calendar.AM_PM);
+      	 int day = rightNow.get(Calendar.DAY_OF_MONTH);
+      	 int year = rightNow.get(Calendar.YEAR);
+      	 int month = rightNow.get(Calendar.MONTH)+1;
+      	 min+=2;
+      	 int rem = min%5;
+      	 rem = 5-rem;
+      	 min+=rem;
+      	 if(min>59){
+      		 min-=60;
+      		 hours++;
+      	 }
+		Actions builder = new Actions(driver);
+		Thread.sleep(1000);
+		 jswait.loadClick(".//*[@id='deliver-card']//label[contains(.,'Recurrence Pattern')]/..//input");
+		 Thread.sleep(1000);
+		 jswait.loadClick("//*[@id='deliver-card']//paper-item[contains(.,'Days')]");
+		 Thread.sleep(1000);
+		 jswait.loadSendKeys("//*[contains(@class,'recurrence')]//input","1");
+		 Thread.sleep(1000);
+		 jswait.loadClick("//*[@id='deliver-card']//label[contains(.,'Start broadcasts at')]/..//input");
+		 Thread.sleep(2000);
+	   	 jswait.loadClick("//*[@id='deliver-card']/../paper-card[2]//*[@id='heading']/iron-selector[1]/paper-input[1]//div");
+	   	WebElement num = driver.findElement(By.xpath("//*[@id='deliver-card']/../paper-card[2]//*[@id='timePicker']//*[@id='hourClock']//*[@class='number style-scope paper-clock-selector']["+(hours+1)+"]"));
+	     builder.moveToElement(num).click().build().perform();
+	     Thread.sleep(2000);
+	     jswait.loadClick("//*[@id='deliver-card']/../paper-card[2]//*[@id='heading']/iron-selector[1]/paper-input[2]//div");
+	     WebElement num1 = driver.findElement(By.xpath("//*[@id='deliver-card']/../paper-card[2]//*[@id='timePicker']//*[@id='minuteClock']//*[@class='number style-scope paper-clock-selector']["+(min+1)+"]"));
+		 Thread.sleep(1000);
+		 builder.moveToElement(num1).click().build().perform();
+		
+		    Thread.sleep(1000);     
+	     
+	     jswait.loadClick("//*[@id='deliver-card']/../paper-card[2]//*[@id='timeDialog']/div/paper-button[2]");
+		    Thread.sleep(2000);
+		    jswait.loadClick(".//div[@id='radioLabel' and contains(.,'Real Time')]/../div[1]");
+	
 	}
 	public void createBC(String name,String bc_type,String baseList,String offer) throws InterruptedException {
 		enterBroadcastBasicDetails(name);
 		if(bc_type.contentEquals("triggerable")||bc_type.contentEquals("seedingTriggerable")){
 			System.out.println("inside triggerable");
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Triggers')]/../../iron-icon"))).click();
+			jswait.loadClick("//label[contains(.,'Triggers')]/../../iron-icon");
 			Thread.sleep(1000);
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(.,'Triggers')]/../../iron-icon"))).click();
+			jswait.loadClick("//label[contains(.,'Triggers')]/../../iron-icon");
 			Thread.sleep(2000);
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-item[contains(.,'trigger')]"))).click();
+			jswait.loadClick("//paper-item[contains(.,'trigger')]");
 			Thread.sleep(1500);
 		}
 		clickProceedButton();
@@ -203,6 +266,7 @@ public class BroadcastPageObjects extends Init{
 		selectSenderAndRoute();
 		clickProceedButton();
 	}
+	
 	public void validateNameField() throws InterruptedException, UnsupportedFlavorException, IOException {
 		enterBroadcastName("efwefwefwefwefwefwefwefwefwefwefwefwefwefwefwasasaqwqw");
 		Assert.assertTrue(commonObjects.getTextFormTextField(broadcastName).length()==50, "Error in character limit of name field");

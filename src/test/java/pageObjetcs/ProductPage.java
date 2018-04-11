@@ -104,6 +104,8 @@ public class ProductPage extends Init{
 	private WebElement productGridViewOffersButton;
 	@FindBy(xpath="//*[@id='contentWrapper']/div/paper-menu/div/paper-item[5]")
 	private WebElement productGridDeactivateButton;
+	@FindBy(xpath="//*[@id='contentWrapper']/div/paper-menu/div/paper-item[5]")
+	private WebElement productGridActivateButton;
 	@FindBy(xpath=".//*[@id='deleteProduct']/div/paper-button[2]")
 	private WebElement deleteConfirmYes;
 	@FindBy(xpath="//*[@id='form']//label[contains(.,'NUM')]/..//input")
@@ -137,6 +139,9 @@ public class ProductPage extends Init{
 		}
 		public void clickDeactivateButton() throws InterruptedException {
 			jswait.loadClick(productGridDeactivateButton);
+		}
+		public void clickActivateButton() throws InterruptedException {
+			jswait.loadClick(productGridActivateButton);
 		}
 		public void clickProductDuplicateButton() throws InterruptedException {
 			jswait.loadClick(productGridDuplicateButton);

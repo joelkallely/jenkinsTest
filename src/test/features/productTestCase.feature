@@ -7,9 +7,9 @@
 
 Feature: Product Page Feature Files
 	Product page test cases
-@run_this
+
 @NX-1048
-@initBrowser
+@initBrowser @closeBrowser
 Scenario: Create Product: Verify saving the product without adding the benefit NX-1048
 Given login
 Then navigate to precision marketer
@@ -18,26 +18,27 @@ Then navigate to products
 Then navigate to prepaid telecom
 Then click create new product button
 Then verify saving the product without adding benefits
-@NX-1042
 
+@NX-1042
+@initBrowser @closeBrowser
 Scenario: Create Product: Verify clicking on the Add button to add benefits NX-1042
-#Given login
-#Then navigate to precision marketer
-#Then navigate to offer management
-#Then navigate to products
-#Then navigate to prepaid telecom
-#Then click create new product button
+Given login
+Then navigate to precision marketer
+Then navigate to offer management
+Then navigate to products
+Then navigate to prepaid telecom
+Then click create new product button
 Then clicking on the Add button to add benefits for the product
 
 @NX-1047
-@closeBrowser
+@initBrowser @closeBrowser
 Scenario: Create Product: Verify adding multiple benefits for the single product NX-1047
-#Given login
-#Then navigate to precision marketer
-#Then navigate to offer management
-#Then navigate to products
-#Then navigate to prepaid telecom
-#Then click create new product button
+Given login
+Then navigate to precision marketer
+Then navigate to offer management
+Then navigate to products
+Then navigate to prepaid telecom
+Then click create new product button
 Then saving product with multiple benefits
 
 
@@ -167,7 +168,7 @@ Then create single product from sheet "singleProductPage"
 Then check duplicate product of "singleProductPage"
 #
 @NX-1014
-@initBrowser 
+@initBrowser @closeBrowser
 Scenario: Products Grid: Verify by clicking on the Options icon available at the end of the product row. NX-1014
 Given login
 Then navigate to precision marketer
@@ -176,50 +177,59 @@ Then navigate to products
 Then navigate to prepaid telecom
 Then verify clicking on options icon
 @NX-1021
-@closeBrowser
+@initBrowser  @closeBrowser
 Scenario: Products Grid: Verify the Edit option of the product added NX-1021
-#Given login
-#Then navigate to precision marketer
-#Then navigate to offer management
-#Then navigate to products
-#Then navigate to prepaid telecom
+Given login
+Then navigate to precision marketer
+Then navigate to offer management
+Then navigate to products
+Then navigate to prepaid telecom
 Then click create new product button
 Then create single product from sheet "singleProductPage"
 Then check edit product functionality
 #
 
 #
-#@NX-2072
-#Scenario: Verify cross site scripting for Filtering products under CLV Max NX-2072
-#Given login
-#Then navigate to precision marketer
-#Then navigate to offer management
-#Then navigate to products
-#Then check script in product name field "<script>alert(document.cookies)</script>"
+
+@initBrowser  @closeBrowser
+@NX-2072
+Scenario: Verify cross site scripting for Filtering products under CLV Max NX-2072
+Given login
+Then navigate to precision marketer
+Then navigate to offer management
+Then navigate to products
+Then navigate to prepaid telecom
+Then check script in product name field "<script>alert(document.cookies)</script>"
+
+@NX-2100
+@initBrowser  @closeBrowser
+Scenario: Verify cross site scripting for Filtering products under CLV Max NX-2100
+Given login
+Then navigate to precision marketer
+Then navigate to offer management
+Then navigate to products
+Then navigate to prepaid telecom
+Then check script in product name field "productname'; SELECT * FROM products;"
 #
-#@NX-2100
-#Scenario: Verify cross site scripting for Filtering products under CLV Max NX-2100
-#Given login
-#Then navigate to precision marketer
-#Then navigate to offer management
-#Then navigate to products
-#Then check script in product name field "productname'; SELECT * FROM products;"
+
+@initBrowser  @closeBrowser
+@NX-2299
+Scenario: Offer Management: Verify for the details present in the Help page NX-2299
+Given login
+Then navigate to precision marketer
+Then navigate to offer management
+Then navigate to products
+Then veirfy help icon of products
 #
-#@NX-2299
-#Scenario: Offer Management: Verify for the details present in the Help page NX-2299
-#Given login
-#Then navigate to precision marketer
-#Then navigate to offer management
-#Then navigate to products
-#Then veirfy help icon of products
-#
-#@NX-790
-#Scenario: Create offer:Offers Display: Verify the offers listed in the offer Management --> Offers tab. NX-790
-#Given login
-#Then navigate to precision marketer
-#Then navigate to offer management
-#Then navigate to offers
-#Then verify scroll bar for list of offers
+@run_this
+@initBrowser  @closeBrowser
+@NX-790
+Scenario: Create offer:Offers Display: Verify the offers listed in the offer Management --> Offers tab. NX-790
+Given login
+Then navigate to precision marketer
+Then navigate to offer management
+Then navigate to offers
+Then verify scroll bar for list of offers
 
 #@NX-800
 #Scenario: Create offer:Offers Display: Verify by expanding the offer row to know a quick summary details of the offer. NX-800

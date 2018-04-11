@@ -4,17 +4,179 @@
 @NX-BroadcastManagement
 Feature: Test cases related to Broadcast Management
 
-@NX-613
+@NX-1234
 @initBrowser @closeBrowser
-Scenario: Create BC: Choose Offers: Verify selecting the channel and sender input
+Scenario: Broadcast grid: Verify the breadcrum for broadcast listing screen.
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then create new campaign category from sheet "campaignCategory"
+Then navigate to landing page
+Then navigate to precision marketer
+Then navigate to life cycle marketing
+Then navigate to campaign category from sheet "campaignCategory"
+Then create new campaign from sheet "campaignBC"
+Then naigate to "campaignBC" campaign view broadcasts
+Then verify view braodcast breadcrumb
+
+@NX-1192
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify the delete option when the category is linked with campaigns
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then create new campaign category from sheet "campaignCategory"
+Then navigate to landing page
+Then navigate to precision marketer
+Then navigate to life cycle marketing
+Then navigate to campaign category from sheet "campaignCategory"
+Then create new campaign from sheet "campaignBC"
+Then navigate to landing page
+Then navigate to configuration management
+Then navigate to campaign categories
+Then check delete campaign category with linked campaigns from sheet "campaignCategory"
+
+@NX-1185
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify editing the category
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then create new campaign category from sheet "campaignCategory"
+Then edit campaign category from sheet "campaignCategory"
+
+@NX-1190
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify deleting the category
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then create new campaign category from sheet "campaignCategory"
+Then delete campaign category from sheet "campaignCategory"
+
+@NX-1184
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify the options of the category
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then verify options of category
+
+@NX-1180
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify the count added with the template
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then create new campaign category from sheet "campaignCategory"
+Then navigate to landing page
+Then navigate to precision marketer
+Then navigate to life cycle marketing
+Then verify campaign template count from sheet "campaignCategory"
+
+@NX-1177
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify screen navigation by clicking on the category
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then create new campaign category from sheet "campaignCategory"
+Then navigate to landing page
+Then navigate to precision marketer
+Then navigate to life cycle marketing
+Then navigate to campaign category from sheet "campaignCategory"
+Then create new campaign from sheet "campaignBC"
+Then naigate to "campaignBC" campaign view broadcasts
+
+@NX-1170
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify the campaign count under the category.
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then create new campaign category from sheet "campaignCategory"
+Then navigate to landing page
+Then navigate to precision marketer
+Then navigate to life cycle marketing
+Then verify campaign count from sheet "campaignCategory"
+
+@NX-1169
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify creating a category without adding a name.
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then create new campaign category without adding name
+
+@NX-1168
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify adding the new category
+Given login
+Then navigate to configuration management
+Then navigate to campaign categories
+Then create new campaign category from sheet "campaignCategory"
+
+@NX-1167
+@initBrowser @closeBrowser
+Scenario: Category screen : Verify the categories under Life Cycle Marketing
 Given login
 Then navigate to precision marketer
 Then navigate to life cycle marketing
-Then navigate to "Recharge" category
-Then naigate to "campaignBC" campaign view broadcasts
-Then click create new broadcast button
-Then enter details for new broadcast from sheet "one-offBC" with "rechargeWAP"
-Then activate bc
+Then navigate to campaign category from sheet "campaignCategory"
+
+
+#Then navigate to offer management
+#Then navigate to products
+#Then navigate to prepaid telecom
+#Then click create new product button
+#Then create single product from sheet "singleProductPage"
+#Then navigate to offer management
+#Then navigate to offers
+#Then create new offer from sheet "rechargeWAP"
+#Then navigate to offer management
+#Then Navigate to Offer Catalogue
+#Then Create New Offer Catalogue from sheet "defaultCatalog"
+#Then Add "rechargeWAP" offer to Offer Catalogue
+#Then navigate to life cycle marketing
+#Then navigate to "Recharge" category
+#Then create new campaign from sheet "campaignBC"
+#Then naigate to "campaignBC" campaign view broadcasts
+#Then click create new broadcast button
+#Then enter details for new broadcast from sheet "one-offBC" with "rechargeWAP"
+
+#@NX-645
+#@initBrowser @closeBrowser
+#Scenario: Create BC: Deliver tab: Verify Broadcast Schedule Range details
+#Given login
+#Then navigate to precision marketer
+#Then navigate to life cycle marketing
+#Then navigate to "Recharge" category
+#Then naigate to "campaignBC" campaign view broadcasts
+#Then click create new broadcast button
+#Then verify broadcast schedle range details
+
+#@NX-588
+#@initBrowser @closeBrowser
+#Scenario: Create BC: Choose Offers: Verify creating new offer by clicking on the Create New Offer button
+#Given login
+#Then navigate to precision marketer
+#Then navigate to life cycle marketing
+#Then navigate to "Recharge" category
+#Then naigate to "campaignBC" campaign view broadcasts
+#Then click create new broadcast button
+#Then check create new offer in bc creation
+
+#@NX-613
+#@initBrowser @closeBrowser
+#Scenario: Create BC: Choose Offers: Verify selecting the channel and sender input
+#Given login
+#Then navigate to precision marketer
+#Then navigate to life cycle marketing
+#Then navigate to "Recharge" category
+#Then naigate to "campaignBC" campaign view broadcasts
+#Then click create new broadcast button
+#Then enter details for new broadcast from sheet "one-offBC" with "rechargeWAP"
+#Then activate bc
 
 
 #@NX-613

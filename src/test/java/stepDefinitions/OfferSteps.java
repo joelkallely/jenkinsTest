@@ -40,54 +40,23 @@ public class OfferSteps extends Init{
 		Thread.sleep(4000);
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		Actions actions = new Actions(driver);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//paper-button[contains(.,'Create New Offer')]"))).click();
-		Thread.sleep(2000);
+		
 		ExcelHelper prodcutFile = new ExcelHelper();
-		prodcutFile.setExcelFile("inputData","singleProductPage");
+		prodcutFile.setExcelFile("productInputData","fullDetails");
 		eh.setExcelFile("offerInputData",sheet);
 		Random rn = new Random();
 		int  n = rn.nextInt(5000) + 1;
 		String name = (String) eh.getCell(1, 0);
 		name =  name.replaceAll("[0-9]", "")+n;
 		eh.setCell(1, 0, name);
+		
+		offerPageObjects.clickCreateNewOfferButton();
 //******************Details tab******************:
-		
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Offer Name')]"))).click().sendKeys(name).build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Description')]"))).click().sendKeys(eh.getCell(1, 1)).build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Offer Type')]"))).click().build().perform();
-		Thread.sleep(1000);
-
-		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 2)+"')]"))).click().build().perform();		
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Channel')]"))).click().build().perform();
-		Thread.sleep(1000);
-		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 3)+"')]"))).click().build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Category')]"))).click().build().perform();
-		Thread.sleep(1000);
-		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'Combo Vouchers')]"))).click().build().perform();
-		Thread.sleep(1000);
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'sub-category')]"))).click().sendKeys("category").build().perform();
-//		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Currency')]"))).click().build().perform();
-//		Thread.sleep(1000);
-//		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'INR')]"))).click().build().perform();
-//		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Discount')]"))).click().sendKeys("20").build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(.,'Proceed')]"))).click().build().perform();
-		Thread.sleep(2000);
-
-		
-		
+		offerPageObjects.enterDetailsTabFields(sheet);
+		offerPageObjects.clickProceedButton();
 //******************Products tab*****************:
-
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='check']/div/iron-pages/offer-products/form/div/div[2]/paper-button"))).click();
-		Thread.sleep(1000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../.."))).click();
-		Thread.sleep(2000);
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(text(),'Product Name')]"))).sendKeys(prodcutFile.getCell(1, 0)).build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(text(),'Apply')]"))).click().build().perform();
-		Thread.sleep(2000);
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[contains(.,'"+prodcutFile.getCell(1, 0)+"')]")))).click();
-		actions.moveToElement(driver.findElement(By.xpath("//*[@id='productDialog']/div[2]/paper-button[2]"))).click().build().perform();
-		actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(.,'Proceed')]"))).click().build().perform();
-		Thread.sleep(2000);
+		offerPageObjects.enterProductTabFields("fullDetails");
+		offerPageObjects.clickProceedButton();
 		
 //******************Creative tab*****************:
 		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Language')]"))).click().build().perform();

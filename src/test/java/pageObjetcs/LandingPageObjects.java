@@ -51,9 +51,11 @@ public class LandingPageObjects extends Init{
 	
 	
 	
+	
 	public void navigateToPrecisionMarketer() throws InterruptedException {
 		jswait.loadClick(precisionMarketer);
 	}
+	
 	public void navigateToIntentManagement() throws InterruptedException {
 		jswait.loadClick(intentManagement);
 	}

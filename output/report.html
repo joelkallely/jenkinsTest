@@ -32,7 +32,6 @@
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
 						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
-			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
 			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
 		</ul>
 
@@ -46,7 +45,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Apr 3, 2018 10:51:56 AM</span>
+                    <span class='label suite-start-time blue darken-3'>Apr 11, 2018 12:36:49 PM</span>
 				</a>
 			</li>
 			<li>
@@ -72,7 +71,6 @@
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
-						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -85,8 +83,8 @@
 					<i class='material-icons'>local_offer</i> Category
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>@OfferCreation</a></li>
-					<li><a href='#'>@tag1349</a></li>
+					<li><a href='#'>@NX-BroadcastManagement</a></li>
+					<li><a href='#'>@NX-1234</a></li>
 					<li><a href='#'>@initBrowser</a></li>
 					<li><a href='#'>@closeBrowser</a></li>
 					<li class='divider'></li>
@@ -136,10 +134,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> feature(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>1</span> feature(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -151,10 +149,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> scenario(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>1</span> scenario(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -166,10 +164,10 @@
 					<canvas id='grandchild-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='80%'><span class='strong'>4</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>11</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='20%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -183,23 +181,23 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>Test suite on Offer creation</span>
-						<span class='test-time'>Apr 3, 2018 10:51:57 AM</span>
-						<span class='test-status right fail'>fail</span>
+						<span class='test-name'>Test cases related to Broadcast Management</span>
+						<span class='test-time'>Apr 11, 2018 12:36:49 PM</span>
+						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
-<div class='scenario node' test-id='2' status='fail'>
+<div class='scenario node' test-id='2' status='pass'>
 	<div class='category-list'>
-		<span class='category label white-text'>@tag1349</span>
+		<span class='category label white-text'>@NX-1234</span>
 		<span class='category label white-text'>@initBrowser</span>
 		<span class='category label white-text'>@closeBrowser</span>
 	</div>
-	<span class='duration right label'>0h 1m 9s+765ms</span>
+	<span class='duration right label'>0h 2m 12s+200ms</span>
 	<div class='desc'>
 		<b>Scenario</b>
-		<span class="desc-text">Create offer:Track: Verify creating offers with SMS channel NX-1349</span>
+		<span class="desc-text">Broadcast grid: Verify the breadcrum for broadcast listing screen.</span>
 	</div>
 	<ul class='steps'>
 		<li test-id='3' class='node given pass' status='pass'>
@@ -210,11 +208,11 @@
 				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='4' class='node when pass' status='pass'>
+		<li test-id='4' class='node then pass' status='pass'>
 			
-			<b>When</b>
+			<b>Then</b>
 			
-			<span class="bdd-step-name">When navigate to precision marketer</span>
+			<span class="bdd-step-name">Then navigate to configuration management</span>
 				<div class='pre'>passed</div>
 			
 		</li>
@@ -222,7 +220,7 @@
 			
 			<b>Then</b>
 			
-			<span class="bdd-step-name">Then navigate to offer management</span>
+			<span class="bdd-step-name">Then navigate to campaign categories</span>
 				<div class='pre'>passed</div>
 			
 		</li>
@@ -230,41 +228,64 @@
 			
 			<b>Then</b>
 			
-			<span class="bdd-step-name">Then navigate to offers</span>
+			<span class="bdd-step-name">Then create new campaign category from sheet "campaignCategory"</span>
 				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='7' class='node then fail' status='fail'>
+		<li test-id='7' class='node then pass' status='pass'>
 			
 			<b>Then</b>
 			
-			<span class="bdd-step-name">Then Create_offers_with_SMS_channel</span>
-				<div class='pre'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//span[contains(.,'4460singleProd4460')]"}
-  (Session info: chrome=65.0.3325.181)
-  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 34 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'FLY-LP305', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_66'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7), userDataDir=C:\Users\JOEL~1.JOS\AppData\Local\Temp\scoped_dir5736_10275}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=65.0.3325.181, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
-Session ID: cfd2a7bb668f5a5203ace6a1e868541d
-*** Element info: {Using=xpath, value=//span[contains(.,'4460singleProd4460')]}
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at stepDefinitions.Offer_creation_steps.Offer_creation_products_tab(Offer_creation_steps.java:41)
-	at stepDefinitions.OfferSteps.Create_offers_with_SMS_channel(OfferSteps.java:181)
-	at ✽.Then Create_offers_with_SMS_channel(OfferManagement.feature:14)
-</pre></div>
+			<span class="bdd-step-name">Then navigate to landing page</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='8' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then navigate to precision marketer</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='9' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then navigate to life cycle marketing</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='10' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then navigate to campaign category from sheet "campaignCategory"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='11' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then create new campaign from sheet "campaignBC"</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='12' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then naigate to "campaignBC" campaign view broadcasts</span>
+				<div class='pre'>passed</div>
+			
+		</li>
+		<li test-id='13' class='node then pass' status='pass'>
+			
+			<b>Then</b>
+			
+			<span class="bdd-step-name">Then verify view braodcast breadcrumb</span>
+				<div class='pre'>passed</div>
 			
 		</li>
 	</ul>
@@ -323,15 +344,15 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 				
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@OfferCreation</span>
+						<span class='category-name'>@NX-BroadcastManagement</span>
 						<span class='category-status right'>
-							<span class='label fail'>1</span>
+							<span class='label pass'>1</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 1</span>
 							
-							<span class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
 					
@@ -346,9 +367,9 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 								</thead>
 								<tbody>
 									<tr>
-										<td>Apr 3, 2018 10:51:57 AM</td>
-										<td class='linked' test-id='1'>Test suite on Offer creation</td>
-										<td><span class='test-status fail'>fail</span></td>
+										<td>Apr 11, 2018 12:36:49 PM</td>
+										<td class='linked' test-id='1'>Test cases related to Broadcast Management</td>
+										<td><span class='test-status pass'>pass</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -357,15 +378,15 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 				</li>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@tag1349</span>
+						<span class='category-name'>@NX-1234</span>
 						<span class='category-status right'>
-							<span class='label fail'>1</span>
+							<span class='label pass'>1</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 1</span>
 							
-							<span class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
 					
@@ -380,9 +401,9 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 								</thead>
 								<tbody>
 									<tr>
-										<td>Apr 3, 2018 10:51:57 AM</td>
-										<td class='linked' test-id='2'>Test suite on Offer creation.Create offer:Track: Verify creating offers with SMS channel NX-1349</td>
-										<td><span class='test-status fail'>fail</span></td>
+										<td>Apr 11, 2018 12:36:49 PM</td>
+										<td class='linked' test-id='2'>Test cases related to Broadcast Management.Broadcast grid: Verify the breadcrum for broadcast listing screen.</td>
+										<td><span class='test-status pass'>pass</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -393,13 +414,13 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 					<div class='category-heading'>
 						<span class='category-name'>@initBrowser</span>
 						<span class='category-status right'>
-							<span class='label fail'>1</span>
+							<span class='label pass'>1</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 1</span>
 							
-							<span class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
 					
@@ -414,9 +435,9 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 								</thead>
 								<tbody>
 									<tr>
-										<td>Apr 3, 2018 10:51:57 AM</td>
-										<td class='linked' test-id='2'>Test suite on Offer creation.Create offer:Track: Verify creating offers with SMS channel NX-1349</td>
-										<td><span class='test-status fail'>fail</span></td>
+										<td>Apr 11, 2018 12:36:49 PM</td>
+										<td class='linked' test-id='2'>Test cases related to Broadcast Management.Broadcast grid: Verify the breadcrum for broadcast listing screen.</td>
+										<td><span class='test-status pass'>pass</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -427,13 +448,13 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 					<div class='category-heading'>
 						<span class='category-name'>@closeBrowser</span>
 						<span class='category-status right'>
-							<span class='label fail'>1</span>
+							<span class='label pass'>1</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 1</span>
 							
-							<span class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
 					
@@ -448,9 +469,9 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 								</thead>
 								<tbody>
 									<tr>
-										<td>Apr 3, 2018 10:51:57 AM</td>
-										<td class='linked' test-id='2'>Test suite on Offer creation.Create offer:Track: Verify creating offers with SMS channel NX-1349</td>
-										<td><span class='test-status fail'>fail</span></td>
+										<td>Apr 11, 2018 12:36:49 PM</td>
+										<td class='linked' test-id='2'>Test cases related to Broadcast Management.Broadcast grid: Verify the breadcrum for broadcast listing screen.</td>
+										<td><span class='test-status pass'>pass</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -469,92 +490,6 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 	</div>
 </div>
 <!-- category view -->
-<div id='exception-view' class='view hide'>
-
-    <section id='controls'>
-        <div class='controls grey lighten-4'>
-            <!-- search -->
-            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
-                <a href="#" class='search-div'>
-                    <i class='material-icons'>search</i> Search
-                </a>
-
-                <div class='input-field left hide'>
-                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
-                </div>
-
-            </div>
-            <!-- search -->
-        </div>
-    </section>
-
-    <div class='subview-left left'>
-
-        <div class='view-summary'>
-            <h5>Exceptions</h3>
-                <ul id='exception-collection' class='exception-collection'>
-
-                        <li class='exception displayed active'>
-                            <div class='exception-heading'>
-                                <span class='exception-name'>org.openqa.selenium.NoSuchElementException</span>
-                                <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
-                            </div>
-                            <div class='exception-content hide'>
-                                <div class='exception-tests'>
-                                    <table class='bordered table-results'>
-                                        <thead>
-                                        <tr>
-                                            <th>Timestamp</th>
-                                            <th>TestName</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                                    <tr>
-                                                        <td>Apr 3, 2018 10:52:42 AM</td>
-                                                        <td class='linked' test-id='7'>Test suite on Offer creation.Create offer:Track: Verify creating offers with SMS channel NX-1349.Then Create_offers_with_SMS_channel</td>
-                                                        <td><pre><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//span[contains(.,'4460singleProd4460')]"}
-  (Session info: chrome=65.0.3325.181)
-  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 34 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'FLY-LP305', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_66'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7), userDataDir=C:\Users\JOEL~1.JOS\AppData\Local\Temp\scoped_dir5736_10275}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=65.0.3325.181, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
-Session ID: cfd2a7bb668f5a5203ace6a1e868541d
-*** Element info: {Using=xpath, value=//span[contains(.,'4460singleProd4460')]}
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:215)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:167)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:671)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:509)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
-	at stepDefinitions.Offer_creation_steps.Offer_creation_products_tab(Offer_creation_steps.java:41)
-	at stepDefinitions.OfferSteps.Create_offers_with_SMS_channel(OfferSteps.java:181)
-	at ✽.Then Create_offers_with_SMS_channel(OfferManagement.feature:14)
-</pre></pre></td>
-                                                    </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </li>
-                </ul>
-        </div>
-    </div>
-
-    <div class='subview-right left'>
-        <div class='view-summary'>
-            <h5 class='exception-name'></h5>
-        </div>
-    </div>
-</div>
 <!-- exception view -->
 <div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
@@ -576,25 +511,25 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>5</div>
+					<div class='panel-lead'>11</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Apr 3, 2018 10:51:56 AM</div>
+					<div class='panel-lead'>Apr 11, 2018 12:36:49 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Apr 3, 2018 10:53:09 AM</div>
+			 		<div class='panel-lead'>Apr 11, 2018 12:39:03 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>73,044ms</div>
+					<div class='panel-lead'>134,614ms</div>
 				</div>
 			</div>
 			<div class='col s4'>
@@ -609,27 +544,27 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 							<th>Others</th>
 						</tr>
 						<tr>
-							<td>@OfferCreation</td>
-							<td>0</td>
+							<td>@NX-BroadcastManagement</td>
 							<td>1</td>
+							<td>0</td>
 							<td>0</td>
 						</tr>
 						<tr>
-							<td>@tag1349</td>
-							<td>0</td>
+							<td>@NX-1234</td>
 							<td>1</td>
+							<td>0</td>
 							<td>0</td>
 						</tr>
 						<tr>
 							<td>@initBrowser</td>
-							<td>0</td>
 							<td>1</td>
+							<td>0</td>
 							<td>0</td>
 						</tr>
 						<tr>
 							<td>@closeBrowser</td>
-							<td>0</td>
 							<td>1</td>
+							<td>0</td>
 							<td>0</td>
 						</tr>
 					</table>
@@ -645,31 +580,31 @@ Session ID: cfd2a7bb668f5a5203ace6a1e868541d
 
 		<script>
 			var statusGroup = {
-				passParent: 0,
-				failParent: 1,
+				passParent: 1,
+				failParent: 0,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 1,
+				exceptionsParent: 0,
 				
-				passChild: 0,
-				failChild: 1,
+				passChild: 1,
+				failChild: 0,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				exceptionsChild: 1,
+				exceptionsChild: 0,
 				
-				passGrandChild: 4,
-				failGrandChild: 1,
+				passGrandChild: 11,
+				failGrandChild: 0,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
 				skipGrandChild: 0,
 				infoGrandChild: 0,
-				exceptionsGrandChild: 1,
+				exceptionsGrandChild: 0,
 			};
 		</script>
 		

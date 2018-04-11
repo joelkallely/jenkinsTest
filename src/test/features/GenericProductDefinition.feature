@@ -5,18 +5,42 @@
 @NXProductClass
 Feature: generic product class
 
-#@NX-7015
-#@initBrowser 
-#Scenario: Verify deletion of attributes from the product class
-#Given login
-#Then navigate to configuration management
-#Then naviagte to product classes
-#Then create product class and add attributes from "TestProductClass"
-#Then pass next scenario based on this step
+@NX-run
+@initBrowser 
+Scenario: Verify deletion of attributes from the product class
+Given login
+Then navigate to configuration management
+Then naviagte to product classes
+Then create product class and add attributes from "TestProductClass"
+Then pass next scenario based on this step
 
 
+@NX-7038
+@initBrowser
+Scenario: Verify whether product details are listed in the offer grid NX-7038
+Given login11
+Then navigate to configuration management
+Then naviagte to product classes
+Then create product class without any attributes from "TestProductClass"
+Then navigate to landing page
+Then navigate to precision marketer
+Then navigate to offer management
+Then navigate to products
+Then navigate to product class "TestProductClass"
+Then click create new product button
+Then create product without any attributes from sheet "fullDetails" 
+Then navigate to offer management
+Then navigate to offers
+Then create new offer from sheet "rechargeWAP"
+Then check product details in offer grid
+Then pass next scenario based on this step
 
-@NX-7188
+@NX-7033
+Scenario: Verify whether all attributes of product will be shown in the product details section of Offer list NX-7033
+Then check previous step and pass this
+Then pass next scenario based on this step
+
+@NX-7088
 @initBrowser
 Scenario: Verify creation of product in a product class without any attributes NX-7188
 Given login
@@ -30,11 +54,38 @@ Then navigate to products
 Then navigate to product class "TestProductClass"
 Then click create new product button
 Then create product without any attributes from sheet "fullDetails"
-#@NX-6967
-#@closeBrowser
-#Scenario: Verify the deactivating the products NX-6967
+
+
+@NX-6967
+@closeBrowser
+Scenario: Verify the deactivating the products NX-6967
 Then deactivate product from sheet "fullDetails"
-Then 
+Then navigate to offer management
+Then navigate to offers
+Then verify deactivated product from sheet "fullDetails" in offer creation
+Then pass next scenario based on this step
+
+@NX-6969
+Scenario: Verify whether offers can be created with inactive products NX-6969
+Then check previous step and pass this
+Then pass next scenario based on this step
+
+@NX-7066
+Scenario: Verify whether deactivated product is available for selection while offer creation NX-7066
+Then check previous step and pass this
+
+@NX-6968
+@initBrowser @closeBrowser
+Scenario: Verify the activating the products
+Given login
+Then navigate to precision marketer
+Then navigate to offer management
+Then navigate to products
+Then navigate to product class "TestProductClass"
+Then activate product from sheet "fullDetails"
+Then navigate to offer management
+Then navigate to offers
+Then verify activated product from sheet "fullDetails" in offer creation
 
 @NX-6973  
 @initBrowser 

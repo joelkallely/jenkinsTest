@@ -25,11 +25,15 @@ import baseClasses.Init;
 import baseClasses.JSWaiter;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import pageObjetcs.LandingPageObjects;
+import pageObjetcs.RegistrationListPage;
 
 public class RegistrationList extends Init{
 	public int profileListUploaded = 0;
 	public WebDriverWait wait = new WebDriverWait(driver, 8);
 	ExcelHelper eh = new ExcelHelper();
+	RegistrationListPage registrationListPage = new RegistrationListPage();
+	LandingPageObjects landingPageObjects = new LandingPageObjects();
 	ExcelHelper list = new ExcelHelper();
 	JSWaiter jswait = new JSWaiter();
 	String msisdn = "";
@@ -235,7 +239,6 @@ public class RegistrationList extends Init{
 	
 	@Then("^check and add profile fields$")
     public void addProfileFields() throws IOException, InterruptedException{
-		jswait.loadClick("//div[text()='Data Foundation']/../../a");
 		jswait.loadClick("//a/div//div[contains(.,'Profile Fields')]/../..");
 		jswait.loadClick("//*[@d='M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z']/../../..");
 		jswait.loadSendKeys("//form/paper-input[1]/paper-input-container/div[2]/div/input","_q11");
@@ -246,10 +249,26 @@ public class RegistrationList extends Init{
 			 System.out.println("fields already present");
 		 }
 		}catch(Exception e){
+			System.out.println("profile fields not present");
 			add_profile_field();
 			profileListUploaded = 1;
 		}
 		
+	}
+	@Then("^click create new registration list button$")
+    public void clickCreateNewRegistrationListButton() throws Exception{
+		registrationListPage.clickCreateNewRegistrationListButton();
+	}
+	@Then("^save registration list$")
+    public void saveRegistrationListButton() throws Exception{
+		registrationListPage.clickSaveButton();
+	}
+	@Then("^enter details of registration list$")
+    public void createRegistrationList() throws Exception{
+		list.setExcelFile("registrationListInputData", "Sheet1");
+		String listname = (String) list.getCell(1, 2);
+		System.out.println(listname);
+		registrationListPage.enterRegistratonListDetails(listname, "Description");	
 	}
 	@Then("^upload list$")
     public void uploadList() throws Exception{
@@ -264,9 +283,9 @@ public class RegistrationList extends Init{
 		String listname = (String) list.getCell(1, 2);
 		System.out.println(listname);
 		driver.get("http://192.168.150.27:8098");
-		driver.findElement(By.xpath(".//*[@name='email']")).sendKeys("flyops@flytxt.com");
-		driver.findElement(By.xpath(".//*[@name='password']")).sendKeys("flytxt");
-		driver.findElement(By.xpath("//input[@value='Log In']")).click();
+		jswait.loadSendKeys(".//*[@name='email']","flyops@flytxt.com");
+		jswait.loadSendKeys(".//*[@name='password']","flytxt");
+		jswait.loadClick("//input[@value='Log In']");
 		if(profileListUploaded==1){
 		  Thread.sleep(3000);
 		  jswait.loadClick("//span[text()='Support Tools']");
@@ -284,19 +303,20 @@ public class RegistrationList extends Init{
 		}
 		jswait.loadClick("//span[text()='Mobile Marketing DB']");
 		Thread.sleep(3000);
-		jswait.loadClick("//span[text()='Registration Lists']");
+		jswait.loadClick("//button[text()='New Data Job']");
 		Thread.sleep(3000);
-		jswait.loadClick("//button[contains(.,'New List')]");
+		WebElement element = driver.findElement(By.xpath("//span[contains(.,'Imports')]"));
+        Actions action = new Actions(driver);
+        action.moveToElement(element).build().perform();
+		jswait.loadClick("//span[contains(.,'One-time Data Import Job')]");
 		Thread.sleep(3000);
-		jswait.loadClick("//span[contains(.,'Create Registration List')]");
-		Thread.sleep(3000);
-		jswait.loadSendKeys(".//*[@id='registrationListName']",listname);
-		jswait.loadSendKeys(".//*[@id='description']","flytxt");
-		jswait.loadClick(".//*[@id='registrationListTypeId']");
-		jswait.loadClick("//div[contains(@class,'x-combo-list-item') and text()='Standard']");
-		jswait.loadClick(".//*[@id='moveAllLeft']");
-		Thread.sleep(3000);
-		jswait.loadClick("//button[text()='Save and Import Data']");
+		jswait.loadSendKeys(".//*[@id='headerInfoTextField']",listname+"_JOB");
+//		jswait.loadSendKeys(".//*[@id='description']","flytxt");
+//		jswait.loadClick(".//*[@id='registrationListTypeId']");
+//		jswait.loadClick("//div[contains(@class,'x-combo-list-item') and text()='Standard']");
+//		jswait.loadClick(".//*[@id='moveAllLeft']");
+//		Thread.sleep(3000);
+//		jswait.loadClick("//button[text()='Save and Import Data']");
 		
 		//waitUntil("//label[text()='File Structure:']");
 		Thread.sleep(15000);
@@ -422,7 +442,7 @@ public class RegistrationList extends Init{
 		Thread.sleep(4000);
 		driver.findElement(By.xpath("//button[text()='Start Upload']")).click();
 		Thread.sleep(20000);
-		Actions action = new Actions(driver);
+//		Actions action = new Actions(driver);
 		action.moveToElement(driver.findElement(By.xpath("//div[contains(@class,'data_job_name')]"))).build().perform();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//div[contains(@class,'data_job_name')]/a")).click();

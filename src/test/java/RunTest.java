@@ -20,22 +20,23 @@ import cucumber.api.junit.Cucumber;
 @RunWith(ExtendedCucumber.class)
 //@RunWith(JoelCucumber.class)
 //@RunWith(Cucumber.class)
-@ExtendedCucumberOptions
-	   (jsonReport = "target/81/cucumber.json",
-        jsonUsageReport = "target/81/cucumber-usage.json",
-        usageReport = true,
-        detailedReport = true,
-        detailedAggregatedReport = true,
-        overviewReport = true,
-        overviewChartsReport = true,
-        pdfPageSize = "A4 Landscape",
-        toPDF = true,
-        outputFolder = "target/81",
-        retryCount = 0)
+//@ExtendedCucumberOptions
+//	   (jsonReport = "target/81/cucumber.json",
+//        jsonUsageReport = "target/81/cucumber-usage.json",
+//        usageReport = true,
+//        detailedReport = true,
+//        detailedAggregatedReport = true,
+//        overviewReport = true,
+//        overviewChartsReport = true,
+//        pdfPageSize = "A4 Landscape",
+//        toPDF = true,
+//        outputFolder = "target/81",
+//        retryCount = 0)
 @CucumberOptions(
 //        features = { "src/test/resources" },
+//		glue = {"classpath:"},
         //@NX-ProductTestSuite,@tagOfferCatalog,@madhan_test_suite_on_OfferCreation,@tagOfferCatalog,@NX-bcCreationSuite
-		tags = { "@OfferCreation" },
+		tags = { "@NX-1234" },
 		plugin = {
         "html:target/81", "json:target/81/cucumber.json",
         "pretty:target/81/cucumber-pretty.txt",
@@ -68,7 +69,9 @@ public class RunTest extends Init
 //		results.setSourceFile("./src/test/resources/cucumber.json");
 //		results.executeFeaturesOverviewReport();
 	}
-	public static void main(String[] args) throws Exception {                             
-	}
 
+	public static void main(String[] args) throws Throwable {
+	    String[] arguments = {"foo", "bar"};
+	    cucumber.api.cli.Main.main(arguments);
+	}
 }
