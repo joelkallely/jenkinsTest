@@ -96,8 +96,8 @@ public class BroadcastPageObjects extends Init{
 	private WebElement recurringBcEndNeverRadio;
 	@FindBy(xpath=".//div[@id='radioLabel' and contains(.,'At')]/../div[1]")
 	private WebElement recurringBcEndAtRadio;
-//	@FindBy(xpath="")
-//	private WebElement ;
+	@FindBy(xpath=".//vaadin-grid-table-row[1]/vaadin-grid-table-cell[2]/vaadin-grid-cell-content")
+	private WebElement topBcStatusGrid;
 //	@FindBy(xpath="")
 //	private WebElement ;
 //	@FindBy(xpath="")
@@ -109,6 +109,11 @@ public class BroadcastPageObjects extends Init{
 	
 	public void enterBroadcastName(String name) throws InterruptedException {
 		jswait.loadSendKeys(broadcastName, name);
+	}
+	public String getTopBcStatus() throws InterruptedException {
+		jswait.waitUntil(topBcStatusGrid);
+		String status = topBcStatusGrid.getText();
+		return status;
 	}
 	public void clickCreateButton() throws InterruptedException {
 		jswait.loadClick(createButtonBc);

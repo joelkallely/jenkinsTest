@@ -4,6 +4,18 @@
 @NX-BroadcastManagement
 Feature: Test cases related to Broadcast Management
 
+@NX-recurrBC
+@initBrowser @closeBrowser
+Scenario: test recurring BC
+Given login
+Then navigate to precision marketer
+Then navigate to life cycle marketing
+Then navigate to campaign category from sheet "campaignCategory"
+Then naigate to "campaignBC" campaign view broadcasts
+Then click create new broadcast button
+Then enter details for new broadcast from sheet "recurringBC" with "rechargeWAP"
+Then activate bc
+
 @NX-1234
 @initBrowser @closeBrowser
 Scenario: Broadcast grid: Verify the breadcrum for broadcast listing screen.
@@ -18,6 +30,48 @@ Then navigate to campaign category from sheet "campaignCategory"
 Then create new campaign from sheet "campaignBC"
 Then naigate to "campaignBC" campaign view broadcasts
 Then verify view braodcast breadcrumb
+
+@NX-1238
+@initBrowser @closeBrowser
+Scenario: Broadcast grid: Verify the label displaying the selected campaign name
+Given verify selected campaign name
+@NX-1239
+@initBrowser @closeBrowser
+Scenario: Broadcast grid: Verify the label displaying the selected campaign category name
+Given verify selected campaign category name
+
+@NX-1247
+@initBrowser @closeBrowser
+Scenario: Broadcast grid: Verify create new broadcast button.
+Given login
+Then navigate to precision marketer
+Then navigate to life cycle marketing
+Then navigate to campaign category from sheet "campaignCategory"
+Then naigate to "campaignBC" campaign view broadcasts
+Then click create new broadcast button
+Then verify create new broadcast button
+
+@NX-1269
+@initBrowser
+Scenario: Broadcast grid: Verify the options available for the BC
+Given login
+Then navigate to precision marketer
+Then navigate to life cycle marketing
+Then navigate to campaign category from sheet "campaignCategory"
+Then naigate to "campaignBC" campaign view broadcasts
+Then click create new broadcast button
+Then enter details for new broadcast from sheet "one-offBC" with "rechargeWAP"
+Then activate bc
+Then verify options icon of bc
+
+@NX-1273
+Scenario: Broadcast grid: Verify the Pause option of the BC
+Given verify pause option of bc
+
+@NX-1271
+@closeBrowser
+Scenario: Broadcast grid: Verify the edit option for the BC
+Given verify edit option of bc
 
 @NX-1192
 @initBrowser @closeBrowser
@@ -124,6 +178,17 @@ Then navigate to precision marketer
 Then navigate to life cycle marketing
 Then navigate to campaign category from sheet "campaignCategory"
 
+@NX-2050
+@initBrowser
+Scenario: Create New Broadcast: Verify the Creation and Activation of One Off Broadcast
+Given login
+Then navigate to precision marketer
+Then navigate to life cycle marketing
+Then navigate to campaign category from sheet "campaignCategory"
+Then naigate to "campaignBC" campaign view broadcasts
+Then click create new broadcast button
+Then enter details for new broadcast from sheet "one-offBC" with "rechargeWAP"
+Then activate bc
 
 #Then navigate to offer management
 #Then navigate to products

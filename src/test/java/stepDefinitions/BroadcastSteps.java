@@ -41,13 +41,35 @@ public class BroadcastSteps extends Init{
     public void verifyViewBroadcastBreadcrumb() throws Throwable
     {
 		eM.setExcelFile("campaignInputData","campaignBC");
-		Assert.assertTrue("Wrong breadcrumb", jswait.checkClickable("//flytxt-breadcrumbs/flytxt-breadcrumb[5]//paper-button[contains(text(),'"+(String) eM.getCell(1, 0)+"')]"));
+		Assert.assertTrue("Wrong breadcrumb", jswait.checkClickable("//flytxt-breadcrumbs//flytxt-breadcrumb[5]//paper-button[contains(text(),'"+(String) eM.getCell(1, 0)+"')]"));
 		eM.setExcelFile("campaignCategoryInputData","campaignCategory");
-		Assert.assertTrue("Wrong breadcrumb", jswait.checkClickable("//flytxt-breadcrumbs/flytxt-breadcrumb[4]//paper-button[contains(text(),'"+(String) eM.getCell(1, 0)+"')]"));
-		Assert.assertTrue("Wrong breadcrumb", jswait.checkClickable("//flytxt-breadcrumbs/flytxt-breadcrumb[3]//paper-button[contains(text(),'Life-Cycle Marketing')]"));
+		Assert.assertTrue("Wrong breadcrumb", jswait.checkClickable("//flytxt-breadcrumbs//flytxt-breadcrumb[4]//paper-button[contains(text(),'"+(String) eM.getCell(1, 0)+"')]"));
+		Assert.assertTrue("Wrong breadcrumb", jswait.checkClickable("//flytxt-breadcrumbs//flytxt-breadcrumb[3]//paper-button[contains(text(),'Life-Cycle Marketing')]"));
 		
     }
-	@Then("^check create new offer in bc creation$")
+	@Then("^verify selected campaign name$")
+    public void verifyViewBroadcastCampaignName() throws Throwable
+    {
+	  eM.setExcelFile("campaignInputData","campaignBC");
+	  Assert.assertTrue("Wrong breadcrumb", jswait.checkClickable("//flytxt-breadcrumbs//flytxt-breadcrumb[5]//paper-button[contains(text(),'"+(String) eM.getCell(1, 0)+"')]"));
+    }
+	@Then("^verify create new broadcast button$")
+    public void verifyCreateNewBroadcast() throws Throwable
+    {
+	  broadcastPageObjects.enterBroadcastName("new BC");
+    }
+	@Then("^verify options icon of bc$")
+    public void verifyOptionsIconBroadcast() throws Throwable
+    {
+	  commonObjetcs.clickOptionsIcon();
+    }
+	@Then("^verify selected campaign category name$")
+    public void verifyViewBroadcastCampaignCategoryName() throws Throwable
+    {
+		eM.setExcelFile("campaignCategoryInputData","campaignCategory");
+		Assert.assertTrue("Wrong breadcrumb", jswait.checkClickable("//flytxt-breadcrumbs//flytxt-breadcrumb[4]//paper-button[contains(text(),'"+(String) eM.getCell(1, 0)+"')]"));
+	}
+	  @Then("^check create new offer in bc creation$")
     public void checkCreateNewOfferOfCreateNewBc() throws Throwable
     {
 		broadcastPageObjects.enterBroadcastBasicDetails("new Offer");
@@ -65,6 +87,21 @@ public class BroadcastSteps extends Init{
 		broadcastPageObjects.clickActivateButton();
 		broadcastPageObjects.clickActivateConfirmYes();
 		Thread.sleep(10000);
+    }
+	@Then("^verify edit option of bc$")
+    public void verifyEditBc() throws Throwable
+    {  
+		commonObjetcs.clickOptionsIcon();
+		commonObjetcs.clickEditOption();
+		broadcastPageObjects.enterBroadcastName("edit bc");
+    }
+	@Then("^verify pause option of bc$")
+    public void verifyPauseBc() throws Throwable
+    {  
+		commonObjetcs.clickOptionsIcon();
+		commonObjetcs.clickPauseOption();
+		String statusOfBc = broadcastPageObjects.getTopBcStatus();
+		Assert.assertTrue("Invalid status of BC",statusOfBc.contains("Pause"));
     }
 	@Then("^verify textual editor for target condition$")
     public void verifyTextualEditorOfTargetCondition() throws Throwable

@@ -42,24 +42,24 @@ public class OfferPageObjects extends Init{
 	private WebElement offerAddProductButton;
 	@FindBy(xpath="//*[@id='productDialog']/div[2]/paper-button[2]")
 	private WebElement dialogBoxAddProductButton;
-//	@FindBy(xpath="")
-//	private WebElement ;
-//	@FindBy(xpath="")
-//	private WebElement ;
-//	@FindBy(xpath="")
-//	private WebElement ;
-//	@FindBy(xpath="")
-//	private WebElement ;
-//	@FindBy(xpath="")
-//	private WebElement ;
-//	@FindBy(xpath="")
-//	private WebElement ;
-//	@FindBy(xpath="")
-//	private WebElement ;
-//	@FindBy(xpath="")
-//	private WebElement ;
-//	@FindBy(xpath="")
-//	private WebElement ;
+	@FindBy(xpath="//label[contains(.,'Language')]/..//input")
+	private WebElement creativeLanguage;
+	@FindBy(xpath="//paper-item[contains(.,'English')]")
+	private WebElement creativeLanguageEnglishSelect;
+	@FindBy(xpath="//paper-button[contains(.,'Save Offer')]")
+	private WebElement saveOfferButton;
+	@FindBy(xpath="//label[contains(.,'Reward Type')]/..//input")
+	private WebElement rewardTypeInputField;
+	@FindBy(xpath="//paper-item[contains(.,'Account')]")
+	private WebElement rewardTypeAccountSelector;
+	@FindBy(xpath="//label[contains(@class,'style-scope paper-input') and contains(text(),'Source')]/..//input")
+	private WebElement trackSourceSelector;
+	@FindBy(xpath="//*[@id='form']//label[contains(.,'Title')]/..//input")
+	private WebElement wapCreativeTitle;
+	@FindBy(xpath="//*[@id='form']//label[contains(.,'URL')]/..//input")
+	private WebElement wapCreativeUrl;
+	@FindBy(xpath="//label[contains(.,'Details')]/..//textarea")
+	private WebElement smsCreativeDetails;
 //	@FindBy(xpath="")
 //	private WebElement ;
 //	@FindBy(xpath="")
@@ -96,11 +96,32 @@ public class OfferPageObjects extends Init{
 			public void clickCreateNewOfferButton() throws InterruptedException {
 				jswait.loadClick(createNewOfferButton);
 			}
+			public void clickTrackSourceSelector() throws InterruptedException {
+				jswait.loadClick(trackSourceSelector);
+			}
+			public void selectTrackSource(String trackSource) throws InterruptedException {
+				jswait.loadClick("//paper-item[contains(.,'"+trackSource+"')]");
+			}
+			public void clickRewardTypeInputField() throws InterruptedException {
+				jswait.loadClick(rewardTypeInputField);
+			}
+			public void clickRewardTypeAccount() throws InterruptedException {
+				jswait.loadClick(rewardTypeAccountSelector);
+			}
+			public void clickSaveOfferButton() throws InterruptedException {
+				jswait.loadClick(saveOfferButton);
+			}
 			public void clickOfferType() throws InterruptedException {
 				jswait.loadClick(offerType);
 			}
 			public void clickOfferChannel() throws InterruptedException {
 				jswait.loadClick(offerChannel);
+			}
+			public void clickCreativeLanguageField() throws InterruptedException {
+				jswait.loadClick(creativeLanguage);
+			}
+			public void clickCreativeLanguageEnglishSelect() throws InterruptedException {
+				jswait.loadClick(creativeLanguageEnglishSelect);
 			}
 			public void clickOfferCategory() throws InterruptedException {
 				jswait.loadClick(offerCategory);
@@ -114,13 +135,13 @@ public class OfferPageObjects extends Init{
 			public void clickDialogBoxAddButton() throws InterruptedException {
 				jswait.loadClick(dialogBoxAddProductButton);
 			}
-			public void selectOfferType() throws InterruptedException {
+			public void selectOfferType(String offerType) throws InterruptedException {
 				clickOfferType();
-				jswait.loadClick("//paper-item[contains(.,'"+eh.getCell(1, 2)+"')]");
+				jswait.loadClick("//paper-item[contains(.,'"+offerType+"')]");
 			}
-			public void selectOfferChannel() throws InterruptedException {
+			public void selectOfferChannel(String offerChannel) throws InterruptedException {
 				clickOfferChannel();
-				jswait.loadClick("//paper-item[contains(.,'"+eh.getCell(1, 3)+"')]");
+				jswait.loadClick("//paper-item[contains(.,'"+offerChannel+"')]");
 			}
 			public void selectOfferCategory() throws InterruptedException {
 				clickOfferCategory();
@@ -135,9 +156,20 @@ public class OfferPageObjects extends Init{
 				eh.setCell(1, 0, name);
 				enterOfferName(name);
 				enterOfferDescription((String) eh.getCell(1, 1));
-				selectOfferType();
-				selectOfferChannel();
+				selectOfferType(eh.getCell(1, 2).toString());
+				selectOfferChannel(eh.getCell(1, 3).toString());
 				selectOfferCategory();
+			}
+			public void selectCreativeLanguageEnglish() throws InterruptedException, IOException{
+				clickCreativeLanguageField();
+				clickCreativeLanguageEnglishSelect();
+			}
+			public void enterWapCreative(String title, String url) throws InterruptedException {
+				jswait.loadSendKeys(wapCreativeTitle, title);
+				jswait.loadSendKeys(wapCreativeUrl, url);
+			}
+			public void enterSmsCreative(String details) throws InterruptedException {
+				jswait.loadSendKeys(smsCreativeDetails, details);;
 			}
 			public void enterProductTabFields(String productSheet) throws InterruptedException, IOException{
 				ExcelHelper prodcutFile = new ExcelHelper();

@@ -42,6 +42,8 @@ public class CommonObjects extends Init{
 	private WebElement paperButtonYes;
 	@FindBy(xpath="//paper-item[contains(.,'Edit')]")
 	private WebElement optionsEdit;
+	@FindBy(xpath="//paper-item[contains(.,'Pause')]")
+	private WebElement optionsPause;
 	@FindBy(xpath="//paper-item[contains(.,'Delete')]")
 	private WebElement optionsDelete;
 	@FindBy(xpath="//paper-icon-item[contains(.,'Edit')]")
@@ -51,8 +53,8 @@ public class CommonObjects extends Init{
 
 	@FindBy(xpath="//*[@id='sym2']")
 	private WebElement offers;
-//	@FindBy(xpath="")
-//	private WebElement ;
+	@FindBy(xpath=".//*[@id='items']/div[1]")
+	private WebElement gridFirstItem;
 //	@FindBy(xpath="")
 //	private WebElement ;
 //	@FindBy(xpath="")
@@ -63,6 +65,12 @@ public class CommonObjects extends Init{
 	}
 	public void clickEditOption() throws InterruptedException{
 		jswait.loadClick(optionsEdit);
+	}
+	public void clickPauseOption() throws InterruptedException{
+		jswait.loadClick(optionsPause);
+	}
+	public void clickFirstItemInGrid() throws InterruptedException{
+		jswait.loadClick(gridFirstItem);
 	}
 	public void clickDeleteOption() throws InterruptedException{
 		jswait.loadClick(optionsDelete);

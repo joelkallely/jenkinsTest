@@ -34,15 +34,15 @@ public class OfferSteps extends Init{
 //		offerPageObjects.navigateToOffer();
 //	}
 	
-	@Then("^create new offer from sheet \"([^\"]*)\"$")
-	public void create_new_Offer(String sheet) throws Throwable 
+	@Then("^create new offer from sheet \"([^\"]*)\" with product \"([^\"]*)\"$")
+	public void create_new_Offer(String sheet, String productSheet) throws Throwable 
 	{
 		Thread.sleep(4000);
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		Actions actions = new Actions(driver);
 		
 		ExcelHelper prodcutFile = new ExcelHelper();
-		prodcutFile.setExcelFile("productInputData","fullDetails");
+		prodcutFile.setExcelFile("productInputData",productSheet);
 		eh.setExcelFile("offerInputData",sheet);
 		Random rn = new Random();
 		int  n = rn.nextInt(5000) + 1;
@@ -55,47 +55,30 @@ public class OfferSteps extends Init{
 		offerPageObjects.enterDetailsTabFields(sheet);
 		offerPageObjects.clickProceedButton();
 //******************Products tab*****************:
-		offerPageObjects.enterProductTabFields("fullDetails");
+		offerPageObjects.enterProductTabFields(productSheet);
 		offerPageObjects.clickProceedButton();
 		
 //******************Creative tab*****************:
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Language')]"))).click().build().perform();
-		Thread.sleep(1000);
-		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'"+eh.getCell(1, 8)+"')]"))).click().build().perform();
-//		Thread.sleep(1000);
-//		actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Character Set')]"))).click().build().perform();
-//		Thread.sleep(1000);
-//		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'GSM Characters')]"))).click().build().perform();
-		
+		offerPageObjects.selectCreativeLanguageEnglish();
 		if(((String) eh.getCell(1, 3)).contains("WAP Push")){
-			Thread.sleep(1000);
-			driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'Title')]/..//input")).sendKeys(eh.getCell(1, 10));
-			Thread.sleep(1000);
-		  driver.findElement(By.xpath("//*[@id='form']//label[contains(.,'URL')]/..//input")).sendKeys(eh.getCell(1, 11));
+			offerPageObjects.enterWapCreative(eh.getCell(1, 10).toString(),eh.getCell(1, 11).toString());
 		}
 		if(eh.getCell(1, 3)=="SMS")
-			driver.findElement(By.xpath("//label[contains(.,'Details')]/..//textarea")).sendKeys(eh.getCell(1, 11));
-		actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(.,'Proceed')]"))).click().build().perform();
+			offerPageObjects.enterSmsCreative(eh.getCell(1, 11).toString());
+		offerPageObjects.clickProceedButton();
 		Thread.sleep(3000);
 		
 //******************Track tab*****************:
-
-		actions.moveToElement(driver.findElement(By.xpath("//label[contains(@class,'style-scope paper-input') and contains(text(),'Source')]"))).click().build().perform();
-		Thread.sleep(2000);
-		actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'track')]"))).click().build().perform();
-		Thread.sleep(2000);
-		actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(.,'Proceed')]"))).click().build().perform();
-		Thread.sleep(2000);
+		offerPageObjects.clickTrackSourceSelector();
+		offerPageObjects.selectTrackSource("track");
+		offerPageObjects.clickProceedButton();
 		
 //******************Rewards tab*****************:
 		if(eh.getCell(1, 2).toString().contains("Seeding")){
-			actions.moveToElement(driver.findElement(By.xpath("//label[contains(.,'Reward Type')]/..//input"))).click().build().perform();
-			Thread.sleep(2000);
-			actions.moveToElement(driver.findElement(By.xpath("//paper-item[contains(.,'Account')]"))).click().build().perform();
-			Thread.sleep(1000);
+			offerPageObjects.clickRewardTypeInputField();
+			offerPageObjects.clickRewardTypeAccount();
 		}
-		actions.moveToElement(driver.findElement(By.xpath("//paper-button[contains(.,'Save Offer')]"))).click().build().perform();
-		Thread.sleep(8000);
+		offerPageObjects.clickSaveOfferButton();
 	}
 	
 	WebDriverWait wait = new WebDriverWait(driver, 15);
