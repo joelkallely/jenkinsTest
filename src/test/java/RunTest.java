@@ -5,7 +5,6 @@ import org.junit.BeforeClass;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 
-import com.cucumber.listener.ExtentProperties;
 import com.cucumber.listener.Reporter;
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
@@ -33,15 +32,16 @@ import cucumber.api.junit.Cucumber;
         outputFolder = "target/81",
         retryCount = 0)
 @CucumberOptions(
-//        features = { "src/test/resources" },
+        features = { "src/test/features" },
 //		glue = {"classpath:"},
         //@NX-ProductTestSuite,@tagOfferCatalog,@madhan_test_suite_on_OfferCreation,@tagOfferCatalog,@NX-bcCreationSuite
 		tags = { "@NX-800" },
 		plugin = {
+				"com.cucumber.listener.ExtentCucumberFormatter:output/report.html",
         "html:target/81", "json:target/81/cucumber.json",
         "pretty:target/81/cucumber-pretty.txt",
         "usage:target/81/cucumber-usage.json", "junit:target/81/cucumber-results.xml",
-        "com.cucumber.listener.ExtentCucumberFormatter:output/report.html"
+        
         })
 
 public class RunTest extends Init 
@@ -51,13 +51,19 @@ public class RunTest extends Init
 		System.out.println("Starting test"); 
 
 	}
-//	@AfterClass
-	public static void afterClass() {
-		 Reporter.loadXMLConfig(new File("src/test/resources/extent-config.xml"));
-	        Reporter.setSystemInfo("user", System.getProperty("user.name"));
-	        Reporter.setSystemInfo("os", "Mac OSX");
-	        Reporter.setTestRunnerOutput("Sample test runner output message");
+	@AfterClass
+	public static void writeExtentReport() {
+		Reporter.loadXMLConfig(new File("src/test/resources/extent-config.xml"));
+        Reporter.setSystemInfo("user", System.getProperty("user.name"));
+        Reporter.setSystemInfo("os", "Mac OSX");
+        Reporter.setTestRunnerOutput("Sample test runner output message");
 	}
+//	public static void afterClass() {
+//		 Reporter.loadXMLConfig(new File("src/test/resources/extent-config.xml"));
+//	        Reporter.setSystemInfo("user", System.getProperty("user.name"));
+//	        Reporter.setSystemInfo("os", "Mac OSX");
+//	        Reporter.setTestRunnerOutput("Sample test runner output message");
+//	}
 	
 	public RunTest()
 	{
@@ -70,8 +76,8 @@ public class RunTest extends Init
 //		results.executeFeaturesOverviewReport();
 	}
 
-	public static void main(String[] args) throws Throwable {
-	    String[] arguments = {"foo", "bar"};
-	    cucumber.api.cli.Main.main(arguments);
-	}
+//	public static void main(String[] args) throws Throwable {
+//	    String[] arguments = {"foo", "bar"};
+//	    cucumber.api.cli.Main.main(arguments);
+//	}
 }

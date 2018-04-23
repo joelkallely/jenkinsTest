@@ -600,7 +600,7 @@ public class ProductTestCaseSteps extends Init{
 		eh.setExcelFile("productInputData",productSheet);
 		ExcelHelper offerExcel = new ExcelHelper();
 		offerExcel.setExcelFile("offerInputData",sheet);
-		commonObjects.filterName((String)eh.getCell(1, 0));
+		commonObjects.filterName((String)offerExcel.getCell(1, 0));
 		commonObjects.clickFirstItemInGrid();
 		driver.findElement(By.xpath("//*[contains(text(),'"+eh.getCell(1, 0)+"')]/../../div[2]/label[2][contains(text(),'"+eh.getCell(1, 1)+"')]]")).isDisplayed();	
 	}

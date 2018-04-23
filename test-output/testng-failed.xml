@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" configfailurepolicy="continue" guice-stage="DEVELOPMENT" name="Failed suite [BDD Test Suite]" parallel="tests">
-  <test name="Login and Update Profile Test">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Converted JUnit suite]">
+  <test name="JUnitTests" junit="true">
     <classes>
-      <class name="TestRunner"/>
+      <class name="RunTest"/>
     </classes>
-  </test> <!-- Login and Update Profile Test -->
-</suite> <!-- Failed suite [BDD Test Suite] -->
+  </test> <!-- JUnitTests -->
+</suite> <!-- Failed suite [Converted JUnit suite] -->

@@ -35,6 +35,7 @@ Then verify view braodcast breadcrumb
 @initBrowser @closeBrowser
 Scenario: Broadcast grid: Verify the label displaying the selected campaign name
 Given verify selected campaign name
+
 @NX-1239
 @initBrowser @closeBrowser
 Scenario: Broadcast grid: Verify the label displaying the selected campaign category name

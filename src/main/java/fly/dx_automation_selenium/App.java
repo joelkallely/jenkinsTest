@@ -1,19 +1,75 @@
-package fly.dx_automation_selenium;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-    	System.setProperty("webdriver.chrome.driver", "browser_files\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
-}
+//package fly.dx_automation_selenium;
+//
+//import java.awt.event.WindowAdapter;
+//import java.io.IOException;
+//import java.util.ArrayList;
+//import java.util.LinkedList;
+//import java.util.List;
+//
+//import javax.swing.JFrame;
+//import javax.swing.JOptionPane;
+//
+//import org.junit.runner.JUnitCore;
+//import org.junit.runner.Result;
+//import org.junit.runner.notification.Failure;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//
+//import testPack.JunitTest;;
+//class OptionPaneExample extends WindowAdapter{  
+//	JFrame f;  
+//	OptionPaneExample() throws IOException{  
+//	    f=new JFrame();   
+//	    f.addWindowListener(this);  
+//	    int a=JOptionPane.showConfirmDialog(f,"elements folder should be placed in this directory.\ndata.en.properties and the language to be compared should be placed in the languages folder.\n");
+//	    if(a==JOptionPane.YES_OPTION){  
+//	    	try {
+//	    		System.out.println("YES button");
+//	    		Result result = JUnitCore.runClasses(JunitTest.class);
+//	    	    for (Failure failure : result.getFailures()){
+//	    	        System.out.println(failure.toString());
+//	    	    }
+////	    		App.execExtraction();
+////	    		JUnitCore.main(
+////	    		         "RunTest");
+//	    		JUnitCore junit = new JUnitCore();
+//	    		junit.run(JunitTest.class);
+//	    	}
+//	    	catch(Exception e){
+//	    		JOptionPane.showMessageDialog(null, e.toString()+"\nPlease Try Again", "ERROR ", JOptionPane.INFORMATION_MESSAGE);
+//	    	}
+//	    	finally {
+//	    		System.exit(0);
+//	    	}
+////		      f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	    }
+//	    else if(a==JOptionPane.CANCEL_OPTION) {
+//	    	System.out.println("cancel button");
+//	    	System.exit(0);
+//	    }
+//	    else if(a==JOptionPane.NO_OPTION) {
+//	    	System.exit(0);
+//	    }
+//	}  
+//
+//}
+//
+//public class App 
+//{
+//	private static void runTests(Class test){
+//	    Result result = JUnitCore.runClasses(test);
+//	    for (Failure failure : result.getFailures()){
+//	        System.out.println(failure.toString());
+//	    }
+//	}
+//	public static List<String> filesToCheck = new LinkedList<String>();
+//	public static List<String> htmlFiles = new LinkedList<String>();
+//	public static List<String> languageFiles = new LinkedList<String>();
+//	public static List<String> directoriesToNavigate = new LinkedList<String>();
+//    public static void main( String[] args ) throws IOException
+//    {    	
+//			OptionPaneExample panel = new OptionPaneExample();
+//    }
+//
+//
+//}

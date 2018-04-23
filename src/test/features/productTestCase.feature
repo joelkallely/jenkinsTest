@@ -235,16 +235,16 @@ Then verify scroll bar for list of offers
 @initBrowser 
 Scenario: Create offer:Offers Display: Verify by expanding the offer row to know a quick summary details of the offer. NX-800
 Given login
-Then navigate to precision marketer
-Then navigate to offer management
-Then navigate to products
-Then navigate to prepaid telecom
-Then click create new product button
-Then create single product from sheet "fullDetails"
-Then navigate to offer management
-Then navigate to offers
-Then create new offer from sheet "rechargeWAP" with product "fullDetails"
-Then verify quick summary of product "fullDetails" in offer grid of "rechargeWAP"
+#Then navigate to precision marketer
+#Then navigate to offer management
+#Then navigate to products
+#Then navigate to prepaid telecom
+#Then click create new product button
+#Then create single product from sheet "fullDetails"
+#Then navigate to offer management
+#Then navigate to offers
+#Then create new offer from sheet "rechargeWAP" with product "fullDetails"
+#Then verify quick summary of product "fullDetails" in offer grid of "rechargeWAP"
 #
 #@NX-805
 #Scenario: Create offer:Offers Display: Verify the offer details in the grid by expanding the offers NX-805
